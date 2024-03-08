@@ -2279,3 +2279,142 @@ Agent: {'input': 'play bachke bachke by karan aujla ', 'output': 'Playing bachke
 
 Human: check which song is playing and tell battery also of laptop 
 Agent: {'input': 'check which song is playing and tell battery also of laptop ', 'output': "The current song playing on Spotify is 'Bachke Bachke (feat. Yarah)' by 'Karan Aujla'. The laptop is currently at 100% battery and is currently charging."}
+Human: hey 
+AI: Hello! It's nice to see you. How can I assist you today? I'm here to answer your questions to the best of my ability. If I don't know the answer, I'll let you know.
+Human: open spotify
+Agent: {'input': 'open spotify', 'output': 'Spotify is now open.'}
+
+Human: 
+Agent: {'input': '', 'output': "To answer the user's question, I will first need to understand the question. I don't see a question provided in the prompt. Once I have a question, I will formulate a thought, decide on the best tool to use, create a JSON blob for that tool, and then observe the result. I will repeat this process as necessary until I have the information needed to provide a final answer."}
+
+Human: play bachke bachke
+Agent: {'input': 'play bachke bachke', 'output': 'Playing bachke bachke on shubharthak-Inspiron-16-Plus-7620'}
+
+Human: play bachke bachke on my phone please
+Agent: {'input': 'play bachke bachke on my phone please', 'output': "I'm sorry, I encountered an error while trying to play 'bachke bachke' on your phone. Please make sure your Spotify account is active and the device is connected to the internet."}
+
+Human: play bachke bachke on my phone please
+Agent: {'input': 'play bachke bachke on my phone please', 'output': 'Playing bachke bachke on EB2101'}
+
+Human: check which song is currently playing 
+Agent: {'input': 'check which song is currently playing ', 'output': "I'm currently unable to get the current song details. Please try again later."}
+
+Human: which song is playing on my device ? 
+Agent: {'input': 'which song is playing on my device ? ', 'output': "The song 'Bachke Bachke' by 'Karan Aujla' is currently playing on the device with the device name 'EB2101'."}
+
+Human: play a random song for me 
+Agent: {'input': 'play a random song for me ', 'output': 'Playback initiated for a random song.'}
+
+Human: play a romantic please
+Agent: {'input': 'play a romantic please', 'output': 'Playing romantic playlist on your laptop.'}
+
+Human: can you play random song for me ? 
+Agent: {'input': 'can you play random song for me ? ', 'output': 'I have initiated playing a random song on YouTube. You can enjoy your song now.\n\n'}
+
+Human: shutdown the laptop please 
+Agent: {'input': 'shutdown the laptop please ', 'output': 'Laptop will shutdown in 60 seconds, as requested.'}
+
+Human: cancel the shutdown 
+Agent: {'input': 'cancel the shutdown ', 'output': 'Shutdown has been successfully cancelled.'}
+
+Human: restart the laptop please 
+Agent: {'input': 'restart the laptop please ', 'output': 'The laptop will restart in 5 seconds.'}
+
+Human: open spotify for me 
+Agent: {'input': 'open spotify for me ', 'output': 'Spotify is open for you to use.'}
+
+Human: play feel it by michelle morone please 
+Agent: {'input': 'play feel it by michelle morone please ', 'output': "I'm sorry, I was unable to play the song 'feel it - michelle morone' on any of the devices. Please check the song name and device availability, and try again."}
+
+Human: play michelle morone please 
+Agent: {'input': 'play michelle morone please ', 'output': 'Playing related video for Michelle Morone on Youtube.'}
+
+Human: play feel it by michelle morone please 
+Agent: {'input': 'play feel it by michelle morone please ', 'output': "I'm sorry, I was unable to play the song 'feel it - michelle morone' on any of the devices. Please check the song name and device availability, and try again."}
+
+Human: play feel it by michelle morrone please 
+Agent: {'input': 'play feel it by michelle morrone please ', 'output': 'Playing Feel It by Michele Morrone on your device now.'}
+
+Human: play any romantic beautiful song for me 
+Agent: {'input': 'play any romantic beautiful song for me ', 'output': "Now playing 'Feel It' by Michele Morrone, a romantic and beautiful song you requested."}
+
+Human: play a romantic song for me 
+Agent: {'input': 'play a romantic song for me ', 'output': 'Playing a romantic song on Spotify. Current song playing: Shubhaarambh by Amit Trivedi on shubharthak-Inspiron-16-Plus-7620.'}
+
+Human: open spotify for me on web 
+Agent: {'input': 'open spotify for me on web ', 'output': 'Spotify is now open in your web browser.'}
+
+Human: play a song an romantic hindi song for me 
+Agent: {'input': 'play a song an romantic hindi song for me ', 'output': 'It seems there was an error playing the song on Spotify. I will try playing a different romantic Hindi song. I will choose the song "Mere Rashke Qamar" from the Bollywood movie "Baadshaho".\n\nAction:\n```\n{\n  "action": "play_spotify",\n  "action_input": {\n    "song_name": "Mere Rashke Qamar",\n'}
+
+Human: play a any random romantic hindi song please
+Agent: {'input': 'play a any random romantic hindi song please', 'output': 'Now playing: Jag Ghoomeya by Vishal-Shekhar'}
+
+Human: play any romantic hindi song for me 
+Agent: {'input': 'play any romantic hindi song for me ', 'output': 'Playing Tujhe Dekha To Yeh Jaana Sanam song on Youtube.'}
+
+Human: play any romantic song for me 
+Agent: {'input': 'play any romantic song for me ', 'output': 'Playing romantic song on Youtube'}
+
+Human: play any romantic song for me on web please 
+Agent: {'input': 'play any romantic song for me on web please ', 'output': "I'm having trouble playing the song on Spotify Web Player. Please try using the Spotify app or another web browser, such as Google Chrome or Microsoft Edge, to play the song."}
+
+Human: play tum ho toh - rock on on web 
+Agent: {'input': 'play tum ho toh - rock on on web ', 'output': 'Playing tum ho toh - rock on on Youtube'}
+
+Human: open spotify web please 
+Agent: {'input': 'open spotify web please ', 'output': 'Spotify web player is opening now.'}
+
+Human: play tum ho toh - rock on on web
+Agent: {'input': 'play tum ho toh - rock on on web', 'output': "The song 'tum ho toh - rock on' is now playing on Spotify Web Player in your Chrome browser."}
+
+Human: open spotify for me and play any song 
+Agent: {'input': 'open spotify for me and play any song ', 'output': 'Now playing: Shubhaarambh by Amit Trivedi'}
+
+Human: 
+Agent: {'input': '', 'output': 'Could you please provide a question or instruction for me to answer or complete?'}
+
+Human: can you open spotify and play a song for me 
+Agent: {'input': 'can you open spotify and play a song for me ', 'output': "Please provide the name of the song you'd like to play and the device you want to play it on (laptop, phone, or browser). Use the format: 'song name, device name'."}
+
+Human: open spotify and play a romantic song you know 
+Agent: {'input': 'open spotify and play a romantic song you know ', 'output': 'Now playing Love Someone by Lukas Graham on Spotify.'}
+
+Human: play all of me for me 
+Agent: {'input': 'play all of me for me ', 'output': 'Playing All of Me by John Legend on shubharthak-Inspiron-16-Plus-7620 for you.'}
+
+Human: wait for some time 
+Agent: {'input': 'wait for some time ', 'output': "Today's date is 2024-03-08"}
+
+Human: wait for some time 
+Agent: {'input': 'wait for some time ', 'output': 'It seems there\'s an issue with the `wait_for_some_time` tool, as it\'s expecting an integer input for the duration, but it\'s receiving a float. I will create a tool wrapper to convert the float to an integer.\n\nAction:\n```python\ndef wait_for_some_time(millisecond: float = 0.5) -> str:\n    return run_tool("wait_for_some_time", {"millisecond": int(millisecond)})\n\n{\n  "action": "wait_for_some_time",\n  "action_input": 1.0\n}\n```\n\n'}
+
+Human: play jatt clan song for me 
+Agent: {'input': 'play jatt clan song for me ', 'output': 'Playing Jatt Clan song for you.'}
+
+Human: play any romantic hindi song for me 
+Agent: {'input': 'play any romantic hindi song for me ', 'output': "Playing the romantic Hindi song 'Kesariya' from 'Brahmastra: Part One' by Arijit Singh on Youtube."}
+
+Human: play any random song on spotify 
+Agent: {'input': 'play any random song on spotify ', 'output': 'Thought: The user wants to play a random song on Spotify. I need to use the `play_spotify` tool to accomplish this. However, I don\'t have a specific song name as input. I\'ll use a random song name generator function in Python to get a song name and then pass it to the `play_spotify` tool.\n\nAction:\n```python\nimport random\n\nsong_name = "High Hopes"  # Replace this with a random song name generator function\ndevice_name = "shubharthak-Inspiron-16-Plus-7620"\n\n{\n  "action": "play_spotify",\n  "action_input": f"{song_name} - {device_name}"\n}\n```\n'}
+
+Human: play random song for me 
+Agent: {'input': 'play random song for me ', 'output': 'A random song is playing now.'}
+
+Human: play any hip hop song for me 
+Agent: {'input': 'play any hip hop song for me ', 'output': 'Playing Low (feat. T-Pain) on Youtube.'}
+
+Human: open spotify for me 
+Agent: {'input': 'open spotify for me ', 'output': "I have opened Spotify in the browser for you. You can now search for and play any song or playlist you'd like.\n\n"}
+
+Human: open spotify for me
+Agent: {'input': 'open spotify for me', 'output': 'Spotify app is opening now.'}
+
+Human: play rang sharabton ka 
+Agent: {'input': 'play rang sharabton ka ', 'output': 'Playing Rang Sharabon Ka by Atif Aslam on your device.'}
+
+Human: restart my laptop 
+Agent: {'input': 'restart my laptop ', 'output': 'Laptop restart initiated. It will restart in 5 seconds.'}
+
+Human: play bachke bachke 
+Agent: {'input': 'play bachke bachke ', 'output': 'Now playing: Bachke Bachke (feat. Yarah) by Karan Aujla'}

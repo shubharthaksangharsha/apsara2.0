@@ -1,34 +1,17 @@
-from langchain.agents import Tool, load_tools
+from langchain.agents import Tool
 import os 
 from langchain_community.tools.file_management.read import ReadFileTool
 from langchain_community.tools.file_management.write import WriteFileTool
 from langchain_community.utilities.python import PythonREPL
-from langchain_community.utilities.serpapi import SerpAPIWrapper
 from langchain_community.utilities.openweathermap import OpenWeatherMapAPIWrapper
-from langchain.tools import BaseTool, StructuredTool, tool
+from langchain.tools import tool
 from find_phone import * 
-from pepper import * 
 import psutil as ps 
-import webbrowser
 import datetime
-import pywhatkit
 
 
 
 
-#check battery of laptop 
-@tool
-def check_battery() -> str:
-    '''
-    useful when you need to find the current battery percentage and whether laptop battery is charging or not.
-    '''
-    percent = int(ps.sensors_battery().percent)
-    charging = ps.sensors_battery().power_plugged
-    if charging:
-        return f"Laptop is {percent}% charged and currently charging"
-    else:
-        return f"Laptop is {percent}% charged and currently not charging"
-    
 #Find Phone 
 @tool 
 def find_phone():
@@ -46,15 +29,7 @@ def find_phone():
 
 
 
-@tool
-def play_youtube(song_name: str):
-    '''
-    useful to play songs on youtube. 
-    song_name:str - Song name of user wants to play 
-    Play song_name for user. Use when user wants to play any song on Youtube. 
-    '''
-    # pywhatkit.playonyt(song_name)
-    return f"Playing {song_name} on Youtube"
+
 
 #Current Location for Weather 
 @tool 

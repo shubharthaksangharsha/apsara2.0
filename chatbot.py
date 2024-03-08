@@ -13,6 +13,7 @@ from langchain.agents import AgentType, initialize_agent, load_tools,AgentExecut
 from agent_prompt import get_agent_prompt
 from mytools import *
 from my_music_tools import * 
+from my_utility_tools import * 
 
 #extra lib 
 import sys 
@@ -87,11 +88,15 @@ def create_agent():
     tools.append(mylocation), tools.append(read_tool), tools.append(write_tool), tools.append(weather_tool)
     tools.append(python_tool), tools.append(get_today_date), tools.append(play_youtube), 
     tools.append(find_phone), tools.append(check_battery), tools.append(open_spotify), 
-    tools.append(play_spotify), tools.append(detect_spotify_device), tools.append(print_current_song_details)
+    tools.append(play_spotify), tools.append(detect_spotify_device), tools.append(print_current_song_details),
+    tools.append(restart_laptop), tools.append(cancel_restart_laptop), tools.append(shutdown_laptop),
+    tools.append(cancel_shutdown_laptop)
+    
     if args.hist:    
         prompt = get_agent_prompt()
         agent =  create_structured_chat_agent(llm, tools, prompt)
-        agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True, handle_parsing_errors=True, memory=memory)
+        agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True,
+                                       max_iterations=10, handle_parsing_errors=True, memory=memory)
         return agent_executor
     else:
         agents = ["zero-shot-react-description", "conversational-react-description",
