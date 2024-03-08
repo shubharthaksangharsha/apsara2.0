@@ -1,0 +1,6 @@
+client_id=843ec2a5973741b59362c163c4585a36
+client_secret=c6983b49053e4fb386af43d1d6112d2d
+device_name=shubharthak-Inspiron-16-Plus-7620
+redirect_uri=http://google.com/
+username=31nirktovlepbrkv4ic5vhl2qsoa
+scope=user-read-private user-read-playback-state user-modify-playback-state
