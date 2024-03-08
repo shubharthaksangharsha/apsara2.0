@@ -2418,3 +2418,165 @@ Agent: {'input': 'restart my laptop ', 'output': 'Laptop restart initiated. It w
 
 Human: play bachke bachke 
 Agent: {'input': 'play bachke bachke ', 'output': 'Now playing: Bachke Bachke (feat. Yarah) by Karan Aujla'}
+
+Human: open spotify
+Agent: {'input': 'open spotify', 'output': 'Spotify is opening now on your laptop.'}
+
+Human: 
+Agent: {'input': '', 'output': 'In New York City, the current weather is clear sky with a wind speed of 7.2 m/s, humidity of 56%, and temperature of 7.4°C. It currently feels like 3.5°C.'}
+
+Human: play proper patola 
+Agent: {'input': 'play proper patola ', 'output': 'Playing Proper Patola by Badshah on your device now.'}
+
+Human: play proper patola original 
+Agent: {'input': 'play proper patola original ', 'output': 'Proper Patola - Original is currently playing.'}
+
+Human: play proper patola by diljit
+Agent: {'input': 'play proper patola by diljit', 'output': "I have played the song 'Proper Patola' by Diljit on the device named 'shubharthak-Inspiron-16-Plus-7620'."}
+
+Human: play facts by karan aujla 
+Agent: {'input': 'play facts by karan aujla ', 'output': 'Playing Facts by Karan Aujla on your device now.'}
+
+Human: mute volume 
+Agent: {'input': 'mute volume ', 'output': 'Volume has been muted.'}
+
+Human: mute the volume 
+Agent: {'input': 'mute the volume ', 'output': 'Successfully muted the volume.'}
+
+Human: mute the volume 
+Agent: {'input': 'mute the volume ', 'output': 'Volume has been successfully muted.'}
+
+Human: mute the volume
+Agent: {'input': 'mute the volume', 'output': 'Volume has been successfully muted.'}
+
+Human: mute volume 
+Agent: {'input': 'mute volume ', 'output': 'Successfully muted the volume.'}
+
+Human: increase the volume 
+Agent: {'input': 'increase the volume ', 'output': 'Successfully increased volume by 1000.'}
+
+Human: increase the volume 
+Agent: {'input': 'increase the volume ', 'output': 'Successfully increased volume by 1000.'}
+
+Human: increase volume by 10 percent 
+Agent: {'input': 'increase volume by 10 percent ', 'output': 'The volume has been increased by 10 percent.'}
+
+Human: increase the volume by 10 percent please 
+Agent: {'input': 'increase the volume by 10 percent please ', 'output': 'Volume increased by 10%.'}
+
+Human: 
+Agent: {'input': '', 'output': 'Search, Calculator, mylocation, read_file, write_file, openweather, python-repl, get_today_date, play_youtube, find_phone, check_battery, open_spotify, play_spotify, detect_spotify_device, print_current_song_details, restart_laptop, shutdown_laptop, increase_volume, decrease_volume, mute_volume'}
+
+Human: power off my laptop please 
+Agent: {'input': 'power off my laptop please ', 'output': {'text': 'Your laptop will shutdown in 1 minute.'}}
+
+Human: mute the volume please for me 
+Agent: {'input': 'mute the volume please for me ', 'output': 'Volume has been successfully muted.'}
+
+Human: play Rouhan by arijit singh 
+Agent: {'input': 'play Rouhan by arijit singh ', 'output': "There seems to be an issue playing the song 'Rouhan by Arijit Singh' on this device. I recommend checking your internet connection and ensuring that Spotify is properly installed and set up. If the problem persists, you may want to reach out to Spotify's support for further assistance."}
+
+Human: 
+Agent: {'input': '', 'output': 'Search, Calculator, mylocation, read_file, write_file, openweather, python-repl, get_today_date, play_youtube, find_phone, check_battery, open_spotify, play_spotify, detect_spotify_device, print_current_song_details, restart_laptop, shutdown_laptop, increase_volume, decrease_volume, mute_volume'}
+
+Human: play ruhoan ruhoan by arijit singh 
+Agent: {'input': 'play ruhoan ruhoan by arijit singh ', 'output': 'Thought: It seems there was an error while trying to play the song. I need to increase the volume and try again.\n\nAction:\n```python\n{\n  "action": "increase_volume",\n  "action_input": {\n    "volume_change": 1000\n  }\n}\n```\n\n'}
+
+Human: open spotify and play ruhoan ruhoan - arijit singh 
+Agent: {'input': 'open spotify and play ruhoan ruhoan - arijit singh ', 'output': "Playing the song 'ruhoan ruhoan' by Arijit Singh on Spotify."}
+
+Human: play ruhoan ruhoan by arijit singh 
+Agent: {'input': 'play ruhoan ruhoan by arijit singh ', 'output': {'text': "I'm sorry, but the song 'Ruhoan Ruhoan' by Arijit Singh does not seem to be available on Spotify. Would you like me to search for a different song by Arijit Singh or provide recommendations for similar songs?"}}
+
+Human: play ruaan 
+Agent: {'input': 'play ruaan ', 'output': "The song 'ruaan' was not successfully played. It seems that a different song, 'Saiyaara by Sohail Sen', is currently playing. Please try again if you'd like to play 'ruaan'."}
+
+Human: play ruaan by arijit singh 
+Agent: {'input': 'play ruaan by arijit singh ', 'output': "It seems there's an issue with playing the song 'Ruaan' by Arijit Singh. The current song playing on your device is 'Saiyaara' by Sohail Sen. Please check your Spotify application."}
+
+Human: play Ruaan from tiger 3 movie 
+Agent: {'input': 'play Ruaan from tiger 3 movie ', 'output': 'I have initiated playing the song "Ruaan" from the movie "Tiger 3" on Youtube. You can now enjoy the song. If you need help with anything else, don\'t hesitate to ask.\n\n'}
+
+Human: increase the volume 
+Agent: {'input': 'increase the volume ', 'output': 'Volume increased successfully.'}
+
+Human: resume the song please 
+Agent: {'input': 'resume the song please ', 'output': 'I have started playing a random song for you. Please enjoy your music!'}
+
+Human: pause the music 
+Agent: {'input': 'pause the music ', 'output': 'I have paused the music.'}
+
+Human: resume the playback
+Agent: {'input': 'resume the playback', 'output': "I have resumed the playback of the song 'Just Monika: a Doki Doki Literature Club Song by Random Encounters' on your device 'shubharthak-Inspiron-16-Plus-7620'."}
+
+Human: play bachke bachke 
+Agent: {'input': 'play bachke bachke ', 'output': 'Playing Bachke Bachke (feat. Yarah) by Karan Aujla on your device.'}
+
+Human: pause the music 
+Agent: {'input': 'pause the music ', 'output': 'The music has been paused.'}
+
+Human: c
+Agent: {'input': 'c', 'output': "As a reminder, clearing the calculator's input does not start a new calculation. Please provide the new calculation for me to perform."}
+
+Human: resume the song please
+Agent: {'input': 'resume the song please', 'output': 'I have resumed the song on your shubharthak-Inspiron-16-Plus-7620 device.'}
+
+Human: can you play bachke bachke on my phone ? 
+Agent: {'input': 'can you play bachke bachke on my phone ? ', 'output': "Now playing 'Bachke Bachke' by Karan Aujla on your phone."}
+
+Human: play bachke bachke on my phone 
+Agent: {'input': 'play bachke bachke on my phone ', 'output': 'Playing Bachke Bachke on your phone now.'}
+
+Human: play bachke bachke on my phone please 
+Agent: {'input': 'play bachke bachke on my phone please ', 'output': {'text': "I'm sorry for the confusion, but I was unable to find the correct device name for your phone. Could you please check the device name for your phone and provide it to me?"}}
+
+Human: play bachke bachke on my phone 
+Agent: {'input': 'play bachke bachke on my phone ', 'output': 'Playing Bachke Bachke (feat. Yarah) by Karan Aujla on your phone.'}
+
+Human: play bachke bachke on my phone please 
+Agent: {'input': 'play bachke bachke on my phone please ', 'output': 'Playing Bachke Bachke (feat. Yarah) by Karan Aujla on your phone.'}
+
+Human: can you pause it 
+Agent: {'input': 'can you pause it ', 'output': 'Could you please specify what you would like to pause?'}
+
+Human: open spotify please 
+Agent: {'input': 'open spotify please ', 'output': 'Spotify is opening now on your laptop.'}
+
+Human: play bachke bachke 
+Agent: {'input': 'play bachke bachke ', 'output': 'Now playing Bachke Bachke (feat. Yarah) by Karan Aujla on your device.'}
+
+Human: play bachke bachke on phone
+Agent: {'input': 'play bachke bachke on phone', 'output': "Now playing 'Bachke Bachke' by Karan Aujla on your phone."}
+
+Human: paupause current song on my phone please
+Agent: {'input': 'paupause current song on my phone please', 'output': 'I have paused the current song on your phone.'}
+
+Human: resume the song on my phone 
+Agent: {'input': 'resume the song on my phone ', 'output': "I have resumed the current song on your phone. The song 'Bachke Bachke (feat. Yarah) by Karan Aujla' is now playing on your phone."}
+
+Human: pause the music please 
+Agent: {'input': 'pause the music please ', 'output': 'Thought: The user has requested to pause the music, and the previous steps have successfully paused the music on the EB210'}
+
+Human: resume my song on phone please 
+Agent: {'input': 'resume my song on phone please ', 'output': 'Resumed the song on your phone.'}
+
+Human: pause the music please 
+Agent: {'input': 'pause the music please ', 'output': 'Thought: The user has requested to pause the music, and the previous steps have successfully paused the music on the EB210'}
+
+Human: what is an api key ? 
+Agent: {'input': 'what is an api key ? ', 'output': 'An API key is a unique identifier used to authenticate and authorize a user, developer, or calling program to an API. It is a string of characters used to identify and authenticate an application or user who requests the service of an API.'}
+
+Human: hey 
+Agent: {'input': 'hey ', 'output': 'Hello! Hello, how can I help you today?'}
+
+Human: hey
+Agent: {'input': 'hey', 'output': 'Hello! How can I assist you today?'}
+
+Human: hey
+Agent: {'input': 'hey', 'output': 'Hello! How can I assist you today?'}
+
+Human: hey 
+Agent: {'input': 'hey ', 'output': 'Hello! How can I assist you today?'}
+
+Human: what is the battery ? 
+Agent: {'input': 'what is the battery ? ', 'output': 'The battery is at 97% and is currently charging.'}

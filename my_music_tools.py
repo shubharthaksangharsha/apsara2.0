@@ -58,6 +58,46 @@ def spotify_helper():
 
         return spotify,deviceID
 
+
+#Pause on Spotify
+@tool 
+def pause_or_resume_spotify(device_name: str, pause_or_play: str) -> str:
+    '''
+    useful when need to pause or resume the song on spotify. 
+    device_name: str - Name of the device on which you want to pause or resume the song. 
+    pause_or_play: str - 'pause' or 'play again' or 'resume'
+    # Before using this tool get the device_name from the tool print_current_song_details to check which device is playing the song.
+    # Then get the current device_name as a input. If no device is playing any song then return "No song is currently playing right now."
+    use this tool as a way to pause or resume the song on spotify. 
+    based on pause_or_play parameter it will pause or resume the song. 
+    if user said to play again or resume then it will play resume the song. 
+    if user said to pause then it will pause the song.     
+    '''
+    device_id = None
+    spotify, devices = spotify_helper()
+    if len(devices) == 0:
+        return "Spotify is not opened on any device so can't pause the song"
+    print(devices.keys())
+    print(devices.values())
+    print(devices.items())
+    for name, id in devices.items():
+        print(name, id)
+        if name == device_name:
+            device_id = id
+            break
+    if pause_or_play == 'pause':
+            print('pausing the music')
+            spotify.pause_playback(device_id=device_id)
+            return f"Paused the song on {device_name}"
+    if pause_or_play == 'resume' or pause_or_play == 'play again':
+                print('resuming the music')
+                spotify.start_playback(device_id=device_id)
+                return f"Resumed the song on {device_name}"
+    else:
+        return "No song is currently playing right now."
+
+
+
 #Play on Youtube
 @tool
 def play_youtube(song_name: str):
@@ -74,6 +114,9 @@ def print_current_song_func() -> str:
     '''
     useful when you need to find out the current song playing on spotify. 
     if nothing is playing return "No song is currently playing right now."
+    shubharthak-Inspiron-16-Plus-7620 refers to laptop not phone 
+    EB2101 refers to phone 
+    Web Player (Chrome) refers to chrome browser     
     '''
     spotify, device_name = spotify_helper()
     data = spotify.current_playback()
@@ -130,34 +173,23 @@ def detect_spotify_device(query: str= 'laptop') -> str:
     useful when need to get the device ID to play spotify song. 
     use this tool as a way to get the deviceName from the query 
     if Nothing is specified as laptop, phone or browser use laptop as default. 
+    remember for laptop use shubharthak-Inspiron-16-Plus-7620 
+    remember for phone/android use EB2101 
+    remember for browser use Web Player (Chrome) 
     '''
     try:        
         _, devices = spotify_helper()
         if len(devices.keys()) == 0:
             return 'Spotify is not opened yet'
-        # for key in devices.keys():
-        #     print(key)
-        #     if key == 'Web Player (Chrome)':
-        #         return 'Web Player (Chrome)'
-        #     if key == 'EB2101':
-        #         return 'EB2101'
-        #     if key == 'shubharthak-Inspiron-16-Plus-7620':
-        #         return 'shubharthak-Inspiron-16-Plus-7620'
-    except Exception as e :
-        print(e)
-        return "Exception occurred unable to play"
-    
-    try:
-
-        if query is None:
+        else:   
+            if 'laptop' in query:
+                return 'shubharthak-Inspiron-16-Plus-7620'
+            if 'phone' in query:
+                return 'EB2101'
+            if 'browser' in query or 'web' in query:
+                return 'Web Player (Chrome)'
             return 'shubharthak-Inspiron-16-Plus-7620'
-        if 'laptop' in query:
-            return 'shubharthak-Inspiron-16-Plus-7620'
-        if 'phone' in query:
-            return 'EB2101'
-        if 'browser' in query or 'web' in query:
-            return 'Web Player (Chrome)'
-        return 'shubharthak-Inspiron-16-Plus-7620'
+        
     except Exception as e :
         print(e)
         return "Exception occurred unable to play"
@@ -206,7 +238,7 @@ def play_spotify(song_name: str, device_name: str="shubharthak-Inspiron-16-Plus-
 def open_spotify(query: str='app') -> str: 
     '''
     useful when you need to open spotify on user laptop.
-    query can be spotify app, or browser. default is spotify app
+    query can be spotify app, or browser. default is app
     '''
     try: 
         if 'app' in query:
