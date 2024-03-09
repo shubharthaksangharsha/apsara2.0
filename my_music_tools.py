@@ -59,6 +59,57 @@ def spotify_helper():
         return spotify,deviceID
 
 
+#Play an album 
+@tool 
+def play_album_on_spotify(album_name: str, device_name: str) -> str:
+    '''
+    useful when user wants to play an album.
+    album_name: str - Name of the album user wants to play. 
+    device_name: str - Name of the device on which you want to play the album. 
+    out: str - "Playing album_name on device_name" or "Device not found. Spotify is not opened on any device." or "Album not found."
+    '''
+    spotify, devices = spotify_helper()
+    device_id = None
+    for name, id in devices.items():
+        if name == device_name:
+            device_id = id
+            break
+    if device_id is None:
+        return "Device not found. Spotify is not opened on any device."
+    try:
+        album_uri = get_album_uri(spotify=spotify, name=album_name)
+        play_album(spotify=spotify, uri=album_uri, device_id=device_id)
+        return f"Playing {album_name} on {device_name}"
+    except Exception as e:
+        print(e)
+        return "Album not found."
+    
+#Play an artist  
+@tool 
+def play_artist_on_spotify(artist_name: str, device_name: str)-> str:
+    '''
+    useful when user wants to play an album.
+    album_name: str - Name of the album user wants to play. 
+    device_name: str - Name of the device on which you want to play the album. 
+    out: str - "Playing artist_name on device_name" or "Device not found. Spotify is not opened on any device." or "artist not found."
+   '''
+    spotify, devices = spotify_helper()
+    device_id = None
+    for name, id in devices.items():
+        if name == device_name:
+            device_id = id
+            break
+    if device_id is None:
+        return "Device not found. Spotify is not opened on any device."
+    try:
+        album_uri = get_artist_uri(spotify=spotify, name=artist_name)
+        play_artist(spotify=spotify, uri=album_uri, device_id=device_id)
+        return f"Playing {artist_name} on {device_name}"
+    except Exception as e:
+        print(e)
+        return "Artist not found."
+
+
 #Pause on Spotify
 @tool 
 def pause_or_resume_spotify(device_name: str, pause_or_play: str) -> str:
@@ -253,3 +304,6 @@ def open_spotify(query: str='app') -> str:
         return "Opening Spotify"
     except: 
         return "Error opening Spotify"
+
+if __name__ == "__main__":
+    pass
