@@ -52,8 +52,8 @@ print('Starting...')
 warnings.filterwarnings("ignore")
 
 #Set Langsmith functionality on 
-os.environ["LANGCHAIN_TRACING_V2"] = "true"
-os.environ["LANGCHAIN_PROJECT"] = "Apsara 2.0"
+# os.environ["LANGCHAIN_TRACING_V2"] = "true"
+# os.environ["LANGCHAIN_PROJECT"] = "Apsara 2.0"
 
 
 #Create LLM
@@ -91,7 +91,7 @@ def create_agent():
     tools.append(play_spotify), tools.append(detect_spotify_device), tools.append(print_current_song_details)
     tools.append(pause_or_resume_spotify)
     tools.append(restart_laptop), tools.append(shutdown_laptop)
-    tools.append(increase_volume), tools.append(decrease_volume), tools.append(mute_volume)
+    tools.append(increase_volume), tools.append(decrease_volume), tools.append(mute_volume), tools.append(umute_volume)
     
     
     if args.hist:    
@@ -124,7 +124,12 @@ def chat(agent_complete_toggle=True):
                 print('Cleared history')
                 continue
             print('Human: ', query)
-            response = agent.invoke({'input': query})
+            try:
+                response = agent.invoke({'input': query})
+            except Exception as e:
+                print(e)
+                print('Please try again')
+                pass
             with open('chats.txt', 'a') as f: 
                     f.writelines(f'\nHuman: {query}\n')
                     f.writelines(f'Agent: {response}\n')

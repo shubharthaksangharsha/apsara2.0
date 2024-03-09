@@ -11,7 +11,7 @@ import time
 
 
 
-
+#Spotify_helper to get spotify object and devices dict 
 def spotify_helper():
     # variables from setup.txt
         print('shubhi')
@@ -253,7 +253,3 @@ def open_spotify(query: str='app') -> str:
         return "Opening Spotify"
     except: 
         return "Error opening Spotify"
-
-# #Set Spotify 
-# @tool
-# def set_spotify()

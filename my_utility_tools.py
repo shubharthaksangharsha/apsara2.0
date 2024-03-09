@@ -83,16 +83,17 @@ def decrease_volume(volume_change: int = 10000) -> str:
     Return the final answer if found successfully in output
     '''
     try:
-        os.system(f'pactl set-sink-volume @DEFAULT_SINK@ +{volume_change}')
+        os.system(f'pactl set-sink-volume @DEFAULT_SINK@ -{volume_change}')
         return f"Successfully decreased volume by {volume_change}"
     except Exception as e:
         print(e)
-        return "Something went wrong while increasing the volume"
+        return "Something went wrong while decreasing the volume"
 
 @tool  
-def mute_volume() -> str:
+def mute_volume(muting_volume: str = "mute") -> str:
     '''
     useful when you user ask to mute the volume of laptop 
+    muting_volume: str = mute. default value is "mute". it just for safety purpose so that it won't run into any errors.
     returns: str
     Return the final answer if found successfully in output
     '''
@@ -101,4 +102,18 @@ def mute_volume() -> str:
         return f"Successfully muted the volume."
     except Exception as e:
         print(e)
-        return "Something went wrong while increasing the volume"
+        return "Something went wrong while muting the volume"
+@tool  
+def umute_volume(unmuting_volume: str = "unmute") -> str:
+    '''
+    useful when you user ask to unmute the volume of laptop 
+    unmuting_volume: str = unmute. default value is "unmute". it just for safety purpose so that it won't run into any errors.
+    returns: str
+    Return the final answer if found successfully in output
+    '''
+    try:
+        os.system(f'pactl set-sink-mute @DEFAULT_SINK@ toggle')
+        return f"Successfully unmuted the volume."
+    except Exception as e:
+        print(e)
+        return "Something went wrong while unmuting the volume"
