@@ -1,6 +1,6 @@
 import os 
 from langchain.tools import tool
-from find_phone import * 
+
 from spotify_utils import * 
 import psutil as ps 
 import pandas as pd 
@@ -254,6 +254,8 @@ def detect_spotify_device(query: str= 'laptop') -> str:
 def play_spotify(song_name: str, device_name: str="shubharthak-Inspiron-16-Plus-7620") -> str:
     '''
     useful when you need to play a song on spotify. 
+    Try to play song on spotify for 3 imes if not able to play then play it on youtube. 
+    If song not available then play it on youtube using play_youtube tool 
     Detect the song_name from query
     device_name = "shubharthak-Inspiron-16-Plus-7620" for laptop
     device_name3 = 'Web Player (Chrome)' for browser
@@ -269,9 +271,12 @@ def play_spotify(song_name: str, device_name: str="shubharthak-Inspiron-16-Plus-
         song: 'feel it - michelle morone'
         deviceID: 'EB2101'
     if not song is defined play any random song you know on spotify. 
+    Also, if spotify is not opened yet, use `open_spotify` tool to open spotify. 
     '''
     spotify, deviceID = spotify_helper()
     try: 
+        if len(deviceID.keys()) == 0:
+            return 'Spotify is not opened yet'
         print('Song name:', song_name)
         uri = get_track_uri(spotify=spotify, name=song_name)
         print(f"Track: {uri}")

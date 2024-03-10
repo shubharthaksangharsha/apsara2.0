@@ -5,27 +5,39 @@ from langchain_community.tools.file_management.write import WriteFileTool
 from langchain_community.utilities.python import PythonREPL
 from langchain_community.utilities.openweathermap import OpenWeatherMapAPIWrapper
 from langchain.tools import tool
-from find_phone import * 
+from langchain_community.tools import DuckDuckGoSearchRun
+
+
 import psutil as ps 
 import datetime
 
 
+@tool
+def internal_knowledge_tool(input: str = 'final answer', answer: str = 'unknown') -> str:
+    '''
+    Useful tool when already know the answer to the user query
+    input: str = 'final answer' - default value. It just serves as a safety purpose so that it won't run into any errors.
+    answer: str = 'unknown' - default value. The answer that you already knows.
+    Use this tool when you already knows the answer to what user is asking and doesn't need to use any other tools.
+    Return the final answer if you already knows the answer. Also, while returning it should treat the answer as final answer.
+    '''
+    return f'{answer}'
+    
 
 
 #Find Phone 
 @tool 
-def find_phone():
+def find_or_ring_phone(find: str = 'find'):
     '''
-    useful to find user android device name - One Plus Node. 
-    returns True if no errors occured during findmyphone() else return False means some error occurred  
-
+    useful to find or ring user android device name - One Plus Node. 
+    find: str = 'find' - default value. it just for safety purpose so that it won't run into any errors 
     '''
-    find = findmyphone()
-    print(find)
-    if find == True: 
+    try:
+        os.system('python find_phone.py')
         return "Ringed the phone"
-    else: 
-        return "Some error occurred please try again later."
+    except Exception as e:
+        return "Error: " + str(e)
+    
 
 
 
@@ -62,8 +74,41 @@ python_tool = Tool(
     func=PythonREPL().run,
     description='useful to execute python code.')
 
-read_tool = ReadFileTool()
-write_tool = WriteFileTool()
+#search tool 
+search_tool = Tool(
+    name='duckduckgo',
+    func=DuckDuckGoSearchRun().run,
+    description='useful to search anything on the internet.'
+)
+
+
+@tool
+def read_tool(file_path: str) -> str:
+    '''
+    useful when you want to read any file.
+    file_path: str - path of the file you want to read.
+    return the content of the file
+    '''
+    try:
+        with open(file_path, 'r') as f:
+            return f.read()
+    except Exception as e:
+        return "Error: " + str(e)
+
+@tool
+def write_save_tool(file_path: str, content: str) -> str:
+    '''
+    useful when you want to write/save the content in a file.
+    file_path: str - path of the file in which you want to write.
+    content: str - content you want to write in the file_path.
+    return: str - the content of the file
+    '''
+    try:
+        with open(file_path, 'a') as f:
+            f.write(content)   
+        return f'{content} written to {file_path}'
+    except Exception as e:
+        return "Error: " + str(e)
 
 if __name__ == '__main__':
     print(get_today_date.name)

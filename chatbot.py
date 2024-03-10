@@ -5,6 +5,7 @@ from langchain_groq import ChatGroq
 from langchain.memory import ConversationBufferWindowMemory
 from langchain_core.prompts import PromptTemplate
 from langchain_core.callbacks import StreamingStdOutCallbackHandler
+from langchain_community.llms.huggingface_endpoint import HuggingFaceEndpoint
 
 
 #agents modules
@@ -23,11 +24,18 @@ import warnings
 import argparse
 
 #voice 
+from gtts_audio import speak
 import speech_recognition as sr
 import pvporcupine
 import pyaudio
 import struct 
 from gtts import gTTS
+from io import BytesIO
+from pydub import AudioSegment
+from pydub.playback import play
+from concurrent.futures import ThreadPoolExecutor
+import re
+
 
 parser = argparse.ArgumentParser(description='A chatbot that can use either the Groq API or a local LLM model using Ollama and openchat to generate responses. The chatbot has two main functionalities: it can use agents that have real-time knowledge using search and other advanced tools, or it can use a normal chatbot.')
 # Add the arguments
@@ -60,17 +68,19 @@ print('Starting...')
 warnings.filterwarnings("ignore")
 
 #Set Langsmith functionality on 
-# os.environ["LANGCHAIN_TRACING_V2"] = "true"
-# os.environ["LANGCHAIN_PROJECT"] = "Apsara 2.0"
+os.environ["LANGCHAIN_TRACING_V2"] = "true"
+os.environ["LANGCHAIN_PROJECT"] = "Apsara 2.0"
 
 
 #Create LLM
 def get_llm(temperature=0.5, local=True, groq_api_key: str = None):
     if local:
-        llm = ChatOllama(model='openchat', temperature=args.temp, streaming=True, callbacks=[StreamingStdOutCallbackHandler()])
+        llm = ChatOllama(model='gemma', temperature=args.temp, streaming=True, callbacks=[StreamingStdOutCallbackHandler()])
+        # llm = HuggingFaceEndpoint(repo_id='mistralai/Mixtral-8x7B-Instruct-v0.1',  max_new_tokens=2048)
     else:
         llm = ChatGroq(api_key=groq_api_key, max_tokens=32768, streaming=True, temperature=args.temp, 
                        callbacks=[StreamingStdOutCallbackHandler()])
+    
     return llm 
 
 #Create Chain 
@@ -92,15 +102,16 @@ def clear_history():
     history = []
 
 def create_agent():
-    tools = load_tools(["serpapi", "llm-math"], llm=llm)
-    tools.append(mylocation), tools.append(read_tool), tools.append(write_tool), tools.append(weather_tool)
+    tools = load_tools(["llm-math"], llm=llm)
+    tools.append(search_tool)
+    tools.append(mylocation), tools.append(read_tool), tools.append(write_save_tool), tools.append(weather_tool)
     tools.append(python_tool), tools.append(get_today_date), tools.append(play_youtube)
-    tools.append(find_phone), tools.append(check_battery), tools.append(open_spotify) 
+    tools.append(find_or_ring_phone), tools.append(check_battery), tools.append(open_spotify) 
     tools.append(play_spotify), tools.append(detect_spotify_device), tools.append(print_current_song_details)
     tools.append(pause_or_resume_spotify), 
     tools.append(restart_laptop), tools.append(shutdown_laptop)
     tools.append(increase_volume), tools.append(decrease_volume), tools.append(mute_volume), tools.append(umute_volume)
-    
+    tools.append(internal_knowledge_tool)
     tools.append(play_album_on_spotify), tools.append(play_artist_on_spotify)
     
     if args.hist:    
@@ -113,26 +124,11 @@ def create_agent():
         agents = ["zero-shot-react-description", "conversational-react-description",
            "chat-zero-shot-react-description", "chat-conversational-react-description", 
            "structured-chat-zero-shot-react-description"]
-        agent = initialize_agent(tools=tools, llm=llm, agent=AgentType(agents[-1]),   
+        agent = initialize_agent(tools=tools, llm=llm, agent=AgentType(agents[-1]),
+        max_iterations=5,    
         verbose=True, 
         handle_parsing_errors=True)
         return agent  
-
-
-#converting text to speech 
-def speak(text):
-    """
-    Converts given text to speech using Google Text-to-Speech (gTTS) API, and plays the generated audio file.
-
-    Args:
-        text (str): The text to convert to speech.
-
-    Returns:
-        None
-    """
-    speech = gTTS(text=text, lang="en-in", slow=False)
-    speech.save("text.mp3")
-    os.system("mpg123 text.mp3")
 
 #greeting function
 def wishMe():
@@ -192,22 +188,24 @@ def voice(agent_complete_toggle=True):
             keyword = struct.unpack_from("h" * porcupine.frame_length, keyword)
             keyword_index = porcupine.process(keyword)
             if keyword_index >= 0:
+                speak('haan ji boliye?')
                 query = takeCommand()
+                if 'None' in query:
+                    continue
                 if 'exit' in query or 'bye' in query:
                         print('Okay bye...')
                         break
-                print('Human: ', query)
                 try:
                     response = agent.invoke({'input': query})
-                    print(response)
-                    speak(response['output'])
+                    answer = response['output'] 
+                    speak(answer)
                 except Exception as e:
                     print(e)
                     print('Please try again')
                     pass
                 with open('chats.txt', 'a') as f: 
                         f.writelines(f'\nHuman: {query}\n')
-                        f.writelines(f'Agent: {response}\n')
+                        f.writelines(f'Agent: {answer}\n')
                 print()  
 
     else: 
@@ -217,6 +215,8 @@ def voice(agent_complete_toggle=True):
             keyword_index = porcupine.process(keyword)
             if keyword_index >= 0:
                 query = takeCommand()
+                if 'None' in query:
+                    continue
                 if 'show_history' in query:
                     print(memory.buffer_as_str)
                     continue
@@ -245,15 +245,17 @@ def chat(agent_complete_toggle=True):
                 print('Cleared history')
                 continue
             print('Human: ', query)
+            answer = None 
             try:
                 response = agent.invoke({'input': query})
+                answer = response['output']
             except Exception as e:
                 print(e)
                 print('Please try again')
                 pass
             with open('chats.txt', 'a') as f: 
                     f.writelines(f'\nHuman: {query}\n')
-                    f.writelines(f'Agent: {response}\n')
+                    f.writelines(f'Agent: {answer}\n')
             if args.hist:
                 print('Printing History')
                 print(memory.buffer_as_str)
@@ -283,14 +285,15 @@ if __name__ == '__main__':
     llm = get_llm(temperature=0.5, local=local, groq_api_key=api_key)
     chain = get_chain(llm=llm, memory=memory)
     agent = create_agent()
-    porcupine = None
-    audio_stream = None
-    paudio = None
-    pico_key = os.environ.get('pico_key')
-    porcupine = pvporcupine.create(access_key = pico_key, keyword_paths=['./apsara_keyword/ap-sara_en_linux_v2_2_0.ppn','./apsara_keyword/app-sara_en_linux_v2_2_0.ppn'])
-    paudio = pyaudio.PyAudio()
-    audio_stream = paudio.open(rate=porcupine.sample_rate, channels=1, format=pyaudio.paInt16, input=True, frames_per_buffer=porcupine.frame_length)
+    
     if args.voice == 'on':
+        porcupine = None
+        audio_stream = None
+        paudio = None
+        pico_key = os.environ.get('pico_key')
+        porcupine = pvporcupine.create(access_key = pico_key, keyword_paths=['./apsara_keyword/ap-sara_en_linux_v2_2_0.ppn','./apsara_keyword/app-sara_en_linux_v2_2_0.ppn'])
+        paudio = pyaudio.PyAudio()
+        audio_stream = paudio.open(rate=porcupine.sample_rate, channels=1, format=pyaudio.paInt16, input=True, frames_per_buffer=porcupine.frame_length)
         voice(agent_complete_toggle=args.agent)
     else:
         chat(agent_complete_toggle=args.agent)

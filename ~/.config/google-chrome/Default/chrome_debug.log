@@ -1,0 +1,10 @@
+[89057:89057:0309/201423.175430:WARNING:chrome_main_delegate.cc(660)] This is Chrome version 119.0.6045.159 (not a warning)
+[89057:89057:0309/201423.284194:INFO:policy_logger.cc(145)] :components/enterprise/browser/controller/chrome_browser_cloud_management_controller.cc(168) Starting CBCM Controller Initialization
+[89057:89057:0309/201423.284240:INFO:policy_logger.cc(145)] :components/enterprise/browser/controller/chrome_browser_cloud_management_controller.cc(196) No machine level policy manager exists.
+[89057:89057:0309/201423.342383:WARNING:bluez_dbus_manager.cc(247)] Floss manager not present, cannot set Floss enable/disable.
+[89097:89097:0309/201423.450465:WARNING:sandbox_linux.cc(400)] InitializeSandbox() called with multiple threads in process gpu-process.
+[89097:89097:0309/201423.902596:ERROR:shared_image_manager.cc(220)] SharedImageManager::ProduceSkia: Trying to Produce a Skia representation from a non-existent mailbox.
+[89097:89097:0309/201423.903552:ERROR:shared_image_manager.cc(220)] SharedImageManager::ProduceSkia: Trying to Produce a Skia representation from a non-existent mailbox.
+[89099:89115:0309/201424.162558:WARNING:sqlite_persistent_store_backend_base.cc(198)] Failed to post task from FlushAndNotifyInBackground@net/extras/sqlite/sqlite_persistent_store_backend_base.cc:246 to client_task_runner_.
+[89099:89115:0309/201424.162616:WARNING:sqlite_persistent_store_backend_base.cc(198)] Failed to post task from FlushAndNotifyInBackground@net/extras/sqlite/sqlite_persistent_store_backend_base.cc:246 to client_task_runner_.
+[89057:89057:0309/201424.174360:WARNING:pref_notifier_impl.cc(41)] Pref observer for media_router.cast_allow_all_ips found at shutdown.
