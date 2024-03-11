@@ -1,8 +1,14 @@
 # Apsara 2.0: Your AI Assistant
 
-Created by [shubharthak](https://shubharthaksangharsha.github.io/)
+Created by <a href="https://shubharthaksangharsha.github.io/" target="_blank">shubharthak</a>
+
 
 Apsara 2.0 is a powerful and versatile AI assistant built using Langchain and other language processing libraries. It can function as both a traditional chatbot and an agent with real-time knowledge access through search and other advanced tools.
+
+---
+
+[![Apsara 2.0 in action](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdnN4aGU2dmhlMG43YnZ2cXFtMmV5Yzhnd3ByZzUyZW15bHBxYXBsYSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/uoV6nwTn1AvlAGmB8N/giphy.gif)](https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExdnN4aGU2dmhlMG43YnZ2cXFtMmV5Yzhnd3ByZzUyZW15bHBxYXBsYSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/uoV6nwTn1AvlAGmB8N/giphy.gif)
+
 
 ## Features
 
