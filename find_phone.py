@@ -6,7 +6,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from undetected_chromedriver import Chrome
 
-# from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.chrome import ChromeDriverManager
 import time 
 
 # Set the path to your Chrome profile
@@ -24,10 +24,12 @@ options.add_argument(r'--profile-directory=Default')
 
 
 # Set up the Chrome service
-service = Service('/home/shubharthak/.wdm/drivers/chromedriver/linux64/119.0.6045.105/chromedriver-linux64/chromedriver')
+path = '/home/shubharthak/.wdm/drivers/chromedriver/linux64/122.0.6261.111/chromedriver-linux64/chromedriver'
+service = Service(path)
 
 # Initialize the WebDriver
-driver = Chrome(user_data_dir=chrome_profile_path, headless=False)
+# driver = Chrome(user_data_dir=chrome_profile_path, headless=False, driverr_executable_path=path)
+driver = webdriver.Chrome(service=service, options=options)
 print('Driver initialized...')
 # Now you can use Selenium as usual
 

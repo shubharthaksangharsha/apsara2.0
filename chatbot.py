@@ -68,8 +68,8 @@ print('Starting...')
 warnings.filterwarnings("ignore")
 
 #Set Langsmith functionality on 
-os.environ["LANGCHAIN_TRACING_V2"] = "true"
-os.environ["LANGCHAIN_PROJECT"] = "Apsara 2.0"
+# os.environ["LANGCHAIN_TRACING_V2"] = "true"
+# os.environ["LANGCHAIN_PROJECT"] = "Apsara 2.0"
 
 
 #Create LLM
@@ -103,16 +103,32 @@ def clear_history():
 
 def create_agent():
     tools = load_tools(["llm-math"], llm=llm)
+    #Search tools 
     tools.append(search_tool)
-    tools.append(mylocation), tools.append(read_tool), tools.append(write_save_tool), tools.append(weather_tool)
-    tools.append(python_tool), tools.append(get_today_date), tools.append(play_youtube)
-    tools.append(find_or_ring_phone), tools.append(check_battery), tools.append(open_spotify) 
-    tools.append(play_spotify), tools.append(detect_spotify_device), tools.append(print_current_song_details)
-    tools.append(pause_or_resume_spotify), 
-    tools.append(restart_laptop), tools.append(shutdown_laptop)
+    #Weather tools
+    tools.append(mylocation), tools.append(weather_tool)
+    #Read and write tools
+    tools.append(read_tool), tools.append(write_save_tool), 
+    #Get today date tool
+    tools.append(get_today_date)
+    #Play on youtube tool
+    tools.append(play_youtube)
+    #Utility tools 
+    tools.append(find_or_ring_phone), tools.append(restart_laptop), tools.append(shutdown_laptop), tools.append(check_battery)
     tools.append(increase_volume), tools.append(decrease_volume), tools.append(mute_volume), tools.append(umute_volume)
-    tools.append(internal_knowledge_tool)
+    #Spotify tools 
+    tools.append(open_spotify), tools.append(play_spotify), tools.append(detect_spotify_device), 
+    tools.append(print_current_song_details), tools.append(pause_or_resume_spotify)
     tools.append(play_album_on_spotify), tools.append(play_artist_on_spotify)
+    #Python tool
+    tools.append(python_tool)
+    #Internal Knowledge tool 
+    # tools.append(internal_knowledge_tool)
+    #Bluetooth tools 
+    tools.append(connect_bluetooth_device), tools.append(disconnect_bluetooth_device)
+    tools.append(bluetooth_available_devices)
+    tools.append(turn_on_bluetooth), tools.append(turn_off_bluetooth)
+    
     
     if args.hist:    
         prompt = get_agent_prompt()
@@ -148,7 +164,7 @@ def wishMe():
 
 
 #take voice command from the user microphone and convert it into text 
-def takeCommand(pause_threshold = 0.6, timeout=5, phrase_time_limit=3):
+def takeCommand(pause_threshold = 0.6, timeout=5, phrase_time_limit=8):
     """
     This function listens to the user's voice input through the microphone and returns a string output.
 
@@ -188,7 +204,7 @@ def voice(agent_complete_toggle=True):
             keyword = struct.unpack_from("h" * porcupine.frame_length, keyword)
             keyword_index = porcupine.process(keyword)
             if keyword_index >= 0:
-                speak('haan ji boliye?')
+                os.system('mpg123 wake_word.mp3')
                 query = takeCommand()
                 if 'None' in query:
                     continue
@@ -214,6 +230,7 @@ def voice(agent_complete_toggle=True):
             keyword = struct.unpack_from("h" * porcupine.frame_length, keyword)
             keyword_index = porcupine.process(keyword)
             if keyword_index >= 0:
+                os.system('mpg123 wake_word.mp3')
                 query = takeCommand()
                 if 'None' in query:
                     continue

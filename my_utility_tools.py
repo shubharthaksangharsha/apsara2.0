@@ -4,9 +4,84 @@ from langchain_community.utilities.python import PythonREPL
 from langchain_community.utilities.serpapi import SerpAPIWrapper
 from langchain_community.utilities.openweathermap import OpenWeatherMapAPIWrapper
 from langchain.tools import tool
-
+from bluetoothctl import * 
 from spotify_utils import * 
 import psutil as ps 
+
+
+
+@tool
+def bluetooth_available_devices() -> list:
+    '''
+    useful when to find the available devices list of bluetooth devices
+    use this tool to find the mac address of bluetooth device before connecting to bluetooth device
+    returns: list
+    '''
+    output = subprocess.check_output("bluetoothctl devices", shell=True, universal_newlines=True)
+    output = str(output).strip('\n')
+    lines = output.split('\n')
+    devices = []
+    for line in lines:
+        parts = line.split()
+        if len(parts) >= 2:
+            mac_address = parts[1]
+            device_name = ' '.join(parts[2:])
+            devices.append({device_name: mac_address})
+    return devices
+
+#Power off blueooth 
+@tool 
+def turn_off_bluetooth()-> str:
+    '''
+    useful when to turn off bluetooth
+    returns: str
+    '''
+    power = subprocess.check_output(
+        "bluetoothctl power off", shell = True, universal_newlines=True
+    )
+    print(power)
+    return power
+
+#Power on blueooth 
+@tool
+def turn_on_bluetooth()-> str:
+    """
+    useful when to turn on bluetooth
+    returns: str
+    """
+    power = subprocess.check_output(
+        "bluetoothctl power on", shell = True, universal_newlines=True
+    )
+    print(power)
+    return power
+
+#disconnect to bluetooth device
+@tool 
+def disconnect_bluetooth_device()-> str:
+    '''
+    useful when to disconnect to bluetooth device
+    returns: str
+    '''
+    disconnect = subprocess.check_output(
+        "bluetoothctl disconnect", shell = True, universal_newlines=True
+    )
+    print(disconnect)
+    return disconnect
+
+# connect to bluetooth device
+@tool
+def connect_bluetooth_device(mac) -> str:
+    """
+    useful when to connect to bluetooth device
+    use bluetooth_available_devices to find the mac address of bluetooth device
+    mac: str - mac address of bluetooth device
+    returns: str
+    """
+    connected = subprocess.check_output(
+        "bluetoothctl connect " + mac, shell = True, universal_newlines=True
+    )
+    print(connected)
+    return connected
 
 #check battery of laptop 
 @tool

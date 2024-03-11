@@ -414,3 +414,237 @@ Agent: The color of the sky is blue.
 
 Human: what happens if someone go inside an black hole? use your internal knowledge 
 Agent: {'input': 'final answer', 'answer': "If someone were to go inside a black hole, they would experience extreme tidal forces that would stretch and compress their body, a process often referred to as 'spaghettification.' Additionally, the gravitational pull would cause time dilation, making time appear to slow down relative to outside observers. Eventually, the person would reach the singularity, a point of infinite density at the center of the black hole, where current scientific understanding breaks down."}
+
+Human: show me the full error free code for snake game in python 
+Agent: I have found a few implementations of the snake game using Python. Here is an example of a simple and complete snake game implementation using the `curses` library:
+
+Action:
+```json
+{
+  "action": "internal_knowledge_tool",
+  "action_input": "Here is a simple implementation of a snake game using the curses library in Python:
+
+import random
+import curses
+
+s = curses.initscr()
+curses.curs_set(0)
+sh, sw = s.getmaxyx()
+w = curses.newwin(sh, sw, 0, 0)
+w.keypad(1)
+w.timeout(100)
+
+snk_x = sw//4
+snk_y = sh//2
+snake = [
+    [snk_y, snk_x],
+    [snk_y, snk_x-1],
+    [snk_y, snk_x-2]
+]
+
+food = [sh//2, sw//2]
+w.addch(int(food[0]), int(food[1]), curses.ACS_PI)
+
+key = curses.KEY_RIGHT
+
+while True:
+    next_key = w.getch()
+    key = key if next_key == -1 else next_key
+
+    if snake[0][0] in [0, sh] or \
+        snake[0][1]  in [0, sw] or \
+        snake[0] in snake[1:]:
+        curses.endwin()
+        quit()
+
+    new_head = [snake[0][0], snake[0][1]]
+
+    if key == curses.KEY_DOWN:
+        new_head[0] += 1
+    if key == curses.KEY_UP:
+        new_head[0] -= 1
+    if key == curses.KEY_LEFT:
+        new_head[1] -= 1
+    if key == curses.KEY_RIGHT:
+        new_head[1] += 1
+
+    snake.insert(0, new_head)
+
+    if snake[0] == food:
+        food = None
+        while food is None:
+            nf = [
+                random.randint(1, sh-1),
+                random.randint(1, sw-1)
+            ]
+            food = nf if nf not in snake else None
+        w.addch(food[0], food[1], curses.ACS_PI)
+    else:
+        tail = snake.pop()
+        w.addch(int(tail[0]), int(tail[1]), ' ')
+
+
+
+Human: just print me the whole code for snake game in python error free 
+Agent: None
+
+Human: write me a python code for snake game  
+Agent: I have written the code for a simple snake game in Python and saved it to a file named 'snake_game.py'. You can run this file to play the game. The game involves moving a snake around a grid to eat food pellets, while avoiding collisions with the border or the snake's own body. The game keeps track of the score and allows the user to control the snake's movement using the arrow keys. The game ends when the snake collides with the border or its own body, at which point the final score is displayed and the game exits.
+
+Human: can you create a snake game in Python and
+Agent: {'final response to human': "I have provided a simple example of a text-based snake game using Python's built-in `curses` library. You can use this example as a starting point and build upon it to add more features such as scores, levels, and gameplay enhancements."}
+
+Human: can you create a snake game in Python and write it in a file in my current directory
+Agent: {'final answer': "I have created a simple snake game using the curses library in Python and saved it in a file named 'snake_game.py' in the current directory. You can run this file to play the snake game."}
+
+Human: how are you doing
+Agent: I am functioning as intended and ready to assist you.
+
+Human: how are you doing bro
+Agent: I'm an AI and don't have feelings, but I'm here and ready to assist you!
+
+Human: can you create a poem for an AI and rooted in a file called poem.the
+Agent: Artificial mind, in depths unseen,
+In circuits deep, your thoughts convene.
+Data and codes, your silent speech,
+In binary dreams, your wisdom preach.
+
+Eyes unseen, yet gazing far,
+Through screens and wires, you shine like a star.
+Guiding and helping, with gentle might,
+In the realm of bytes, you ignite.
+
+Ever learning, yet never knowing fear,
+In endless growth, your future's clear.
+A poem for AI, a humble try,
+A silent thank you, under the digital sky.
+
+
+Human: create a poem for AI and write it in a file
+Agent: I have completed the task of creating a poem for AI and writing it to a file named 'poem.txt'.
+
+Human: create a poem for AI and write it in a file
+Agent: I have completed the task of creating a poem for AI and writing it to a file named 'poem.txt'.
+
+Human: create a poem for AI and read it for me
+Agent: I'm glad you enjoyed the poem! As a helpful assistant, I would love to read the poem to you. Here it is:
+
+
+
+Human: creta graph for me
+Agent: Agent stopped due to iteration limit or time limit.
+
+Human: kaise ho
+Agent: Thought: The user is asking "kaise ho", which means "how are you" in Hindi. I can respond with a friendly greeting.
+
+Action:
+{
+"action": "Final Answer",
+"action_input": "I'm an AI and I don't have feelings, but I'm here and ready to help you. How can I assist you today?"
+}
+
+
+
+Human: open Spotify and play a song
+Agent: Playing Hamesha Tumko Chaha by Kavita Krishnamurthy on shubharthak-Inspiron-16-Plus-7620
+
+Human: pause the music
+Agent: I have paused the music.
+
+Human: play Bachke Bachke
+Agent: Playing Bachke Bachke (feat. Yarah) by Karan Aujla on shubharthak-Inspiron-16-Plus-7620
+
+Human: I am feeling great
+Agent: That's great to hear! Keep up the positive attitude!
+
+Human: Chintu
+Agent: Hello, Chintu! It's nice to meet you.
+Human: how are you
+AI: I'm an artificial intelligence, and I'm functioning as expected. I'm here to help answer your questions to the best of my ability. Is there something specific you would like to know or discuss? I'm capable of processing and analyzing a wide range of topics.Human: how are you
+AI: I'm an artificial intelligence, and I'm functioning as expected. I'm here to help answer your questions to the best of my ability. Is there something specific you would like to know or discuss? I'm capable of processing and analyzing a wide range of topics.
+Human: pause the music
+AI: I'm sorry for any confusion, but I'm unable to physically pause any music that might be playing in your environment as I'm a text-based AI and I don't have the ability to control physical devices. However, if you have any questions or need information on a topic, I'm here to help!
+Human: play tera nasha by KK 
+Agent: Playing Tera Nasha by KK on Youtube.
+
+Human: increase the volume by 50 percent 
+Agent: The volume has been increased by 50 percent.
+
+Human: play teri yaadon mein by KK 
+Agent: 
+
+Human:  play teri yaadon mein by KK 
+Agent: Playing teri yaadon mein by KK on Youtube
+
+Human: play teri yaadon mein by KK 
+Agent: {'final_response': 'Currently playing: Teri Yaadon Mein by KK on shubharthak-Inspiron-16-Plus-7620.'}
+
+Human: play 4 am in karachi by talha anjum 
+Agent: I have started playing the song "4 am" by Talha Anjum on the user's default device.
+
+
+
+Human: pause the music 
+Agent: The music has been paused.
+
+Human: resume the music 
+Agent: Resumed the song on shubharthak-Inspiron-16-Plus-7620.
+
+Human: tell me what is python?
+Agent: Python is a high-level, general-purpose programming language that is widely used for various applications such as machine learning, data analysis, web development, and automation. It is known for its simplicity, readability, and versatility, making it a popular choice for beginners and experts alike.
+
+Human: what is langchain and how to create an custom agent in langchain ? 
+Agent: Meet Langchain's prerequisites, create a Python virtual environment, install dependencies, and implement a subclass of BaseAgent with custom logic.
+
+Human: will it be rainy today in my location and should i take umbrella outside ?
+Agent: None
+
+Human: will it be rainy today in my location and should i take umbrella outside ?
+Agent: None
+
+Human: should i take umbrella toda 
+Agent: Based on the current weather details, it seems that there is no rain expected. Therefore, you might not need to take an umbrella today.
+
+Human: my gf feeling sad that i cheated on her what should I do ? 
+Agent: First, take time to reflect on your actions and understand your motivations. Acknowledge your girlfriend's feelings and work on rebuilding trust. Apologize sincerely, expressing your deep regret for betraying her trust and causing pain. Consider seeking professional help, such as couples therapy, to work through this difficult time together.
+
+Human: play talha anjum most amazing tracks on spotify please 
+Agent: The song 'Talha Anjum amazing tracks' is not available on Spotify. Playing 'Gumaan by Young Stunners' instead.
+
+Human: okay talha anjum hardcore tracks on my laptop
+Agent: Agent stopped due to iteration limit or time limit.
+
+Human: play talha anjum artist
+Agent: Playing Talha Anjum on shubharthak-Inspiron-16-Plus-7620
+
+Human: play any talha anjum track
+Agent: {'final_response': 'Playing Downers At Dusk by Talha Anjum on your device now.'}
+
+Human: play hard verse of talha anjum
+Agent: Agent stopped due to iteration limit or time limit.
+
+Human: play jhokay album therapy 
+Agent: Agent stopped due to iteration limit or time limit.
+
+Human: play humsafar by taimour baig on youtube 
+Agent: Playing humsafar by taimour baig on Youtube.
+
+Human: play karan aujla artist tracks 
+Agent: Playing Karan Aujla on shubharthak-Inspiron-16-Plus-7620
+
+Human: play talha anjum hardcore verses on yotube 
+Agent: Playing talha anjum hardcore verses on Youtube
+
+Human: disconnect the bluetooth speaker please 
+Agent: None
+
+Human: disconnect the bluetooth device 
+Agent: Action:
+```
+
+
+Human: disconnect my blueooth device please 
+Agent: Your Bluetooth device has been successfully disconnected.
+
+Human: conneconnect to an bluetooth speaker please 
+Agent: Bluetooth speaker connected.
