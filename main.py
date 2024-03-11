@@ -106,7 +106,7 @@ def clear_history():
     history = []
 
 def create_agent():
-    tools = load_tools(["llm-math", "wikipedia"], llm=llm)
+    tools = load_tools(["llm-math"], llm=llm)
     #Search tools 
     tools.append(search_tool)
     #Weather tools
