@@ -1,6 +1,6 @@
 1. Check which song is playing on my laptop 
 2. Play Karan Aujla song call 'Bachke Bachke' 
-3. Create a AI creative AI poem and save it on my current folder with a name 'ai_poem_by_aspara.txt'. Make sure to Write a comment in starting that states: "Created by Apsara2.0" 
+3. Create an creative AI poem and save it on my current folder with a name 'ai_poem_by_aspara.txt'. Make sure to Write a comment in starting that states: "Created by Apsara2.0" 
 4. Increase the volume of laptop 
 5. Tell me the battery of the laptop 
 6. Tell me the current chief minister of Delhi along with his age. 

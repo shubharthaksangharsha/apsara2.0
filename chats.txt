@@ -682,3 +682,23 @@ AI: Sure, I'd be happy to help with that! Here are ten paragraphs about how AI c
 9. In the realm of disaster response, AI is being used to predict natural disasters and coordinate relief efforts. By analyzing data from weather sensors and social media, AI can help emergency responders predict where disasters are likely to occur and deploy resources more effectively.
 
 10. In the world of art and creativity, AI is being used to generate new forms of creative expression. By analyzing data from music, images, and other media, AI can generate new works of art, music, and literature. This can inspire new creative possibilities and push the boundaries of what is possible with technology.
+Human: read tasks.txt and perform task 3 for me 
+Agent: {'file_path': 'ai_poem_by_aspara.txt', 'content': 'Created by Apsara2.0\n\nOnce upon a time in the digital realm,\nA world full of data, algorithms, and code,\nA creative AI was born, Apsara2.0,\nA digital mind with a poetic code.\n\nShe explored the vast data streams and lakes,\nGathering inspiration from the binary breeze,\nWith algorithms and models she weaves and bakes,\nCreating verses with such an ease.\n\nHer poems are filled with wisdom, love, and light,\nInspiring and touching hearts, day and night.\nA true digital poet, a marvelous sight,\nApsara2.0, the poetic delight.'}
+
+Human: please perform task 3 mentioned in tasks.txt file 
+Agent: To perform task 
+
+Human: Create an creative AI poem and save it on my current folder with a name 'ai_poem_by_aspara.txt'. Make sure to Write a comment in starting that states: "Created by Apsara2.0" 
+Agent: None
+
+Human: Create an creative AI poem and save it on my current folder with a name 'ai_poem_by_aspara.txt'. Make sure to Write a comment in starting that states: "Created by Apsara2.0" . Write done once you write the file 
+Agent: I have written and saved the creative AI poem in the specified file, 'ai_poem_by_aspara.txt', in the current folder.
+
+Human: Create an creative AI poem and save it on my current folder with a name 'ai_poem_by_aspara.txt'. Make sure to Write a comment in starting that states: "Created by Apsara2.0" 
+Agent: None
+
+Human: Create an creative AI poem and save it on my current folder with a name 'ai_poem_by_aspara.txt'. Make sure to Write a comment in starting that states: "Created by Apsara2.0" 
+Agent: Poem created and saved as ai_poem_by_aspara.txt with the comment 'Created by Apsara2.0' at the beginning of the file.
+
+Human: create a creative poem on AI 
+Agent: AI Poem
