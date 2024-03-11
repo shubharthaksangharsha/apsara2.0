@@ -7,6 +7,9 @@ from langchain_core.prompts import PromptTemplate
 from langchain_core.callbacks import StreamingStdOutCallbackHandler, StdOutCallbackHandler
 from langchain_community.llms.huggingface_endpoint import HuggingFaceEndpoint
 from langchain_google_genai import ChatGoogleGenerativeAI
+from dotenv import load_dotenv
+
+
 
 #agents modules
 from langchain import hub 
@@ -30,7 +33,8 @@ import pvporcupine
 import pyaudio
 import struct 
 
-
+#Load environment variables 
+load_dotenv()
 
 parser = argparse.ArgumentParser(description='A chatbot that can use either the Groq API or a local LLM model using Ollama and openchat to generate responses. The chatbot has two main functionalities: it can use agents that have real-time knowledge using search and other advanced tools, or it can use a normal chatbot.')
 # Add the arguments
@@ -40,9 +44,12 @@ parser.add_argument('--gemini', action='store_true', help='Use gemini pro LLM. I
 parser.add_argument('--temp', action='store', help='Set the temperature for the LLM. Default is 0.0', default=0.0, type=float)
 parser.add_argument('--hist', action='store_true', help='Set the history for the LLM. Default is 2 messages', default=False)
 parser.add_argument('--voice', action='store', help='Activate voice input by saying Apsara by passing on. Default is off', default='off', type=str)
+parser.add_argument('--net', action='store', help='Use internet for the LLM. Default is on', default='on', type=str)
+
 
 # Parse the arguments
 args = parser.parse_args()
+
 
 # Now you can use them
 print('Temperature: ', args.temp)
@@ -99,7 +106,7 @@ def clear_history():
     history = []
 
 def create_agent():
-    tools = load_tools(["llm-math"], llm=llm)
+    tools = load_tools(["llm-math", "wikipedia"], llm=llm)
     #Search tools 
     tools.append(search_tool)
     #Weather tools
@@ -119,7 +126,7 @@ def create_agent():
     tools.append(print_current_song_details), tools.append(pause_or_resume_spotify)
     tools.append(play_album_on_spotify), tools.append(play_artist_on_spotify)
     #Python tool
-    tools.append(python_tool)
+    # tools.append(python_tool)
     #Internal Knowledge tool 
     # tools.append(internal_knowledge_tool)
     #Bluetooth tools 

@@ -1,4 +1,5 @@
 langchain 
+pandas 
 langchain_groq
 pyowm
 duckduckgo-search
@@ -11,3 +12,5 @@ pvporcupine
 python-dotenv
 pyaudio
 bluedo
+langchain_google_genai
+pyaudio 
