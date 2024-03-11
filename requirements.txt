@@ -1,0 +1,12 @@
+langchain 
+langchain_groq
+pyowm
+duckduckgo-search
+spotipy
+pywhatkit
+gTTS
+pydub
+SpeechRecognition
+pvporcupine
+python-dotenv
+pyaudio
