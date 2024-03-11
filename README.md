@@ -47,7 +47,7 @@ To install Apsara, follow these four easy steps:
 
 The `main.py` file houses the core logic of Apsara 2.0. It is well-organized and modular, with functions dedicated to various tasks like:
 
-- Getting the LLM (Language Learning Model)
+- Getting the LLM (Large Language Model)
 - Creating the chain (sequence of tools and language model)
 - Managing conversation history
 - Creating and initializing agents
