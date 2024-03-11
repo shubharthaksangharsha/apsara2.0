@@ -1,12 +1,7 @@
-from langchain.agents import Tool
 import os 
-from langchain_community.utilities.python import PythonREPL
-from langchain_community.utilities.serpapi import SerpAPIWrapper
-from langchain_community.utilities.openweathermap import OpenWeatherMapAPIWrapper
 from langchain.tools import tool
-from bluetoothctl import * 
-from spotify_utils import * 
 import psutil as ps 
+import subprocess 
 
 
 
