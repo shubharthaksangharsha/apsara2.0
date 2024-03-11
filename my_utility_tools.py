@@ -121,11 +121,10 @@ def restart_laptop() -> str:
     '''
     try:
         os.system(f"reboot")
-        return f"Laptop will shutdown in 1 minute"
     except Exception as e:
         print(e)
-        return "Something went wrong while shutting down the laptop"
-
+        return "Something went wrong while rebooting down the laptop"
+    return f"Laptop will reboot in 1 minute"
 @tool
 def increase_volume(volume_change: int = 10000) -> str:
     '''
