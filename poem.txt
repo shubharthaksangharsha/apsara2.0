@@ -1,3 +1,4 @@
+#The following poem created by Groq Mixtral 8x7b and was written by itself using ReadTool from apsaraAI 2.0
 AI, a creation of code and wire,
 A digital mind, in silicon it's whole,
 It thinks, it learns, it continues to grow,
