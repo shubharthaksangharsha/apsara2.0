@@ -6,7 +6,7 @@ import psutil as ps
 import pandas as pd 
 import spotipy as sp 
 from spotipy import SpotifyOAuth
-import pywhatkit
+import pywhatkit #require net 
 import time 
 
 
@@ -152,6 +152,7 @@ def pause_or_resume_spotify(device_name: str, pause_or_play: str) -> str:
 #Play on Youtube
 @tool
 def play_youtube(song_name: str):
+    #require net 
     '''
     useful to play songs on youtube. if spotify is not available then youtube is used. 
     song_name:str - Song name of user wants to play 

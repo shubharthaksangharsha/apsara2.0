@@ -29,12 +29,7 @@ import speech_recognition as sr
 import pvporcupine
 import pyaudio
 import struct 
-from gtts import gTTS
-from io import BytesIO
-from pydub import AudioSegment
-from pydub.playback import play
-from concurrent.futures import ThreadPoolExecutor
-import re
+
 
 
 parser = argparse.ArgumentParser(description='A chatbot that can use either the Groq API or a local LLM model using Ollama and openchat to generate responses. The chatbot has two main functionalities: it can use agents that have real-time knowledge using search and other advanced tools, or it can use a normal chatbot.')
@@ -75,7 +70,6 @@ warnings.filterwarnings("ignore")
 
 #Create LLM
 def get_llm(temperature=0.5, local=True, groq_api_key: str = None):
-    print(temperature)
     if local:
         llm = ChatOllama(model='gemma', temperature=args.temp, streaming=True, callbacks=[StreamingStdOutCallbackHandler()])
         # llm = HuggingFaceEndpoint(repo_id='mistralai/Mixtral-8x7B-Instruct-v0.1',  max_new_tokens=2048)
@@ -84,7 +78,6 @@ def get_llm(temperature=0.5, local=True, groq_api_key: str = None):
     else:
         llm = ChatGroq(api_key=groq_api_key,  streaming=True, temperature=args.temp, 
                        callbacks=[StreamingStdOutCallbackHandler()])
-    print(llm)
     return llm 
 
 #Create Chain 
@@ -118,7 +111,8 @@ def create_agent():
     #Play on youtube tool
     tools.append(play_youtube)
     #Utility tools 
-    tools.append(find_or_ring_phone), tools.append(restart_laptop), tools.append(shutdown_laptop), tools.append(check_battery)
+    #TODO -> tools.append(find_or_ring_phone)
+    tools.append(restart_laptop), tools.append(shutdown_laptop), tools.append(check_battery)
     tools.append(increase_volume), tools.append(decrease_volume), tools.append(mute_volume), tools.append(umute_volume)
     #Spotify tools 
     tools.append(open_spotify), tools.append(play_spotify), tools.append(detect_spotify_device), 
