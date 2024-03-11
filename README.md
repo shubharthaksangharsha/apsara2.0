@@ -28,7 +28,20 @@ Apsara 2.0 is a powerful and versatile AI assistant built using Langchain and ot
 
 ## Installation and Usage
 
-Please refer to the `main.py` file for detailed instructions on installing and using Apsara 2.0.
+Currently, `Apsara2.0` is optimized for Ubuntu or Debian-based distributions, with plans for Windows compatibility soon. 
+
+To install Apsara, follow these four easy steps:
+
+1. Clone the GitHub repository: `git clone https://github.com/shubharthaksangharsha/apsara2.0`
+
+2. Run `python install.py`
+
+3. Set up your environment variables:
+   - `GROQ_API_KEY='YOUR-KEY'`
+   - `OPENWEATHERMAP_API_KEY='YOUR-KEY'`
+
+4. That's it! You can now run `python main.py --help` for information on available arguments, or simply execute `python main.py`. For agent functionality, run `python main.py --agent`.
+
 
 ## Code Structure
 
