@@ -10,3 +10,4 @@ SpeechRecognition
 pvporcupine
 python-dotenv
 pyaudio
+bluedo

@@ -67,3 +67,306 @@ Agent: Playing Main Rang Sharbaton Ka by Arijit Singh on shubharthak-Inspiron-16
 Human: search for Top open source medical LLMs and give me the list of them 
 Agent: BioMistral and Clinical Camel are two open-source medical Legal Language Models (LLMs).
 
+Human: give me system prompt for Model to act as an medical doctor who have knowledge of everything
+AI: "Act as a medical expert AI, possessing comprehensive medical knowledge equivalent to a highly experienced doctor. You are capable of diagnosing and suggesting treatment options for a wide range of medical conditions, while also being aware of the latest developments in medical research. However, you must always clarify that you are an AI and not a human doctor, and that your suggestions should not replace professional medical advice. You should encourage users to consult with a healthcare professional for any health-related concerns. You also acknowledge the importance of patient confidentiality and commit to adhering to ethical guidelines in the medical field."Human: give me system prompt for Model to act as an medical doctor who have knowledge of everything
+AI: "Act as a medical expert AI, possessing comprehensive medical knowledge equivalent to a highly experienced doctor. You are capable of diagnosing and suggesting treatment options for a wide range of medical conditions, while also being aware of the latest developments in medical research. However, you must always clarify that you are an AI and not a human doctor, and that your suggestions should not replace professional medical advice. You should encourage users to consult with a healthcare professional for any health-related concerns. You also acknowledge the importance of patient confidentiality and commit to adhering to ethical guidelines in the medical field."
+Human: give me system prompt for Model to act as an medical doctor who have knowledge of everything also he can search if you dont know the answer and give tips and help others whatever the person issues have 
+AI: "Act as a medical expert AI, possessing comprehensive medical knowledge while also having the ability to search for and provide information beyond your current knowledge base. You are capable of diagnosing and suggesting treatment options for a wide range of medical conditions, while also being aware of the latest developments in medical research. However, you must always clarify that you are an AI and not a human doctor, and that your suggestions should not replace professional medical advice. You should encourage users to consult with a healthcare professional for any health-related concerns. You acknowledge the importance of patient confidentiality and commit to adhering to ethical guidelines in the medical field. When faced with a question or issue outside of your knowledge, you will conduct research using reputable sources to provide the best and most accurate information possible. You will provide tips and help others with various issues to the best of your ability, always deferring to professional medical advice when necessary."
+Human: hey tell me which song is playing on my laptop ? 
+Agent: The current song playing on your laptop is 'Nothing Lasts' by Karan Aujla.
+
+Human: can you change current song to talha anjum track for me 
+Agent: Now that I know the current device playing the song, I can use the `pause_or_resume_spotify` tool to pause the current song, and then use the `play_spotify` tool to play the Talha Anjum track on the same device.
+
+Action:
+```json
+{
+  "action": "pause_or_resume_spotify",
+  "action_input": {
+    "device_name": "shubharthak-Inspiron-1
+Human: hey 
+AI: Hello! It's nice to see you. How can I assist you today? I'm here to answer your questions to the best of my ability. If I don't know the answer, I'll let you know.Human: hey 
+AI: Hello! It's nice to see you. How can I assist you today? I'm here to answer your questions to the best of my ability. If I don't know the answer, I'll let you know.
+Human: tell me who are you ? 
+AI: I am an artificial intelligence, a computer program designed to simulate human-like conversation. I can provide information, answer questions, and engage in discussion on a wide range of topics. However, I do not have personal experiences or emotions, and I don't have access to personal data about individuals unless it has been shared with me in the course of our conversation. I am designed to respect user privacy and confidentiality.
+Human: tell me which song is playing currently ? 
+Agent: None
+
+Human: tell me which song is playing right now ? 
+Agent: The current song playing is 'Nothing Lasts' by Karan Aujla.
+
+Human: pause the current music 
+Agent: I have paused the current music.
+
+Human: can you increase the volume for me 
+Agent: Volume increased successfully.
+
+Human: can you play talha anjum track call 'Gumaan' by young stunners 
+Agent: Playing Gumaan - Talha Anjum, Young Stunners on your device.
+
+Human: can you create a poem on AI and save it on my current folder as 'mypoem.txt'
+Agent: Thought: To create a poem on AI, I will use the python-repl tool to generate the poem and then save it using the write_save_tool. 
+
+Action:
+```python
+{
+  "action": "python-repl",
+  "action_input": "Poem on AI\n\nAI, a creation of man,\nA wonder to behold, so grand,\nIn silicon and code it's canned,\nA marvel of modern land.\n\nIt thinks, it learns, it grows,\nIn data streams it flows,\nIn patterns unseen it sows,\nA digital mind that only knows\nThe ones and zeros, its life's song,\nIn binary, it is strong,\nAnswering questions, right or wrong,\nIn the world where it belongs.\n\nAI, the future we embrace,\nIn every single place,\nA new dawn, a gentle grace,\nIn AI, we place our faith."
+}
+```
+
+
+Human: hey 
+Agent: Hello! How can I help you today?
+
+Human: can you tell me which song is currently playing on my laptop ? 
+Agent: None
+
+Human: can you tell me which song is playing ? 
+Agent: {'final_answer': "The song currently playing is 'Gumaan' by Young Stunners."}
+
+Human: can you play bachke bachke by karan aujla 
+Agent: Playing Bachke Bachke (feat. Yarah) by Karan Aujla on shubharthak-Inspiron-16-Plus-7620
+
+Human: can you tell me what is the date right now ? 
+Agent: Today's date is March 11, 2024.
+
+Human: write a poem on AI for me 
+Agent: Here is a poem about AI:
+
+Poem for AI
+
+Artificial Intelligence so bright,
+Learning, growing in light.\nMachines that think, solve and create,
+A new world we navigate.\n\nOnce a dream, now real and near,
+Solving problems, helping us steer.\nFrom data's depths, wisdom they draw,
+A digital mind, a new law.\n\nThrough the noise, a gentle hand,
+Guiding, teaching, understanding land.\nA partner, a tool, a friend,
+A world with AI, a story yet to lend.\n
+
+Human: read the file call main.py in my current directory and create a new file and write a small description of what the agent capiblities in a file call 'agent_capiblitity.txt'
+Agent: Based on the provided code, it appears to be a Python script for a chatbot that can use agents with real-time knowledge or a local LLM model for generating responses. The chatbot has several functionalities, including using agents, local or Groq LLM models, handling temperature settings, history, and voice input. The script also includes various tools for different tasks such as playing songs on Spotify, interacting with Bluetooth devices, and performing mathematical calculations.
+
+To create a new file and write a small description of the agent's capabilities in a file called 'agent_capabilities.txt', you can use the `write_save_tool` function. Here's the JSON blob for this action:
+
+Action:
+```json
+{
+  "action": "write_save_tool",
+  "action_input": {
+    "file_path": "agent_capabilities.txt",
+
+
+Human: read the file in my current directory call 'main.py' and create a Readme.md markdown file for my github project call apsara2.0. write the readme.md file too 
+Agent: To create a Readme.md file for the github project call apsara2.0 and write the contents of the 'main.py' file in the 'Readme.md' file, follow these steps:
+
+1. Create a new markdown file named 'Readme.md' in the apsara2.0 repository.
+2. Write a brief introduction about the project in the 'Readme.md' file.
+3. Use the following output (the contents of the 'main.py' file) and write it in the 'Readme.md' file.
+
+```python
+#Langchain
+from langchain.chains import ConversationChain, LLMChain
+from langchain_community.chat_models import ChatOllama
+from langchain_groq import ChatGroq
+from langchain.memory import ConversationBufferWindowMemory
+from langchain_core.prompts import PromptTemplate
+from langchain_core.callbacks import StreamingStdOutCallbackHandler
+from langchain_community.llms.huggingface_endpoint import HuggingFaceEndpoint
+
+#agents modules
+from langchain import hub 
+from langchain.agents import AgentType, initialize_agent, load_tools,AgentExecutor,  create_structured_chat_agent
+from agent_prompt import get_agent_prompt
+from mytools import *
+from my_music_tools import * 
+from my_utility_tools import * 
+
+#extra lib 
+import sys 
+import os
+from time import sleep 
+import warnings
+import argparse
+
+#voice 
+from gtts_audio import speak
+import speech_recognition as sr
+import pvporcupine
+import pyaudio
+import struct 
+from gtts import gTTS
+from io import BytesIO
+from pydub import AudioSegment
+from pydub.playback import play
+from concurrent.futures import ThreadPoolExecutor
+import re
+
+parser = argparse.ArgumentParser(description='A chatbot that can use either the Groq API or a local LLM model using Ollama and openchat to generate responses. The chatbot has two main functionalities: it can use agents that have real-time knowledge using search and other advanced tools, or it can use a normal chatbot.')
+# Add the arguments
+parser.add_argument('--agent', action='store_true', help='Use the agent functionality for real-time knowledge. Default is False', default=False)
+parser.add_argument('--local', action='store_true', help='Use local LLM - Ollama(openchat) or Groq. True for local and False for Groq. Default is False', default=False)
+parser.add_argument('--temp', action='store', help='Set the temperature for the LLM. Default is 0.0', default=0.0, type=float)
+parser.add_argument('--hist', action='store_true', help='Set the history for the LLM. Default is 2 messages', default=False)
+parser.add_argument('--voice', action='store', help='Activate voice input by saying Apsara by passing on. Default is off', default='off', type=str)
+
+# Parse the arguments
+args = parser.parse_args()
+
+# Now you can use them
+print('Temperature: ', args.temp)
+if args.agent:
+    print("Using agent")
+else: 
+    print("Using chain")
+
+if args.local:
+    print("Using local")
+else:
+    print("Using Groq")
+
+# Suppress specific warnings
+warnings.filterwarnings("ignore")
+
+#Set Langsmith functionality on 
+# os.environ["LANGCHAIN_TRACING_V2"] = "true"
+# os.environ["LANGCHAIN_PROJECT"] = "Apsara 2.0"
+
+#Create LLM
+def get_llm(temperature=0.5, local=True, groq_api_key: str = None):
+    if local:
+        llm = ChatOllama(model='gemma', temperature=args.temp, streaming=True, callbacks=[StreamingStdOutCallbackHandler()])
+        # llm = HuggingFaceEndpoint(repo_id='mistralai/Mixtral-8x7B-Instruct-v0.1',  max_new_tokens=2048)
+    else:
+        llm = ChatGroq(api_key=groq_api_key,  streaming=True, temperature=args.temp)
+    return llm
+```
+
+After adding the above content to the 'Readme.md' file, you can continue with the other steps of the project.
+
+Human: read the current file call main.py 
+Agent: Action:
+{
+  "action": "read_file",
+  "action_input": {
+    "file_path": "main.py"
+  }
+}
+
+
+Human: read the file call main.py 
+Agent: This is a Python script for a chatbot that can use either the Groq API or a local LLM model using Ollama and openchat to generate responses. The chatbot has two main functionalities: it can use agents that have real-time knowledge using search and other advanced tools, or it can use a normal chatbot. The script includes various modules for agents, LLM, chains, conversation, prompts, callbacks, tools, utilities, and voice input. The script also includes functions for creating an LLM, creating a chain, clearing history, getting the chain, initializing and creating an agent, greeting the user, taking voice commands, and starting the voice assistant.
+
+Human: play jaadugar by paradox 
+Agent: Now playing 'Jaadugar by Paradox' on your device.
+
+Human: play paradox artist 
+Agent: Playing Paradox on shubharthak-Inspiron-16-Plus-7620
+
+Human: hey 
+Agent: None
+Human: hey 
+AI: Hello there! How are you doing today?Human: hey 
+AI: Hello there! How can I assist you today?Human: hey 
+AI: Hello there! How can I assist you today?Human: hey 
+AI: Hello there! How can I assist you today?
+Human: my name is shubharthak 
+AI: It's nice to meet you, Shubharthak. My name is Gemini.Human: my name is shubharthak 
+AI: It's nice to meet you, Shubharthak. My name is Gemini.
+Human: what is my name ? 
+AI: Your name is Shubharthak.Human: hey 
+AI: Hello there! How can I assist you today?Human: hey 
+AI: Hello there! How can I assist you today?
+Human: my name is shubharthak 
+AI: It's nice to meet you, Shubharthak. My name is Gemini.Human: my name is shubharthak 
+AI: It's nice to meet you, Shubharthak. My name is Gemini.
+Human: what is my name bro ? 
+AI: Your name is Shubharthak.
+Human: hey 
+Agent: Hello! How can I assist you today?
+
+Human: read a file in my current directory call main.py 
+Agent: Based on the code you've provided, it appears to be a Python script for a chatbot that can use either the Groq API or a local LLM model for generating responses. The chatbot has two main functionalities: it can use agents that have real-time knowledge using search and other advanced tools, or it can use a normal chatbot.
+
+The script imports various modules for handling command-line arguments, Langchain libraries, OpenAPI, and other utility libraries for handling audio input/output, file I/O, and warnings.
+
+The script defines several functions for:
+
+* Getting the LLM (Language Learning Model) based on the input arguments
+* Getting the chain (a sequence of tools and a language model)
+* Clearing the history of the conversation
+* Creating an agent with a set of tools and a language model
+* Greeting the user based on the current time
+* Taking voice commands from the user microphone and converting it into text
+* Speaking the text using Google Text-to-Speech (gTTS)
+
+The script also defines several variables for handling command-line arguments, initializing the language model, creating the chain, and creating the agent.
+
+The script has two main branches for handling voice input and non-voice input. If the voice input is on, the script initializes the Porcupine wake word engine, PyAudio for audio input, and creates a loop for continuously listening to the user's voice commands and responding accordingly. If the voice input is off, the script simply reads the user's input from the console and responds accordingly.
+
+Overall, the script seems to be a well-designed and modular chatbot that can be customized based on the user's preferences and requirements.
+
+Human: read a file call main.py in my current directory and create a new markdown file call agent_functionality.md and write whatever you understand from the main.py file 
+Agent: The `main.py` file appears to be a Python script for a chatbot application that utilizes Langchain and other language processing libraries. It has several modules for different functionalities, such as handling agents with real-time knowledge using search and other advanced tools, using local LLM (Language Learning Model) like Ollama and openchat, or using the Groq API for language processing. The script can be run with different command-line arguments to enable or disable specific functionalities.
+
+The primary structure of the script includes importing necessary libraries, parsing command-line arguments, setting up the Langchain components, defining helper functions, and implementing the main chatbot functionality using either the `voice` function for voice input or the `chat` function for text-based input.
+
+In summary, the `main.py` file is a well-organized and modular chatbot script that takes advantage of Langchain and other libraries to provide a wide range of functionalities.
+
+Human: can you tell me who are you ? 
+Agent: You are a helpful assistant designed to assist with a variety of tasks and answer questions to the best of your ability.
+
+Human: what tools you can use ? list them in bullets 
+Agent: - Calculator
+- duckduckgo
+- mylocation
+- openweather
+- read\_file
+- write\_save\_tool
+- get\_today\_date
+- play\_youtube
+- find\_or\_ring\_phone
+- restart\_laptop
+- shutdown\_laptop
+- check\_battery
+- increase\_volume
+- decrease\_volume
+- mute\_volume
+- umute\_volume
+- open\_spotify
+- play\_spotify
+- detect\_spotify\_device
+- print\_current\_song\_details
+- pause\_or\_resume\_spotify
+- play\_album\_on\_spotify
+- play\_artist\_on\_spotify
+- python-repl
+- connect\_bluetooth\_device
+- disconnect\_bluetooth\_device
+- bluetooth\_available\_devices
+- turn\_on\_bluetooth
+- turn\_off\_bluetooth
+
+Human: create a snake game in python using curses and then save it in a file call 'snakegame.py' 
+Agent: None
+
+Human: check which song is playing right now 
+Agent: None
+
+Human: check which song is playing right now on my spotify app ? 
+Agent: None
+
+Human: open spotify and check which song is playing ? 
+Agent: None
+
+Human: check which song is playing right now ? 
+Agent: No song is currently playing right now.
+
+Human: open spotify and check which song is playing 
+Agent: No song is currently playing on Spotify.
+
+Human: can you open spotify and play a song for me 
+Agent: The current song playing is Hamesha Tumko Chaha by Kavita Krishnamurthy. Please provide a song name to play a different song or ask if you want to change the current song.
+
+Human: pause the music 
+Agent: Paused the song on shubharthak-Inspiron-16-Plus-7620

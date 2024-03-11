@@ -6,7 +6,7 @@ from langchain_community.utilities.python import PythonREPL
 from langchain_community.utilities.openweathermap import OpenWeatherMapAPIWrapper
 from langchain.tools import tool
 from langchain_community.tools import DuckDuckGoSearchRun
-
+from langchain_google_genai import ChatGoogleGenerativeAI
 
 import psutil as ps 
 import datetime
@@ -81,19 +81,20 @@ search_tool = Tool(
     description='useful to search anything on the internet.'
 )
 
+read_tool = ReadFileTool()
 
-@tool
-def read_tool(file_path: str) -> str:
-    '''
-    useful when you want to read any file.
-    file_path: str - path of the file you want to read.
-    return the content of the file
-    '''
-    try:
-        with open(file_path, 'r') as f:
-            return f.read()
-    except Exception as e:
-        return "Error: " + str(e)
+# @tool
+# def read_tool(file_path: str) -> str:
+#     '''
+#     useful when you want to read any file.
+#     file_path: str - path of the file you want to read.
+#     return the content of the file
+#     '''
+#     try:
+#         with open(file_path, 'r') as f:
+#             return f"Readed the content of the file: " + f.read()
+#     except Exception as e:
+#         return "Error: " + str(e)
 
 @tool
 def write_save_tool(file_path: str, content: str) -> str:

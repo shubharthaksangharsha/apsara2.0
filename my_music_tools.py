@@ -191,9 +191,10 @@ def print_current_song_func() -> str:
     
 #Get Spotify Song playing 
 @tool
-def print_current_song_details() -> str:
+def print_current_song_details(song_details: str ='song') -> str:
     '''
     useful when you need to find out the current song playing on spotify. 
+    song_details: str: only for safety. 
     if nothing is playing return "No song is currently playing right now."
     '''
     spotify, device_name = spotify_helper()

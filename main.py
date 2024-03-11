@@ -4,9 +4,9 @@ from langchain_community.chat_models import ChatOllama
 from langchain_groq import ChatGroq
 from langchain.memory import ConversationBufferWindowMemory
 from langchain_core.prompts import PromptTemplate
-from langchain_core.callbacks import StreamingStdOutCallbackHandler
+from langchain_core.callbacks import StreamingStdOutCallbackHandler, StdOutCallbackHandler
 from langchain_community.llms.huggingface_endpoint import HuggingFaceEndpoint
-
+from langchain_google_genai import ChatGoogleGenerativeAI
 
 #agents modules
 from langchain import hub 
@@ -41,6 +41,7 @@ parser = argparse.ArgumentParser(description='A chatbot that can use either the 
 # Add the arguments
 parser.add_argument('--agent', action='store_true', help='Use the agent functionality for real-time knowledge. Default is False', default=False)
 parser.add_argument('--local', action='store_true', help='Use local LLM - Ollama(openchat) or Groq. True for local and False for Groq. Default is False', default=False)
+parser.add_argument('--gemini', action='store_true', help='Use gemini pro LLM. It does not work with the agent functionality for now as Gemini does not support System Messages. Default is False', default=False)
 parser.add_argument('--temp', action='store', help='Set the temperature for the LLM. Default is 0.0', default=0.0, type=float)
 parser.add_argument('--hist', action='store_true', help='Set the history for the LLM. Default is 2 messages', default=False)
 parser.add_argument('--voice', action='store', help='Activate voice input by saying Apsara by passing on. Default is off', default='off', type=str)
@@ -74,13 +75,16 @@ warnings.filterwarnings("ignore")
 
 #Create LLM
 def get_llm(temperature=0.5, local=True, groq_api_key: str = None):
+    print(temperature)
     if local:
         llm = ChatOllama(model='gemma', temperature=args.temp, streaming=True, callbacks=[StreamingStdOutCallbackHandler()])
         # llm = HuggingFaceEndpoint(repo_id='mistralai/Mixtral-8x7B-Instruct-v0.1',  max_new_tokens=2048)
+    if args.gemini:
+        llm = ChatGoogleGenerativeAI(model='gemini-pro', api_key=os.environ.get('geminiv2'), temperature=temperature, callbacks=[StdOutCallbackHandler()])
     else:
         llm = ChatGroq(api_key=groq_api_key,  streaming=True, temperature=args.temp, 
                        callbacks=[StreamingStdOutCallbackHandler()])
-    
+    print(llm)
     return llm 
 
 #Create Chain 
@@ -293,13 +297,14 @@ def chat(agent_complete_toggle=True):
             response = chain.invoke(query)    
             with open('chats.txt', 'a') as f: 
                     f.writelines(memory.buffer_as_str)
+            print(response['response'])
             print()        
 
 if __name__ == '__main__':
     local = args.local
     api_key = os.environ.get('groq')
     memory = ConversationBufferWindowMemory(k=2, return_messages=True, memory_key='chat_history')
-    llm = get_llm(temperature=0.5, local=local, groq_api_key=api_key)
+    llm = get_llm(temperature=args.temp, local=local, groq_api_key=api_key)
     chain = get_chain(llm=llm, memory=memory)
     agent = create_agent()
     
