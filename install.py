@@ -8,8 +8,7 @@ apt_packages = [
     "libportaudio2",
     "libportaudiocpp0",
     "pulseaudio", 
-    "ffmpeg", 
-    "libav-tools"
+    "ffmpeg"
 ]
 
 # Install each package using apt-get
