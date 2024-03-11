@@ -15,7 +15,7 @@ import time
 def spotify_helper():
     # variables from setup.txt
         print('shubhi')
-        setup = pd.read_csv('./setup.txt', sep='=', names = ['key', 'value'])
+        setup = pd.read_csv('./.spotify_imp.txt', sep='=', names = ['key', 'value'])
         setup = dict(zip(setup['key'], setup['value']))
         client_id = setup['client_id']
         client_secret = setup['client_secret']

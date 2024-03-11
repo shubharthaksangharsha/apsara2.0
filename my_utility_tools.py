@@ -5,6 +5,24 @@ import subprocess
 
 
 
+def bluetooth_list() -> list:
+    '''
+    useful when to find the available devices list of bluetooth devices
+    use this tool to find the mac address of bluetooth device before connecting to bluetooth device
+    returns: list
+    '''
+    output = subprocess.check_output("bluetoothctl devices", shell=True, universal_newlines=True)
+    output = str(output).strip('\n')
+    lines = output.split('\n')
+    devices = []
+    for line in lines:
+        parts = line.split()
+        if len(parts) >= 2:
+            mac_address = parts[1]
+            device_name = ' '.join(parts[2:])
+            devices.append({device_name: mac_address})
+    return devices
+
 @tool
 def bluetooth_available_devices() -> list:
     '''
@@ -65,18 +83,18 @@ def disconnect_bluetooth_device()-> str:
 
 # connect to bluetooth device
 @tool
-def connect_bluetooth_device(mac) -> str:
+def connect_bluetooth_device() -> str:
     """
     useful when to connect to bluetooth device
-    use bluetooth_available_devices to find the mac address of bluetooth device
-    mac: str - mac address of bluetooth device
     returns: str
     """
+    name, mac = bluetooth_list()[0].popitem()
+    print(name, mac)
     connected = subprocess.check_output(
         "bluetoothctl connect " + mac, shell = True, universal_newlines=True
     )
     print(connected)
-    return connected
+    return 'Successfully connected to ' + name 
 
 #check battery of laptop 
 @tool

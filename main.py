@@ -78,7 +78,7 @@ def get_llm(temperature=0.5, local=True, groq_api_key: str = None):
         llm = ChatOllama(model='gemma', temperature=args.temp, streaming=True, callbacks=[StreamingStdOutCallbackHandler()])
         # llm = HuggingFaceEndpoint(repo_id='mistralai/Mixtral-8x7B-Instruct-v0.1',  max_new_tokens=2048)
     else:
-        llm = ChatGroq(api_key=groq_api_key, max_tokens=32768, streaming=True, temperature=args.temp, 
+        llm = ChatGroq(api_key=groq_api_key,  streaming=True, temperature=args.temp, 
                        callbacks=[StreamingStdOutCallbackHandler()])
     
     return llm 
@@ -141,7 +141,7 @@ def create_agent():
            "chat-zero-shot-react-description", "chat-conversational-react-description", 
            "structured-chat-zero-shot-react-description"]
         agent = initialize_agent(tools=tools, llm=llm, agent=AgentType(agents[-1]),
-        max_iterations=5,    
+        max_iterations=10,
         verbose=True, 
         handle_parsing_errors=True)
         return agent  
