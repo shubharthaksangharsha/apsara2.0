@@ -2,6 +2,7 @@ langchain
 pandas 
 langchain_groq
 pyowm
+numexpr
 duckduckgo-search
 spotipy
 pywhatkit
@@ -14,3 +15,4 @@ pyaudio
 bluedo
 langchain_google_genai
 pyaudio 
+psutil

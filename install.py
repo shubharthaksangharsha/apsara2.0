@@ -6,7 +6,10 @@ apt_packages = [
     "libasound-dev",
     "portaudio19-dev",
     "libportaudio2",
-    "libportaudiocpp0"
+    "libportaudiocpp0",
+    "pulseaudio", 
+    "ffmpeg", 
+    "libav-tools"
 ]
 
 # Install each package using apt-get
