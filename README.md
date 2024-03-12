@@ -21,7 +21,7 @@ Apsara 2.0 is a powerful and versatile AI assistant built using Langchain and ot
     - Performing mathematical calculations
     - Send Mail, Search Mails, Save Drafts of Gmail account
     - Search any Finance News using Yahoo Finance
-    - Create Meetings
+    - Creating or Checking upcoming Calendar Meetings
     - Checking the weather
     - Reading and writing files
     - Restarting or shutting down your laptop
