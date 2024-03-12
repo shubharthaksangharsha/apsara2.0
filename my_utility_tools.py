@@ -1,10 +1,43 @@
+#Required libs
 import os 
 from langchain.tools import tool
 import psutil as ps 
 import subprocess 
 
+#Gmail tool libs 
+from langchain_community.tools.gmail.utils import (
+    build_resource_service,
+    get_gmail_credentials)
+from langchain_community.tools.gmail.send_message import GmailSendMessage
+from langchain_community.tools.gmail.create_draft import GmailCreateDraft
+from langchain_community.tools.gmail.get_message import GmailGetMessage
+from langchain_community.tools.gmail.search import GmailSearch
+from langchain_community.tools.gmail.get_thread import GmailGetThread
 
 
+
+#Get the gmail required credential 
+def get_gmail_credential():
+    #Read this to create your own credentials: https://developers.google.com/gmail/api/quickstart/python        
+    credentials = get_gmail_credentials(
+        token_file='token.json', 
+        scopes=["https://mail.google.com/"],
+        client_secrets_file="credentials.json",
+    )
+
+    api_resource = build_resource_service(credentials=credentials)
+    return api_resource
+    # return gmail_tool_kit.get_tools()
+
+#Gmail tools  - Completed 
+send_mail = GmailSendMessage(api_resource=get_gmail_credential())
+create_draft = GmailCreateDraft(api_resource=get_gmail_credential())
+get_message = GmailGetMessage(api_resource=get_gmail_credential())
+search_google = GmailSearch(api_resource=get_gmail_credential())
+get_thread = GmailGetThread(api_resource=get_gmail_credential())
+
+
+#function to get bluetooth devices list 
 def bluetooth_list() -> list:
     '''
     useful when to find the available devices list of bluetooth devices
@@ -23,6 +56,7 @@ def bluetooth_list() -> list:
             devices.append({device_name: mac_address})
     return devices
 
+#Bluetooth available devices tool
 @tool
 def bluetooth_available_devices() -> list:
     '''
@@ -118,6 +152,7 @@ def check_battery(battery_string: str = "battery") -> str:
     
     return check_battery(input_args={})
 
+#Shutdown laptop tool
 @tool
 def shutdown_laptop() -> str: 
     '''
@@ -131,7 +166,7 @@ def shutdown_laptop() -> str:
         return "Something went wrong while shutting down the laptop"
     
 
-
+#Restart laptop tool
 @tool 
 def restart_laptop() -> str: 
     '''
@@ -143,6 +178,8 @@ def restart_laptop() -> str:
         print(e)
         return "Something went wrong while rebooting down the laptop"
     return f"Laptop will reboot in 1 minute"
+
+#Increase volume tool
 @tool
 def increase_volume(volume_change: int = 10000) -> str:
     '''
@@ -160,6 +197,8 @@ def increase_volume(volume_change: int = 10000) -> str:
     except Exception as e:
         print(e)
         return "Something went wrong while increasing the volume"
+
+#Decrease volume tool    
 @tool
 def decrease_volume(volume_change: int = 10000) -> str:
     '''
@@ -176,6 +215,7 @@ def decrease_volume(volume_change: int = 10000) -> str:
         print(e)
         return "Something went wrong while decreasing the volume"
 
+#Mute volume tool
 @tool  
 def mute_volume(muting_volume: str = "mute") -> str:
     '''
@@ -190,6 +230,8 @@ def mute_volume(muting_volume: str = "mute") -> str:
     except Exception as e:
         print(e)
         return "Something went wrong while muting the volume"
+    
+#Unmute volume tool    
 @tool  
 def umute_volume(unmuting_volume: str = "unmute") -> str:
     '''
@@ -204,3 +246,6 @@ def umute_volume(unmuting_volume: str = "unmute") -> str:
     except Exception as e:
         print(e)
         return "Something went wrong while unmuting the volume"
+
+if __name__ == '__main__':
+    pass

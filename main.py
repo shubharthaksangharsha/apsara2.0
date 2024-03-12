@@ -78,12 +78,16 @@ warnings.filterwarnings("ignore")
 #Create LLM
 def get_llm(temperature=0.5, local=True, groq_api_key: str = None):
     if local:
-        llm = ChatOllama(model='gemma', temperature=args.temp, streaming=True, callbacks=[StreamingStdOutCallbackHandler()])
+        llm = ChatOllama(model='openchat', temperature=args.temp, streaming=True, callbacks=[StreamingStdOutCallbackHandler()])
+        return llm
+    # if args.hugging:
         # llm = HuggingFaceEndpoint(repo_id='mistralai/Mixtral-8x7B-Instruct-v0.1',  max_new_tokens=2048)
+        # return llm                     
     if args.gemini:
         llm = ChatGoogleGenerativeAI(model='gemini-pro', api_key=os.environ.get('geminiv2'), temperature=temperature, callbacks=[StdOutCallbackHandler()])
-    else:
-        llm = ChatGroq(api_key=groq_api_key,  streaming=True, temperature=args.temp, 
+        return llm 
+    
+    llm = ChatGroq(api_key=groq_api_key,  streaming=True, temperature=args.temp, 
                        callbacks=[StreamingStdOutCallbackHandler()])
     return llm 
 
@@ -108,7 +112,7 @@ def clear_history():
 def create_agent():
     tools = load_tools(["llm-math"], llm=llm)
     #Search tools 
-    tools.append(search_tool)
+    tools.append(search_tool), tools.append(yfinance_tool)
     #Weather tools
     tools.append(mylocation), tools.append(weather_tool)
     #Read and write tools
@@ -133,7 +137,9 @@ def create_agent():
     tools.append(connect_bluetooth_device), tools.append(disconnect_bluetooth_device)
     tools.append(bluetooth_available_devices)
     tools.append(turn_on_bluetooth), tools.append(turn_off_bluetooth)
-    
+    #Gmail tools
+    tools.append(send_mail), tools.append(search_google), tools.append(get_thread), tools.append(create_draft), 
+    tools.append(get_message)
     
     if args.hist:    
         prompt = get_agent_prompt()

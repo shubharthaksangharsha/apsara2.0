@@ -3,11 +3,15 @@ import os
 from langchain_community.tools.file_management.read import ReadFileTool
 from langchain_community.tools.file_management.write import WriteFileTool
 from langchain_community.utilities.python import PythonREPL
+from langchain_experimental.tools import PythonAstREPLTool, PythonREPLTool
 from langchain_community.utilities.openweathermap import OpenWeatherMapAPIWrapper
 from langchain.tools import tool
 from langchain_community.tools import DuckDuckGoSearchRun #requires internet
 import psutil as ps 
 import datetime
+from langchain_community.tools.yahoo_finance_news import YahooFinanceNewsTool #requires internet 
+
+
 
 
 @tool
@@ -86,6 +90,18 @@ search_tool = Tool(
 #read tool 
 read_tool = ReadFileTool()
 
+#yfinance_tool 
+yfinance_tool = Tool(
+    name='Yahoo Finance', 
+    description='''
+    useful when you want to find stock price or useful financial news about an public company. Input should takes an company ticker , use your knowledge to get the ticker value of any company. 
+    for example: Google has ticker value as GOOG, similarly, NVIDIA has NVDA. 
+    ''',
+    func= YahooFinanceNewsTool().run
+    
+)
+
+#write tool
 @tool
 def write_save_tool(file_path: str, content: str) -> str:
     '''
