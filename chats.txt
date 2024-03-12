@@ -1023,3 +1023,21 @@ Action:
 
 Human: can you create an event with siddhant3s@gmail.com today at 3pm description: Test event 
 Agent: {'text': 'Event has been created. Here is the confirmation link: https://www.google.com/calendar/event?eid=b2ZidjdsZTlwNXUxYXZvYnZlZmVibmNjdjggc2h1YmhhcnRoYWtzYW5naGFyc2hhQG0'}
+
+Human: there is a README.md file in my current directory. read it and use it. Make it more better. You can search for any terms you don't know about such as Langchain or something 
+Agent: Thought: The README.md file contains information about Apsara 
+
+Human: there is a README.md file in my current directory. read it and use it. Make it more better. You can search for any terms you don't know about such as Langchain or something
+Agent: {'Final response to human': 'I have updated the README.md file with a summarized and more readable format. I also suggested improvements such as adding a table of contents, using headings for better readability, and providing a quick start guide for users.'}
+
+Human: check upcoming event for today please 
+Agent: None
+
+Human: check is there any today calendar event for me ? 
+Agent: None
+
+Human: check for today's event please 
+Agent: None
+
+Human: check for events for today 
+Agent: There is a test event at 3pm today.

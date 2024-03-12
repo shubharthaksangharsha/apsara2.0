@@ -142,7 +142,7 @@ def create_agent():
     tools.append(get_message)
 
     #Calendar tools 
-    tools.append(get_date), tools.append(create_event)
+    tools.append(get_date), tools.append(create_event), tools.append(get_events)
     
     if args.hist:    
         prompt = get_agent_prompt()

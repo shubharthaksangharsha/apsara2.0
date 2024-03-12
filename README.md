@@ -97,5 +97,3 @@ The `main.py` file houses the core logic of Apsara 2.0. It is well-organized and
 ## Disclaimer
 
 Apsara 2.0 is still under development and may not always provide accurate or complete information. Please use it with caution and do not rely solely on its responses for critical decisions.
-
-I hope you enjoy using Apsara 2.0!
