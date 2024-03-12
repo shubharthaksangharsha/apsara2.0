@@ -19,6 +19,8 @@ Apsara 2.0 is a powerful and versatile AI assistant built using Langchain and ot
 - **Multi-Talented**: Apsara 2.0 boasts a wide range of capabilities, including:
     - Playing music on Spotify and YouTube
     - Performing mathematical calculations
+    - Send Mail, Search Mails, Save Drafts of Gmail account
+    - Search any Finance News using Yahoo Finance
     - Checking the weather
     - Reading and writing files
     - Restarting or shutting down your laptop
