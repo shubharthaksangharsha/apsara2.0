@@ -71,8 +71,8 @@ print('Starting...')
 warnings.filterwarnings("ignore")
 
 #Set Langsmith functionality on 
-# os.environ["LANGCHAIN_TRACING_V2"] = "true"
-# os.environ["LANGCHAIN_PROJECT"] = "Apsara 2.0"
+os.environ["LANGCHAIN_TRACING_V2"] = "true"
+os.environ["LANGCHAIN_PROJECT"] = "Apsara 2.0"
 
 
 #Create LLM
@@ -140,6 +140,9 @@ def create_agent():
     #Gmail tools
     tools.append(send_mail), tools.append(search_google), tools.append(get_thread), tools.append(create_draft), 
     tools.append(get_message)
+
+    #Calendar tools 
+    tools.append(get_date), tools.append(create_event)
     
     if args.hist:    
         prompt = get_agent_prompt()

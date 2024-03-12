@@ -3,11 +3,14 @@ import os
 from langchain.tools import tool
 import psutil as ps 
 import subprocess 
+import datetime 
+from datetime import timedelta
 
 #Gmail tool libs 
 from langchain_community.tools.gmail.utils import (
     build_resource_service,
     get_gmail_credentials)
+from google.oauth2.credentials import Credentials
 from langchain_community.tools.gmail.send_message import GmailSendMessage
 from langchain_community.tools.gmail.create_draft import GmailCreateDraft
 from langchain_community.tools.gmail.get_message import GmailGetMessage
@@ -17,15 +20,16 @@ from langchain_community.tools.gmail.get_thread import GmailGetThread
 
 
 #Get the gmail required credential 
-def get_gmail_credential():
+def get_gmail_credential(service_name='gmail', service_version='v1'):
     #Read this to create your own credentials: https://developers.google.com/gmail/api/quickstart/python        
     credentials = get_gmail_credentials(
         token_file='token.json', 
-        scopes=["https://mail.google.com/"],
+        scopes=["https://mail.google.com/", "https://www.googleapis.com/auth/calendar"],
         client_secrets_file="credentials.json",
     )
 
-    api_resource = build_resource_service(credentials=credentials)
+    api_resource = build_resource_service(service_name=service_name, service_version= service_version, credentials=credentials)
+    
     return api_resource
     # return gmail_tool_kit.get_tools()
 
@@ -35,6 +39,119 @@ create_draft = GmailCreateDraft(api_resource=get_gmail_credential())
 get_message = GmailGetMessage(api_resource=get_gmail_credential())
 search_google = GmailSearch(api_resource=get_gmail_credential())
 get_thread = GmailGetThread(api_resource=get_gmail_credential())
+
+
+#Set calendar meeting 
+@tool
+def get_date(text: str ) -> datetime.date:
+    '''
+    Useful to to get date for setting calendar meeting. 
+    text: str: query of the user from which date will be extracted. 
+    Use this tool first to get the calendar meeting then use the output of the tool as an input parameter of `date` to create_event tool. 
+    returns datetime.date 
+    '''
+    MONTHS = ['january', 'february', 'march', 'april', 'may', 'june', 'july', 'august', 'september', 'october', 'november', 'december']
+    DAYS = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
+    DAY_EXTENTIONS= ["nd", "rd", "th", "st"]
+    text = text.lower()
+    today = datetime.date.today()
+
+    if text.count("today") > 0:
+        return today
+    if text.count("tomorrow") > 0:
+        return today + timedelta(1)
+    day = -1
+    day_of_week = -1
+    month = -1
+    year = today.year
+
+    for word in text.split():
+        if word in MONTHS:
+            month = MONTHS.index(word) + 1
+        elif word in DAYS:
+            day_of_week = DAYS.index(word)
+        elif word.isdigit():
+            day = int(word)
+        else:
+            for ext in DAY_EXTENTIONS:
+                found = word.find(ext)
+                if found > 0:
+                    try:
+                        day = int(word[:found])
+                    except:
+                        pass
+
+    # THE NEW PART STARTS HERE
+    if month < today.month and month != -1:  # if the month mentioned is before the current month set the year to the next
+        year = year+1
+
+    # This is slighlty different from the video but the correct version
+    if month == -1 and day != -1:  # if we didn't find a month, but we have a day
+        if day < today.day:
+            month = today.month + 1
+        else:
+            month = today.month
+
+    # if we only found a dta of the week
+    if month == -1 and day == -1 and day_of_week != -1:
+        current_day_of_week = today.weekday()
+        dif = day_of_week - current_day_of_week
+
+        if dif < 0:
+            dif += 7
+            if text.count("next") >= 1:
+                dif += 7
+
+        return today + datetime.timedelta(dif)
+
+    if day != -1:  
+        return datetime.date(month=month, day=day, year=year)
+@tool 
+def create_event(day: datetime.date,  mail: list= [], summary: str='', meeting_time: str=''):
+    """
+    useful when to create google calendar events or set meetings. 
+    day: datetime.date: use get_date tool to get the date from user query
+    mail: List of emails to whom you want to invite
+    summary: str - short description of event 
+    meeting_time: str - time of event need to be held. 
+    """
+    try:
+        if 'a' in meeting_time:
+            meeting_time =  int(meeting_time.split('a')[0].split(':')[0])
+        elif 'p' in meeting_time:
+            meeting_time =  int(meeting_time.split('p')[0].split(':')[0]) + 12
+        start_time = datetime.datetime.combine(day, datetime.time(meeting_time))    
+        end_time = start_time + timedelta(minutes=59)
+        timezone = 'Asia/Kolkata'
+        event = {
+            'summary': summary,
+            'location': 'Delhi',
+            'description': summary,
+            'start': {
+                'dateTime': start_time.strftime("%Y-%m-%dT%H:%M:%S"),
+                'timeZone': timezone,
+            },
+            'end': {
+                'dateTime': end_time.strftime("%Y-%m-%dT%H:%M:%S"),
+                'timeZone': timezone,
+            },
+            'attendees': [
+                {'email': mail }                    
+            ],
+            'reminders': {
+                'useDefault': False,
+                'overrides': [
+                    {'method': 'email', 'minutes': 24 * 60},
+                    {'method': 'popup', 'minutes': 10},
+                ],
+            },
+        }
+        service = get_gmail_credential(service_name='calendar', service_version='v3')
+        event = service.events().insert(calendarId='shubharthaksangharsha@gmail.com',sendUpdates='all', body=event).execute()
+        print ('Event created: %s' % (event.get("htmlLink")))
+        return f'Event has been created: {event.get("htmlLink")}'
+    except Exception as e:
+        return f'Unable to create the event: {e}'
 
 
 #function to get bluetooth devices list 

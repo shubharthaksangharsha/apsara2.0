@@ -917,3 +917,109 @@ Action:
 
 Human: can you search my latest message in the inbox i recieved. give me the top 1 
 Agent: The latest message in your inbox is from shubharthaksangharsha@gmail.com with the subject 'Choose your subject' and the snippet 'This is a test message from Apsara2.0.'
+
+Human: tell me the last 2 message i received in my inbox only tell me the subject 
+Agent: Thought: To answer this question, I need to access the user's Gmail account, search for the last two emails in the inbox, and then return only the subjects of these emails. I will use the `search_gmail` tool to search for emails and `get_gmail_thread` or `get_gmail_message` to get the details of the emails.
+
+Action:
+```json
+
+
+Human: tell me the last 2 message i received in my inbox only tell me the subject
+Agent: The last two message subjects are:
+1. It's raining jobs at Tech Mahindra; experienced techies must apply | Elon Musk vs OpenAI; a closer look at the lawsuit
+2. versh_a1683, motivational_atom and miss_panghal__2 have posts
+
+Human: tell me the last 2 message i received in my inbox only tell me the subject. inform me once you are done 
+Agent: I have completed fetching the required information. The last two emails in your inbox have the following subjects:
+
+1. "It's raining jobs at Tech Mahindra; experienced techies must apply | Elon Musk vs OpenAI; a closer look at the lawsuit"
+2. "versh_a1683, motivational_atom and miss_panghal__2 have posts"
+
+You can take a look at these emails and respond accordingly. If you need further assistance, please let me know.
+
+
+
+Human: tell me the top 2 subjects from my inbox. tell me the top 2 messages from read message not unread message
+Agent: {'final_response': 'The top 2 subjects from your inbox are: \n1. Choose your subject\n2. Delivery Status Notification (Failure)'}
+
+Human: hey 
+Agent: 
+
+Human: hey 
+Agent:  Hello! How can I help you today?
+
+Human: can you tell me which song is playing on spotify ? 
+Agent:  Action: {
+  "action": "detect_spotify_device",
+  "action_input": {}
+}
+
+
+Human: can you tell me which song is playing on spotify ? 
+Agent:  Action: {
+  "action": "detect_spotify_device",
+  "action_input": {}
+}
+
+
+Human: which song is playing on spotify ? 
+Agent:  Action: {
+  "action": "detect_spotify_device",
+  "action_input": {}
+}
+
+
+Human: can you tell me which song is playing on spotify ? 
+Agent:  Action: {
+  "action": "detect_spotify_device",
+  "action_input": {}
+}
+
+
+Human: can you create an event for me 
+Agent:  Action: {
+  "action": "Final Answer",
+  "action_input": "I'm sorry, but I cannot create events or schedule appointments. However, I can help you with other tasks or provide information on how to create an event using your preferred calendar application."
+}
+
+Human: check mail 
+Agent:  Action: {
+  "action": "search_gmail",
+  "action_input": {
+    "query": "in:any unread",
+    "resource": "threads"
+  }
+}
+
+Human: hey 
+AI: Hello! It's nice to see you. How can I assist you today? I'm here to answer your questions to the best of my ability. If I don't know the answer, I'll let you know.Human: hey 
+AI: Hello! It's nice to see you. How can I assist you today? I'm here to answer your questions to the best of my ability. If I don't know the answer, I'll let you know.
+Human: who are you ? 
+AI: I am an artificial intelligence designed to assist with information and tasks. I don't have personal experiences or emotions, but I can help answer questions, provide information, and perform various tasks to the best of my ability. I don't have access to personal data about individuals unless it has been shared with me in the course of our conversation. I am programmed to respect user privacy and confidentiality.
+Human: hey 
+Agent: Hello! How can I help you today?
+
+Human: can you check my mails 
+Agent: 
+
+Human: can you check my mails 
+Agent: I have checked your emails and found various job alerts and notifications. There are job alerts from Indeed for work from home jobs, a newsletter from TechGig, a notification from Instagram, a disclaimer from Canara Bank, an invitation to connect on LinkedIn, and an email from Chegg about study help. Let me know if you want me to read out any specific email.
+
+Human: hey 
+Agent: Hello! How can I assist you today?
+
+Human: can you create an event with siddhants@gmail.com today at 3pm 
+Agent: {'final_message': 'I have created an event for you. The event details are as follows: \nEvent: Meeting with Siddhant\nDate: 2024-03-13\nTime: 15:00\nAttendees: Siddhants@gmail.com'}
+
+Human: send a mail to divyabhandari777@gmail.com saying hi 
+Agent: Thought: My task is complete. The email has been sent successfully. I will inform the user that the email has been sent.
+
+Action:
+```json
+{
+  "action": "Final Answer",
+
+
+Human: can you create an event with siddhant3s@gmail.com today at 3pm description: Test event 
+Agent: {'text': 'Event has been created. Here is the confirmation link: https://www.google.com/calendar/event?eid=b2ZidjdsZTlwNXUxYXZvYnZlZmVibmNjdjggc2h1YmhhcnRoYWtzYW5naGFyc2hhQG0'}
