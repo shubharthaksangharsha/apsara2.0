@@ -5,7 +5,9 @@ import psutil as ps
 import subprocess 
 import datetime 
 from datetime import timedelta
+
 import pytz
+import re
 
 #Gmail tool libs 
 from langchain_community.tools.gmail.utils import (
@@ -46,7 +48,7 @@ get_thread = GmailGetThread(api_resource=get_gmail_credential())
 @tool
 def get_date(text: str ) -> datetime.date:
     '''
-    Useful to to get date for setting or checking calendar meeting. 
+    Useful to to get date for setting calendar meeting/events. 
     text: str: query of the user from which date will be extracted. 
     Use this tool first to get the calendar meeting then use the output of the tool as an input parameter of `date` to create_event tool. 
     returns datetime.date 
@@ -110,12 +112,13 @@ def get_date(text: str ) -> datetime.date:
 
 #get upcoming events tool
 @tool
-def get_events(day: datetime.date) -> str:
+def get_events(day:str="today") -> list[dict]:
     '''
     useful when to check upcoming google calendar events or meetings. 
-    day: datetime.date: use get_date tool to get the date from user query
+    day: get date from user query. e.g: 'today', 'tomorrow'. Default is today
     '''
     service = get_gmail_credential(service_name='calendar', service_version='v3')
+    day = get_date(day)
     date = datetime.datetime.combine(day, datetime.datetime.min.time())
     end_date = datetime.datetime.combine(day, datetime.datetime.max.time())
     ist = pytz.timezone("Asia/Kolkata")
@@ -127,35 +130,38 @@ def get_events(day: datetime.date) -> str:
         return 'No upcoming events found'
     else:
         print(f'You have {len(events)} events on this day.')        
+        get_events = []
         for event in events:
-            start = event['start'].get('dateTime', event['start'].get('date'))
-            print(start, event['summary'])
-            start_time = str(start.split("T")[1].split("-")[0])
-            if int(start_time.split(":")[0]) < 12:
-                start_time = start_time.split(":")[0] + "am"
-            else:
-                start_time = str(str(int(start_time.split(":")[0])- 12) + "pm")
-            event_summary = event["summary"]
-            return f"{event_summary} at {start_time}"
+            get_events.append(event)
+        return get_events
 
 #Create event/Meeting tool
 @tool 
-def create_event(day: datetime.date,  mail: list= [], summary: str='', meeting_time: str='') -> str:
+def create_event(day: datetime.date, mail: list = [], summary: str = '', meeting_time: str = '') -> str:
     """
-    useful when to create google calendar events or meetings. 
-    day: datetime.date: use get_date tool to get the date from user query
-    mail: List of emails to whom you want to invite
-    summary: str - short description of event 
-    meeting_time: str - time of event need to be held. 
+    Useful when creating Google Calendar events or meetings.
+    day: datetime.date: The date of the event.
+    mail: List of emails to whom you want to invite.
+    summary: Short description of the event.
+    meeting_time: Time of the event to be held (format: "HH:MM AM/PM").
     """
+
     try:
-        if 'a' in meeting_time:
-            meeting_time =  int(meeting_time.split('a')[0].split(':')[0])
-        elif 'p' in meeting_time:
-            meeting_time =  int(meeting_time.split('p')[0].split(':')[0]) + 12
-        start_time = datetime.datetime.combine(day, datetime.time(meeting_time))    
+        # Parsing the meeting time from the input string if not provided
+        match = re.search(r'at (\d{1,2}:\d{2} [ap]m)', meeting_time)
+        if match:
+            meeting_time = datetime.strptime(match.group(1), '%I:%M %p').strftime('%H:%M')
+        print(meeting_time)
+        meeting_time = meeting_time.replace('AM', '').replace('PM', '').replace('am', '').replace('pm', '').strip()
+
+        # Parsing time and setting start and end times
+        start_time = datetime.datetime.combine(day, datetime.datetime.strptime(meeting_time, '%H:%M').time())
         end_time = start_time + timedelta(minutes=59)
+
+        # Setting timezone
         timezone = 'Asia/Kolkata'
+
+        # Creating event object
         event = {
             'summary': summary,
             'location': 'Delhi',
@@ -168,9 +174,7 @@ def create_event(day: datetime.date,  mail: list= [], summary: str='', meeting_t
                 'dateTime': end_time.strftime("%Y-%m-%dT%H:%M:%S"),
                 'timeZone': timezone,
             },
-            'attendees': [
-                {'email': mail }                    
-            ],
+            'attendees': [{'email': mail}],
             'reminders': {
                 'useDefault': False,
                 'overrides': [
@@ -179,10 +183,13 @@ def create_event(day: datetime.date,  mail: list= [], summary: str='', meeting_t
                 ],
             },
         }
+
+        # Inserting event into calendar
         service = get_gmail_credential(service_name='calendar', service_version='v3')
-        event = service.events().insert(calendarId='shubharthaksangharsha@gmail.com',sendUpdates='all', body=event).execute()
-        print ('Event created: %s' % (event.get("htmlLink")))
+        event = service.events().insert(calendarId='shubharthaksangharsha@gmail.com', sendUpdates='all',
+                                          body=event).execute()
         return f'Event has been created: {event.get("htmlLink")}'
+
     except Exception as e:
         return f'Unable to create the event: {e}'
 
