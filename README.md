@@ -61,6 +61,7 @@ Enhance your codebase by crafting custom tools tailored to your needs. Follow th
 2. **Document Your Function**: Provide a clear description of your function's purpose and its input parameters.
 3. **Integrate Your Function**: Add your function to the list of tools in the `main.py` module.
 
+`custom_tools.py`
 ```python
 from langchain.tools import tool
 
@@ -84,6 +85,33 @@ def say_hello_to_user(username: str = 'Apsara') -> str:
 
 if __name__ == '__main__':
     pass
+```
+
+`main.py` - Add the above function in create_agent function in `main.py` file 
+```python
+def create_agent():
+    tools = load_tools(["llm-math"], llm=llm)
+    #Custom tools
+    tools.append(say_hello_to_user) ##YOUR CUSTOM TOOL 
+    #Search tools 
+    tools.append(search_tool), tools.append(yfinance_tool)
+    #Weather tools
+    tools.append(mylocation), tools.append(weather_tool)
+    #Read and write tools
+    tools.append(read_tool), tools.append(write_save_tool), 
+    #Get today date tool
+    tools.append(get_today_date)
+    #Play on youtube tool
+    tools.append(play_youtube)
+    #Utility tools 
+    #TODO -> tools.append(find_or_ring_phone)
+    tools.append(restart_laptop), tools.append(shutdown_laptop), tools.append(check_battery)
+    tools.append(increase_volume), tools.append(decrease_volume), tools.append(mute_volume), tools.append(umute_volume)
+    #Spotify tools 
+    tools.append(open_spotify), tools.append(play_spotify), tools.append(detect_spotify_device), 
+    tools.append(print_current_song_details), tools.append(pause_or_resume_spotify)
+    tools.append(play_album_on_spotify), tools.append(play_artist_on_spotify)
+
 ```
 
 ## Code Structure
