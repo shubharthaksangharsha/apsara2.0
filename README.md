@@ -4,6 +4,8 @@ Created by [shubharthak](https://shubharthaksangharsha.github.io/)
 
 Apsara 2.0 stands out as a robust and adaptable AI assistant crafted using Langchain and a host of other cutting-edge libraries like Spotipy and Selenium. What sets Apsara 2.0 apart from its predecessor, ApsaraAI, is its remarkable ability to comprehend user demands and select the most suitable tool to fulfill them.
 
+With Apsara 2.0, users can even create their own custom tools to tailor its functionality to their specific needs. Simply define a function and apply the @tool decorator above its declaration. These custom tools can seamlessly integrate with Apsara 2.0, enhancing its capabilities to cater to unique requirements.
+
 Whereas ApsaraAI operated on a beta release, relying solely on rule-based keywords, Apsara 2.0 elevates user interaction to a whole new level. It harnesses the power of LLM (Large Language Models) and employs a Structured-based ReACT agent, empowering it to grasp user queries and navigate through a chain of logical reasoning to deliver accurate responses. Unlike its predecessor, which could encounter malfunctions or misunderstand user requests if specific keywords weren't recognized, Apsara 2.0 operates with enhanced intelligence.
 
 Apsara 2.0 seamlessly transitions between the roles of a traditional chatbot and an agent with real-time access to knowledge through advanced search functionalities and other sophisticated tools. Whether you seek casual conversation or require instant access to information, Apsara 2.0 is equipped to meet your needs with unparalleled efficiency and precision.
