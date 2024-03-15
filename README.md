@@ -27,6 +27,7 @@ Apsara 2.0 is a powerful and versatile AI assistant built using Langchain and ot
     - Restarting or shutting down your laptop
     - Adjusting volume
     - Connecting and disconnecting Bluetooth devices
+    - Sending Whatsapp message to any contact
     - Checking battery status
     - Providing information on various topics
     - And much more!
