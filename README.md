@@ -51,6 +51,38 @@ To install Apsara, follow these four easy steps:
 
 4. That's it! You can now run `python main.py --help` for information on available arguments, or simply execute `python main.py`. For agent functionality, run `python main.py --agent`.
 
+### Create Your Own Custom Tools
+
+Enhance your codebase by crafting custom tools tailored to your needs. Follow these steps to create your own functions:
+
+1. **Define Your Function**: Create a function with a specific purpose and decorate it with the `@tool` decorator.
+2. **Document Your Function**: Provide a clear description of your function's purpose and its input parameters.
+3. **Integrate Your Function**: Add your function to the list of tools in the `main.py` module.
+
+```python
+from langchain.tools import tool
+
+# Step 1: Define your custom tool function and add a tool decorator above it.
+@tool
+def say_hello_to_user(username: str = 'Apsara') -> str:
+    """
+    Useful when to greet the user. 
+
+    Args:
+        username (str): The name of the user to say hello to. Defaults to 'Apsara'.
+
+    Returns:
+        str: A string containing the greeting.
+    """
+    return f"Hello, {username}!"
+
+# Step 2: Add your custom function name to the list of tools in main.py.
+# Example: tools.append(say_hello_to_user)
+# Do not call the function, just write the name.
+
+if __name__ == '__main__':
+    pass
+```
 
 ## Code Structure
 
@@ -62,6 +94,8 @@ The `main.py` file houses the core logic of Apsara 2.0. It is well-organized and
 - Creating and initializing agents
 - Handling voice input and output
 - Performing specific tasks like playing music, checking weather, etc.
+
+
 
 ## Additional Files
   
