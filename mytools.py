@@ -60,7 +60,8 @@ def mylocation():
 @tool
 def get_today_date():
     '''
-    Useful when you want to find today's date 
+    Useful when you want to find today's date in the format of YYYY-MM-DD.
+    Useful to get date for openweather api and other tools such as creating an meeting or event.
     '''
     date = datetime.datetime.today()
     return date.strftime("Date: %Y-%m-%d")

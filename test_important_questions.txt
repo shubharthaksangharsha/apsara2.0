@@ -1,0 +1,5 @@
+UNIT 2 IMPORTANT QUESTIONS 
+Q1. Define the terms: Sampling and Quantization in the context of image processing. 
+Q2. List three basic image manipulations that can be performed using Python in image processing. 
+Q3. Explain the primary function of HPF(High pass filter) in image processing
+Q4. 

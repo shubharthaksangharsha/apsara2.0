@@ -18,6 +18,7 @@ from agent_prompt import get_agent_prompt
 from mytools import *
 from my_music_tools import * 
 from my_utility_tools import * 
+from send_whatsappmsg import * 
 
 #extra lib 
 import sys 
@@ -143,6 +144,9 @@ def create_agent():
 
     #Calendar tools 
     tools.append(get_date), tools.append(create_event), tools.append(get_events)
+
+    #Whatsapp tool 
+    tools.append(send_whatsapp_message)
     
     if args.hist:    
         prompt = get_agent_prompt()

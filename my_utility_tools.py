@@ -28,7 +28,7 @@ def get_gmail_credential(service_name='gmail', service_version='v1'):
     credentials = get_gmail_credentials(
         token_file='token.json', 
         scopes=["https://mail.google.com/", "https://www.googleapis.com/auth/calendar"],
-        client_secrets_file="credentials.json",
+        client_secrets_file="../credentials.json",
     )
 
     api_resource = build_resource_service(service_name=service_name, service_version= service_version, credentials=credentials)
@@ -140,7 +140,7 @@ def get_events(day:str="today") -> list[dict]:
 def create_event(day: datetime.date, mail: list = [], summary: str = '', meeting_time: str = '') -> str:
     """
     Useful when creating Google Calendar events or meetings.
-    day: datetime.date: The date of the event.
+    day: datetime.date: The date of the event. [Get the date from user query] 
     mail: List of emails to whom you want to invite.
     summary: Short description of the event.
     meeting_time: Time of the event to be held (format: "HH:MM AM/PM").
@@ -261,9 +261,10 @@ def turn_on_bluetooth()-> str:
 
 #disconnect to bluetooth device
 @tool 
-def disconnect_bluetooth_device()-> str:
+def disconnect_bluetooth_device(disconnect='disconnect')-> str:
     '''
     useful when to disconnect to bluetooth device
+    disconnect: str = disconnect
     returns: str
     '''
     disconnect = subprocess.check_output(
