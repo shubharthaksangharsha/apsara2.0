@@ -1,9 +1,12 @@
-# Apsara 2.0: Your AI Assistant
+# Apsara 2.0: Your Intelligent AI Assistant
 
 Created by [shubharthak](https://shubharthaksangharsha.github.io/)
 
+Apsara 2.0 stands out as a robust and adaptable AI assistant crafted using Langchain and a host of other cutting-edge libraries like Spotipy and Selenium. What sets Apsara 2.0 apart from its predecessor, ApsaraAI, is its remarkable ability to comprehend user demands and select the most suitable tool to fulfill them.
 
-Apsara 2.0 is a powerful and versatile AI assistant built using Langchain and other language processing libraries. It can function as both a traditional chatbot and an agent with real-time knowledge access through search and other advanced tools.
+Whereas ApsaraAI operated on a beta release, relying solely on rule-based keywords, Apsara 2.0 elevates user interaction to a whole new level. It harnesses the power of LLM (Large Language Models) and employs a Structured-based ReACT agent, empowering it to grasp user queries and navigate through a chain of logical reasoning to deliver accurate responses. Unlike its predecessor, which could encounter malfunctions or misunderstand user requests if specific keywords weren't recognized, Apsara 2.0 operates with enhanced intelligence.
+
+Apsara 2.0 seamlessly transitions between the roles of a traditional chatbot and an agent with real-time access to knowledge through advanced search functionalities and other sophisticated tools. Whether you seek casual conversation or require instant access to information, Apsara 2.0 is equipped to meet your needs with unparalleled efficiency and precision.
 
 
 ## Features
@@ -19,9 +22,9 @@ Apsara 2.0 is a powerful and versatile AI assistant built using Langchain and ot
 - **Multi-Talented**: Apsara 2.0 boasts a wide range of capabilities, including:
     - Playing music on Spotify and YouTube
     - Performing mathematical calculations
-    - Send Mail, Search Mails, Save Drafts of Gmail account
+    - Send Mail, Search Mails, Save Drafts of Gmail
     - Search any Finance News using Yahoo Finance
-    - Creating or Checking upcoming Calendar Meetings
+    - Creating or Checking upcoming Meetings
     - Checking the weather
     - Reading and writing files
     - Restarting or shutting down your laptop
