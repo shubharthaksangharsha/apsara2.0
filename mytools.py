@@ -10,10 +10,38 @@ from langchain_community.tools import DuckDuckGoSearchRun #requires internet
 import psutil as ps 
 import datetime
 from langchain_community.tools.yahoo_finance_news import YahooFinanceNewsTool #requires internet 
+import requests
+from geopy.geocoders import Nominatim
 
 
+#Get my location tool 
+@tool
+def mylocation() -> str:
+    '''
+    useful when you want to find your current location.
+    return current location name.
+    '''
+    try:
+        # Fetching current location using ipinfo.io
+        response = requests.get('https://ipinfo.io')
+        data = response.json()
+        location = data.get('loc')
+        if location:
+            latitude, longitude = location.split(',')
+        else:
+            print("Location not found.")
+            return None
 
+        # Reverse geocoding to get location name
+        geoLoc = Nominatim(user_agent="GetLoc")
+        location_name = geoLoc.reverse(f"{latitude}, {longitude}")
+        return location_name.address
 
+    except Exception as e:
+        print("Error occurred:", e)
+        return None
+
+#Internal Knowledge tool 
 @tool
 def internal_knowledge_tool(input: str = 'final answer', answer: str = 'unknown') -> str:
     '''
@@ -42,19 +70,6 @@ def find_or_ring_phone(find: str = 'find'):
     except Exception as e:
         return "Error: " + str(e)
     
-
-
-
-
-
-#Current Location for Weather 
-@tool 
-def mylocation():
-    '''
-    Useful when want to get users current location.
-    it is used for openweather api if user ask for current location for weather input.
-    '''
-    return "Kharar, Punjab, India"
 
 #Get Today Date 
 @tool

@@ -111,3 +111,12 @@ Agent: Here are the meetings for today:
 2. Test event at 17:00 - 17:59 (IST)
    Location: Delhi
    Link: <https://www.google.com/calendar/event?eid=czdvZnF1ZWFvbm9xMmx0aTFqdGJwamtlY2Mgc2h1YmhhcnRoYWtzYW5naGFyc2hhQG0>
+
+Human: hey 
+Agent: Hello! How can I assist you today?
+
+Human: get my current location name please 
+Agent: Your current location is Ludhiana, Ludhiana (West) Tahsil, Ludhiana District, Punjab, 141008, India
+
+Human: can you tell me weather of my current location please 
+Agent: None
