@@ -33,59 +33,5 @@ service = Service(path)
 driver = webdriver.Chrome(service=service, options=options)
 print('Driver initialized...')
 # Now you can use Selenium as usual
-driver.get('https://web.whatsapp.com')
-try: 
-    add_contact = WebDriverWait(driver, 50).until(
-        EC.presence_of_element_located((By.XPATH, '//*[@id="app"]/div/div[2]/div[3]/header/div[2]/div/span/div[4]/div/span')))
-    add_contact.click()
-    print('Add contact button clicked...')
-except Exception as e:
-    print(f"An error occurred: {e}")
-
-try: 
-    type_contact_name = WebDriverWait(driver, 10).until(
-        EC.presence_of_element_located((By.XPATH, '//*[@id="app"]/div/div[2]/div[2]/div[1]/span/div/span/div/div[1]/div[2]/div[2]/div/div[1]/p')))
-    type_contact_name.click()
-    type_contact_name.send_keys('Pranchal')
-    print('TYPED ')
-except Exception as e:
-    print(f"An error occurred: {e}")
-
-
-    
-
-time.sleep(10000)
-
-# driver.get("https://www.google.com/android/find/")
-# print('Currently at', driver.title)
-
-# time.sleep(5000)
-
-# # Wait for the page to load and the device to be present
-# try:
-#     # Assuming the device name is in a div with class "CMEZce"
-#     device_name = "OnePlus Nord CE 5G"
-#     device_element = WebDriverWait(driver, 10).until(
-#         EC.presence_of_element_located((By.XPATH, f"//div[@class='CMEZce' and text()='{device_name}']"))
-#     )
-#     # Click on the device
-#     device_element.click()
-#     print(f'Clicked {device_name}')
-# except Exception as e:
-#     print(f"An error occurred: {e}")
-
-# # Wait for the page to load and the "PLAY SOUND" button to be clickable
-# try:
-#     # Assuming the "PLAY SOUND" button is a button with class "GLET6d HX6Ide"
-#     play_sound_button = WebDriverWait(driver, 10).until(
-#         EC.element_to_be_clickable((By.XPATH, "//button[contains(@class, 'GLET6d') and contains(@class, 'HX6Ide')]"))
-#     )
-#     # Click on the "PLAY SOUND" button
-#     play_sound_button.click()
-#     print('Clicked the Play SOUND button')
-# except Exception as e:
-#     print(f"An error occurred: {e}") 
-
-# print('Device must be ringing...')
 
 
