@@ -16,3 +16,5 @@ bluedo
 langchain_google_genai
 pyaudio 
 psutil
+geopy 
+langchain_experimental 
