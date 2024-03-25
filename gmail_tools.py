@@ -18,8 +18,7 @@ from langchain_community.tools.gmail.search import GmailSearch
 from langchain_community.tools.gmail.get_thread import GmailGetThread
 
 
-#Create dummy file if you don't have credentials.json 
-os.system('touch credentials.json')
+
 #Get the gmail required credential 
 def get_gmail_credential(service_name='gmail', service_version='v1'):
     #Read this to create your own credentials: https://developers.google.com/gmail/api/quickstart/python        
