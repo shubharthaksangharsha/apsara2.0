@@ -2,6 +2,9 @@
 
 Created by [shubharthak](https://shubharthaksangharsha.github.io/)
 
+
+
+
 Apsara 2.0 stands out as a robust and adaptable AI assistant crafted using Langchain and a host of other cutting-edge libraries like Spotipy and Selenium. What sets Apsara 2.0 apart from its predecessor, ApsaraAI, is its remarkable ability to comprehend user demands and select the most suitable tool to fulfill them.
 
 With Apsara 2.0, users can even create their own custom tools to tailor its functionality to their specific needs. Simply define a function and apply the `@tool` decorator above its declaration. These custom tools can seamlessly integrate with Apsara 2.0, enhancing its capabilities to cater to unique requirements.
@@ -52,6 +55,8 @@ To install Apsara, follow these four easy steps:
    - `OPENWEATHERMAP_API_KEY='YOUR-KEY'`
 
 4. That's it! You can now run `python main.py --help` for information on available arguments, or simply execute `python main.py`. For agent functionality, run `python main.py --agent`.
+
+[**Try it in Gitpod** 🚀](https://gitpod.io/#/https://github.com/shubharthaksangharsha/apsara2.0)
 
 ### Create Your Own Custom Tools
 
