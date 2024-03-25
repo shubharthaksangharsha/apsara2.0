@@ -18,3 +18,4 @@ pyaudio
 psutil
 geopy 
 langchain_experimental 
+google-auth-oauthlib

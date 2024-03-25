@@ -9,16 +9,15 @@ from langchain_community.llms.huggingface_endpoint import HuggingFaceEndpoint
 from langchain_google_genai import ChatGoogleGenerativeAI
 from dotenv import load_dotenv
 
-
+from mytools import *
+from my_music_tools import * 
+from my_utility_tools import * 
+from whatsapp_tool import * 
 
 #agents modules
 from langchain import hub 
 from langchain.agents import AgentType, initialize_agent, load_tools,AgentExecutor,  create_structured_chat_agent
 from agent_prompt import get_agent_prompt
-from mytools import *
-from my_music_tools import * 
-from my_utility_tools import * 
-from whatsapp_tool import * 
 
 #extra lib 
 import sys 
@@ -45,7 +44,7 @@ parser.add_argument('--gemini', action='store_true', help='Use gemini pro LLM. I
 parser.add_argument('--temp', action='store', help='Set the temperature for the LLM. Default is 0.0', default=0.0, type=float)
 parser.add_argument('--hist', action='store_true', help='Set the history for the LLM. Default is 2 messages', default=False)
 parser.add_argument('--voice', action='store', help='Activate voice input by saying Apsara by passing on. Default is off', default='off', type=str)
-parser.add_argument('--net', action='store', help='Use internet for the LLM. Default is on', default='on', type=str)
+parser.add_argument('--gmail', action='store', help='Use Gmail tools for the LLM. Make sure you have credentials.json file. Default is on', default='on', type=str)
 
 
 # Parse the arguments
@@ -54,6 +53,7 @@ args = parser.parse_args()
 
 # Now you can use them
 print('Temperature: ', args.temp)
+print('Using Gmail: ', args.gmail)
 if args.agent:
     print("Using agent")
 else: 
@@ -66,14 +66,17 @@ else:
 
 print('Starting...')
 
+if args.gmail == 'on':
+    from gmail_tools import * 
+
 
 
 # Suppress specific warnings
 warnings.filterwarnings("ignore")
 
 #Set Langsmith functionality on 
-os.environ["LANGCHAIN_TRACING_V2"] = "true"
-os.environ["LANGCHAIN_PROJECT"] = "Apsara 2.0"
+#os.environ["LANGCHAIN_TRACING_V2"] = "true"
+#os.environ["LANGCHAIN_PROJECT"] = "Apsara 2.0"
 
 
 #Create LLM
@@ -111,9 +114,17 @@ def clear_history():
     history = []
 
 def create_agent():
-    tools = load_tools(["llm-math"], llm=llm)
+    tools = load_tools(["llm-math", 'serpapi', 'wikipedia', 'human'], llm=llm)
     #Search tools 
-    tools.append(search_tool), tools.append(yfinance_tool)
+    #tools.append(search_tool), 
+    if args.gmail == 'on':
+      #Gmail tools
+      tools.append(send_mail), tools.append(search_google), tools.append(get_thread), tools.append(create_draft), 
+      tools.append(get_message)
+      #Calendar tools 
+      tools.append(get_date), tools.append(create_event), tools.append(get_events)
+    #Yahoo Finance Tool
+    tools.append(yfinance_tool)
     #Weather tools
     tools.append(mylocation), tools.append(weather_tool)
     #Read and write tools
@@ -134,16 +145,11 @@ def create_agent():
     # tools.append(python_tool)
     #Internal Knowledge tool 
     # tools.append(internal_knowledge_tool) #TODO
+    
     #Bluetooth tools 
     tools.append(connect_bluetooth_device), tools.append(disconnect_bluetooth_device)
     tools.append(bluetooth_available_devices)
     tools.append(turn_on_bluetooth), tools.append(turn_off_bluetooth)
-    #Gmail tools
-    tools.append(send_mail), tools.append(search_google), tools.append(get_thread), tools.append(create_draft), 
-    tools.append(get_message)
-
-    #Calendar tools 
-    tools.append(get_date), tools.append(create_event), tools.append(get_events)
 
     #Whatsapp tool 
     tools.append(send_whatsapp_message)

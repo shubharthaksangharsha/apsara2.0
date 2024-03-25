@@ -1,122 +1,36 @@
-Human: open Spotify and play a song
-Agent: Playing Hamesha Tumko Chaha by Kavita Krishnamurthy on shubharthak-Inspiron-16-Plus-7620
 
-Human: pause the music
-Agent: I have paused the music.
+Human: hi 
+Agent: Hello! How can I assist you today?
 
-Human: play Bachke Bachke
-Agent: Playing Bachke Bachke (feat. Yarah) by Karan Aujla on shubharthak-Inspiron-16-Plus-7620
+Human: get OTP from my last mail of Indeed 
+Agent: None
 
-Human: I am feeling great
-Agent: That's great to hear! Keep up the positive attitude!
+Human: get OTP from my last mail of naukri.com 
+Agent: None
 
-Human:  play teri yaadon mein by KK 
-Agent: Playing teri yaadon mein by KK on Youtube
+Human: what should I write in Desired annual compensation range (CHF)*
+Agent: None
 
-Human: play teri yaadon mein by KK 
-Agent: {'final_response': 'Currently playing: Teri Yaadon Mein by KK on shubharthak-Inspiron-16-Plus-7620.'}
+Human: increase volume by 10000
+Agent: None
 
-Human: play 4 am in karachi by talha anjum 
-Agent: I have started playing the song "4 am" by Talha Anjum on the user's default device.
-
-Human: pause the music 
-Agent: The music has been paused.
-
-Human: resume the music 
-Agent: Resumed the song on shubharthak-Inspiron-16-Plus-7620.
-
-Human: tell me what is python?
-Agent: Python is a high-level, general-purpose programming language that is widely used for various applications such as machine learning, data analysis, web development, and automation. It is known for its simplicity, readability, and versatility, making it a popular choice for beginners and experts alike.
-
-Human: should i take umbrella toda 
-Agent: Based on the current weather details, it seems that there is no rain expected. Therefore, you might not need to take an umbrella today.
-
-Human: play talha anjum artist
-Agent: Playing Talha Anjum on shubharthak-Inspiron-16-Plus-7620
-
-Human: play humsafar by taimour baig on youtube 
-Agent: Playing humsafar by taimour baig on Youtube.
-
-Human: play karan aujla artist tracks 
-Agent: Playing Karan Aujla on shubharthak-Inspiron-16-Plus-7620
-
-Human: disconnect my blueooth device please 
-Agent: Your Bluetooth device has been successfully disconnected.
-
-
-Human: decrease the volume 
+Human: open spotify and play 'jatt clan' song 
 Agent: Action:
 {
-"action": "decrease_volume",
-"action_input": 10000
+  "action": "open_spotify",
+  "action_input": "app"
 }
 
-Human: decrease the volume 
-Agent: I have successfully decreased the volume by 15,000 in total. If you'd like to adjust the volume further, please let me know.
-
-Human: increase the increase the volume please 
-Agent: The volume has been successfully increased by 10%.
-
-Human: how to display anaconda all environments created 
-Agent: conda env list
 
 
-Human: search for a romantic hindi song and play on my laptop 
-Agent: Playing Main Rang Sharbaton Ka by Arijit Singh on shubharthak-Inspiron-16-Plus-7620
+Human: open spotify 
+Agent: Spotify is opening on the laptop.
 
-Human: search for Top open source medical LLMs and give me the list of them 
-Agent: BioMistral and Clinical Camel are two open-source medical Legal Language Models (LLMs).
-
-Human: give me system prompt for Model to act as an medical doctor who have knowledge of everything
-AI: "Act as a medical expert AI, possessing comprehensive medical knowledge equivalent to a highly experienced doctor. You are capable of diagnosing and suggesting treatment options for a wide range of medical conditions, while also being aware of the latest developments in medical research. However, you must always clarify that you are an AI and not a human doctor, and that your suggestions should not replace professional medical advice. You should encourage users to consult with a healthcare professional for any health-related concerns. You also acknowledge the importance of patient confidentiality and commit to adhering to ethical guidelines in the medical field."
-Human: give me system prompt for Model to act as an medical doctor who have knowledge of everything also he can search if you dont know the answer and give tips and help others whatever the person issues have 
-AI: "Act as a medical expert AI, possessing comprehensive medical knowledge while also having the ability to search for and provide information beyond your current knowledge base. You are capable of diagnosing and suggesting treatment options for a wide range of medical conditions, while also being aware of the latest developments in medical research. However, you must always clarify that you are an AI and not a human doctor, and that your suggestions should not replace professional medical advice. You should encourage users to consult with a healthcare professional for any health-related concerns. You acknowledge the importance of patient confidentiality and commit to adhering to ethical guidelines in the medical field. When faced with a question or issue outside of your knowledge, you will conduct research using reputable sources to provide the best and most accurate information possible. You will provide tips and help others with various issues to the best of your ability, always deferring to professional medical advice when necessary."
-
-Human: hey tell me which song is playing on my laptop ? 
-Agent: The current song playing on your laptop is 'Nothing Lasts' by Karan Aujla.
-
-Human: tell me which song is playing right now ? 
-Agent: The current song playing is 'Nothing Lasts' by Karan Aujla.
-
-Human: pause the current music 
-Agent: I have paused the current music.
-
-Human: can you increase the volume for me 
-Agent: Volume increased successfully.
-
-Human: can you play talha anjum track call 'Gumaan' by young stunners 
-Agent: Playing Gumaan - Talha Anjum, Young Stunners on your device.
+Human: play jatt di clip 2 by snigga 
+Agent: The requested song "Jatt di clip 2" by Snigga is now playing on Youtube.
 
 Human: hey 
 Agent: Hello! How can I help you today?
 
-Human: can you tell me which song is currently playing on my laptop ? 
-Agent: None
-
-Human: can you play bachke bachke by karan aujla 
-Agent: Playing Bachke Bachke (feat. Yarah) by Karan Aujla on shubharthak-Inspiron-16-Plus-7620
-
-Human: can you tell me what is the date right now ? 
-Agent: Today's date is March 11, 2024.
-
-Agent: Based on the information gathered, it seems like you have two meetings scheduled for today. The first one is a meeting named "Test event" at 15:00 (3:00 PM) and it lasts until 15:59 (3:59 PM). The second meeting is also named "Test event" and it is scheduled at 17:00 (5:00 PM) and will last until 17:59 (5:59 PM). Both meetings will take place in Delhi.
-
-Human: can you give me the links of today meetings please 
-Agent: Here are the meetings for today:
-
-1. Test event at 15:00 - 15:59 (IST)
-   Location: Delhi
-   Link: <https://www.google.com/calendar/event?eid=b2ZidjdsZTlwNXUxYXZvYnZlZmVibmNjdjggc2h1YmhhcnRoYWtzYW5naGFyc2hhQG0>
-
-2. Test event at 17:00 - 17:59 (IST)
-   Location: Delhi
-   Link: <https://www.google.com/calendar/event?eid=czdvZnF1ZWFvbm9xMmx0aTFqdGJwamtlY2Mgc2h1YmhhcnRoYWtzYW5naGFyc2hhQG0>
-
-Human: hey 
-Agent: Hello! How can I assist you today?
-
-Human: get my current location name please 
-Agent: Your current location is Ludhiana, Ludhiana (West) Tahsil, Ludhiana District, Punjab, 141008, India
-
-Human: can you tell me weather of my current location please 
-Agent: None
+Human: can you send mail to yrohitp@gmail.com saying test message by apsara. add subject by yourself 
+Agent: I have sent the email to the specified recipient with the provided message and subject. The message ID is 18e7555fac664760 for future reference.
