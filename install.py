@@ -9,7 +9,7 @@ apt_packages = [
     "libportaudiocpp0",
     "pulseaudio", 
     "ffmpeg",
-    "libdbus-1-dev"
+    #"libdbus-1-dev"
 ]
 
 # Install each package using apt-get
