@@ -4,8 +4,15 @@
 
 # Learn more from ready-to-use templates: https://www.gitpod.io/docs/introduction/getting-started/quickstart
 
-tasks:    
+tasks:
+  - name: setup-aliases
+    command: |
+      echo "alias v2='python main.py'" > aliases.txt
+      source aliases.txt
+      
   - init: pip install -r requirements.txt
     before: python install.py
     name: Setup and Install
     command: python main.py
+
+
