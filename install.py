@@ -13,6 +13,8 @@ apt_packages = [
     #"libdbus-1-dev"
 ]
 
+# Check if apt is not locked
+subprocess.run(['sudo', 'apt', 'install', '--fix-broken', '-y'], check=True)
 # Install each package using apt-get
 for package in apt_packages:
     subprocess.run(["sudo", "apt-get", "install", "-y", package], check=True)
