@@ -9,7 +9,7 @@ pywhatkit
 gTTS
 pydub
 SpeechRecognition
-pvporcupine
+pvporcupine==2.2.0
 python-dotenv
 pyaudio
 bluedo
@@ -22,4 +22,3 @@ google-auth-oauthlib
 selenium
 webdriver_manager
 google-search-results
-
