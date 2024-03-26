@@ -37,3 +37,6 @@ Agent: I have sent the email to the specified recipient with the provided messag
 
 Human: open spotify and play bachke bachke 
 Agent: Playing Bachke Bachke (feat. Yarah) by Karan Aujla on shubharthak-Inspiron-16-Plus-7620.
+
+Human: check which song is playing
+Agent: The current song playing is "Adore by Amrinder Gill" on the device "shubharthak-Inspiron-16-Plus-7620".
