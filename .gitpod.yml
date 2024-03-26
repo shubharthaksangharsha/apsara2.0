@@ -5,13 +5,13 @@
 # Learn more from ready-to-use templates: https://www.gitpod.io/docs/introduction/getting-started/quickstart
 
 tasks:
-  - name: Set Alias
-    command: "alias v2='python main.py'"
-    
+
   - init: pip install -r requirements.txt
     before: python install.py
     name: Setup and Install
     command: python main.py
     
-
-
+  - init: pip install -r requirements.txt
+    before: python install.py
+    name: Set Alias
+    command: "alias v2='python main.py'"
