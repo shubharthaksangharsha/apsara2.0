@@ -22,3 +22,4 @@ google-auth-oauthlib
 selenium
 webdriver_manager
 google-search-results
+google-api-python-client

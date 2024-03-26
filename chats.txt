@@ -1,3 +1,0 @@
-
-Human: check which song is playing 
-Agent: The current song playing is 'Thaa by Varinder Brar'.
