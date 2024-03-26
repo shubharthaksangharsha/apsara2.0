@@ -13,14 +13,53 @@ from langchain_community.tools.yahoo_finance_news import YahooFinanceNewsTool #r
 import requests
 from geopy.geocoders import Nominatim
 from dotenv import load_dotenv
-
+import subprocess
 
 
 #Load environment variables 
 load_dotenv()
 
 
+#Get all apps installed
+@tool
+def get_installed_applications(check: bool =True):
+    '''
+    useful when you want to finds all the apps installed on your system.
+    #Use this tool when you want to find all the apps installed on your system.
+    use as a pre-requisite for launch_app_tool.
+    check: bool = True: It just serves as a safety purpose so that it won't run into any errors.
+    return: list - a list of all files in the /bin/ directory. 
+    Look for app name  from the output of get_installed_applications tool and use launch_app_tool to launch the app.
+    '''
+    try:
+        # Get a list of all files in the /bin/ directory
+        bin_files = os.listdir('/bin/')
+        return bin_files
+    except FileNotFoundError:
+        print("Error: /bin/ directory not found.")
+        return []
+    except Exception as e:
+        print("Error occurred:", e)
+        return []
 
+@tool
+def launch_app_tool(app_name: str) -> str:
+    '''
+    useful when you want to launch or open an app on your system.
+    app_name: str - name of the app you want to launch.
+    use get_installed_applications tool to get the app_name.
+    return: str - the output of the command.
+    '''
+    try:
+        # Check if the app is installed
+        output = subprocess.check_output([app_name])
+        return sorted(output.decode('utf-8'))
+    except subprocess.CalledProcessError as e:
+        print("Error occurred:", e)
+        return e
+    except Exception as e:
+        print("Error occurred:", e)
+        return e 
 
 #Get my location tool 
 @tool
@@ -142,5 +181,7 @@ def write_save_tool(file_path: str, content: str) -> str:
         return "Error: " + str(e)
 
 if __name__ == '__main__':
-    pass 
+    print(get_installed_applications())
+    
+
     

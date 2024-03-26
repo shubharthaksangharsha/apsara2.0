@@ -120,7 +120,7 @@ def create_agent():
     if args.gmail == 'on':
       #Gmail tools
       tools.append(send_mail), tools.append(search_google), tools.append(get_thread), tools.append(create_draft), 
-      tools.append(get_message)
+      tools.append(get_message), tools.append(get_gmail_ids)
       #Calendar tools 
       tools.append(get_date), tools.append(create_event), tools.append(get_events)
     #Yahoo Finance Tool
@@ -153,6 +153,10 @@ def create_agent():
 
     #Whatsapp tool 
     tools.append(send_whatsapp_message)
+
+    #Launch app 
+    tools.append(get_installed_applications)
+    tools.append(launch_app_tool)
     
     if args.hist:    
         prompt = get_agent_prompt()

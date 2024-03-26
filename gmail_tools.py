@@ -4,7 +4,7 @@ from datetime import timedelta
 import os 
 import pytz
 import re
-
+import json 
 
 #Gmail tool libs 
 from langchain_community.tools.gmail.utils import (
@@ -38,6 +38,23 @@ create_draft = GmailCreateDraft(api_resource=get_gmail_credential())
 get_message = GmailGetMessage(api_resource=get_gmail_credential())
 search_google = GmailSearch(api_resource=get_gmail_credential())
 get_thread = GmailGetThread(api_resource=get_gmail_credential())
+
+#Get gmail ids 
+@tool 
+def get_gmail_ids(check: bool=True) -> dict: 
+    '''
+    #ALWAYS USE THIS TOOL FIRST TO BEFORE USING ANY GMAIL/CALENDAR TOOL.
+    Use this tool as begining of ANY TOOL RELATED TO MAIL/ CALENDAR-RELATED FUNCTIONS. 
+    It is recommended to use this function before utilizing any Google/Gmail/Calendar-related functions to ensure that the required Gmail IDs are available.
+    useful to get gmail ids.
+    use this tool when you want to find gmail id of a user if not mentioned. 
+    check: bool = True. Uses just for safety purposes so that it won't run into errors 
+    Returns: dict of gmail ids 
+    '''
+    with open('gmail_ids.json', 'r') as f:
+        gmail_ids = json.load(f)
+    
+    return gmail_ids
 
 
 #Set calendar meeting 
@@ -136,6 +153,7 @@ def get_events(day:str="today") -> list[dict]:
 def create_event(day: datetime.date, mail: list = [], summary: str = '', meeting_time: str = '') -> str:
     """
     Useful when creating Google Calendar events or meetings.
+    use gmail addresses of the people you want to invite from get_gmail_ids tool if the gmail id is not mentioned. 
     day: datetime.date: The date of the event. [Get the date from user query] 
     mail: List of emails to whom you want to invite.
     summary: Short description of the event.
