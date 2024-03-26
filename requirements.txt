@@ -19,3 +19,7 @@ psutil
 geopy 
 langchain_experimental 
 google-auth-oauthlib
+selenium
+webdriver_manager
+google-search-results
+

@@ -12,6 +12,14 @@ import datetime
 from langchain_community.tools.yahoo_finance_news import YahooFinanceNewsTool #requires internet 
 import requests
 from geopy.geocoders import Nominatim
+from dotenv import load_dotenv
+
+
+
+#Load environment variables 
+load_dotenv()
+
+
 
 
 #Get my location tool 
