@@ -200,6 +200,7 @@ def print_current_song_details(song_details: str ='song') -> str:
     '''
     spotify, device_name = spotify_helper()
     data = spotify.current_playback()
+    print(data)
     try: 
         if 'item' in data and 'name' in data['item'] and 'artists' in data['item'] and len(data['item']['artists']) > 0:
             print('inside the loop')
