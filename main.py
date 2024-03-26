@@ -43,8 +43,8 @@ parser.add_argument('--local', action='store_true', help='Use local LLM - Ollama
 parser.add_argument('--gemini', action='store_true', help='Use gemini pro LLM. It does not work with the agent functionality for now as Gemini does not support System Messages. Default is False', default=False)
 parser.add_argument('--temp', action='store', help='Set the temperature for the LLM. Default is 0.0', default=0.0, type=float)
 parser.add_argument('--hist', action='store_true', help='Set the history for the LLM. Default is 2 messages', default=False)
-parser.add_argument('--voice', action='store', help='Activate voice input by saying Apsara by passing on. Default is off', default='off', type=str)
-parser.add_argument('--gmail', action='store', help='Use Gmail tools for the LLM. Make sure you have credentials.json file. Default is on', default='on', type=str)
+parser.add_argument('--voice', action='store', help='Activate voice input by saying Apsara by passing on/off. Default is off', default='off', type=str)
+parser.add_argument('--gmail', action='store', help='Turn on/off Gmail tools for the LLM. Make sure you have credentials.json file. Default is off', default='off', type=str)
 
 
 # Parse the arguments
