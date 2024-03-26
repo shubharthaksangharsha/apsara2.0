@@ -13,5 +13,5 @@ tasks:
   - init: v2
     before: python install.py
     name: Set alias
-    command: export v2='python main.py'
+    command: alias v2='python main.py'
 
