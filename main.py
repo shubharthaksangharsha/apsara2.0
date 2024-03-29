@@ -13,6 +13,7 @@ from mytools import *
 from my_music_tools import * 
 from my_utility_tools import * 
 from whatsapp_tool import * 
+from alarm_tools import * 
 
 #agents modules
 from langchain import hub 
@@ -129,8 +130,8 @@ def create_agent():
     tools.append(mylocation), tools.append(weather_tool)
     #Read and write tools
     tools.append(read_tool), tools.append(write_save_tool), 
-    #Get today date tool
-    tools.append(get_today_date)
+    #Get today date and time tool
+    tools.append(get_today_date), tools.append(get_current_time)
     #Play on youtube tool
     tools.append(play_youtube)
     #Utility tools 
@@ -154,9 +155,12 @@ def create_agent():
     #Whatsapp tool 
     tools.append(send_whatsapp_message)
 
-    #Launch app 
+    #Launch app tool 
     tools.append(get_installed_applications)
     tools.append(launch_app_tool)
+
+    #Alarm/Timer tool 
+    tools.append(set_alarm_or_timer)
     
     if args.hist:    
         prompt = get_agent_prompt()

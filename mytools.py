@@ -1,5 +1,6 @@
 from langchain.agents import Tool
 import os 
+from typing import List, Optional
 from langchain_community.tools.file_management.read import ReadFileTool
 from langchain_community.tools.file_management.write import WriteFileTool
 from langchain_community.utilities.python import PythonREPL
@@ -22,7 +23,7 @@ load_dotenv()
 
 #Get all apps installed
 @tool
-def get_installed_applications(check: bool =True):
+def get_installed_applications(check: bool =True) -> Optional[List[str]]:
     '''
     useful when you want to finds all the apps installed on your system.
     #Use this tool when you want to find all the apps installed on your system.
@@ -33,14 +34,16 @@ def get_installed_applications(check: bool =True):
     '''
     try:
         # Get a list of all files in the /bin/ directory
-        bin_files = os.listdir('/bin/')
+        bin_files = []
+        # bin_files = os.listdir('/bin/')
+        bin_files.extend(os.listdir('/snap/bin/'))
         return bin_files
     except FileNotFoundError:
         print("Error: /bin/ directory not found.")
         return []
     except Exception as e:
         print("Error occurred:", e)
-        return []
+        return e
 
 @tool
 def launch_app_tool(app_name: str) -> str:
@@ -52,8 +55,9 @@ def launch_app_tool(app_name: str) -> str:
     '''
     try:
         # Check if the app is installed
-        output = subprocess.check_output([app_name])
-        return sorted(output.decode('utf-8'))
+        output = subprocess.Popen([app_name])
+        print(output)
+        return f'Successfully launched {app_name}'
     except subprocess.CalledProcessError as e:
         print("Error occurred:", e)
         return e
@@ -127,6 +131,21 @@ def get_today_date():
     '''
     date = datetime.datetime.today()
     return date.strftime("Date: %Y-%m-%d")
+
+@tool
+def get_current_time():
+    """
+    Function to get the current time.
+
+    Returns:
+        str: Current time in the format 'HH:MM:SS'.
+    """
+    return datetime.datetime.now().strftime('%H:%M:%S')
+
+# Example usage:
+# current_time = get_current_time()
+# print("Current time:", current_time)
+
 
 #Weather Tool 
 #requires internet
