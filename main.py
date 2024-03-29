@@ -325,7 +325,6 @@ def chat(agent_complete_toggle=True):
             response = chain.invoke(query)    
             with open('chats.txt', 'a') as f: 
                     f.writelines(memory.buffer_as_str)
-            print(response['response'])
             print()        
 
 if __name__ == '__main__':
