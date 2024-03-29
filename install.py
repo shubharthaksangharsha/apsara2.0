@@ -9,7 +9,8 @@ apt_packages = [
     "libportaudiocpp0",
     "pulseaudio", 
     "ffmpeg",
-    "bluez"
+    "bluez", 
+    "sox"
     #"libdbus-1-dev"
 ]
 

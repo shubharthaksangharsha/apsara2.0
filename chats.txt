@@ -1,0 +1,21 @@
+
+Human: can you set timer of 1 second please 
+Agent: Timer set for 1 second.
+
+Human: set  timer of 8 second please 
+Agent: {'response': 'I have set a timer for 8 seconds. The timer will go off shortly.'}
+
+Human: set a timer of 2 second please 
+Agent: A timer of 2 seconds has been set.
+
+Human: set timer of 10 second please 
+Agent: The timer has been set for 10 seconds.
+
+Human: set alarm of 6pm at evening please description as "Do homework" 
+Agent: Alarm set for 6pm this evening with the description 'Do homework'.
+
+Human: set timer of 10second 
+Agent: Successfully set a timer for 10 seconds.
+
+Human: set timer of 2 second please 
+Agent: A timer for 2 seconds has been set.

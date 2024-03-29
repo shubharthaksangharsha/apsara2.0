@@ -3,14 +3,14 @@ import random
 from langchain.tools import tool   
 
 @tool
-def set_alarm_or_timer(alarm_time=None, message="Alarm!", sound_file="alarm3.mp3", timer_duration="5s", alarm_date=None):
+def set_alarm_or_timer(alarm_time=None, message="Alarm!", sound_file=random.choice(['alarm.mp3', 'alarm2.mp3', 'alarm3.mp3']), timer_duration="5s", alarm_date=None):
     """
     Sets an alarm or a timer with specified options.
 
     Args:
         alarm_time (str): Time for the alarm in format HH:MM (24-hour format).
         message (str): Message to display when the alarm goes off (default: "Alarm!").
-        sound_file (str): Path to the sound file to play when the alarm goes off (default: "alarm3.mp3").
+        sound_file (str): Path to the sound file to play when the alarm goes off (default: random choice between "alarm.mp3", "alarm2.mp3", "alarm3.mp3").
         timer_duration (str): Duration for the timer (format: '5s' for 5 seconds, '1h5m2s' for 1 hour 5 minutes 2 seconds) (default: "5s").
         alarm_date (str): Date for the alarm in format YYYY-MM-DD (default: today's date).
 
@@ -78,3 +78,4 @@ def set_alarm_or_timer(alarm_time=None, message="Alarm!", sound_file="alarm3.mp3
 if __name__ == '__main__':
     # alarm(timer_duration="2s", message="Wake up!", sound_file="/path/to/soundfile.mp3")
     pass
+    
