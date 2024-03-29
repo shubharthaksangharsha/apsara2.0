@@ -18,6 +18,13 @@ apt_packages = [
 subprocess.run(['sudo', 'apt', 'install', '--fix-broken', '-y'], check=True)
 # Install each package using apt-get
 for package in apt_packages:
+    if package == 'pulseaudio':
+        break
+    subprocess.run(["sudo", "apt-get", "install", "-y", package], check=True)
+
+subprocess.run(["sudo", "apt", "update", "-y"], check=True)
+
+for package in apt_packages[apt_packages.index('pulseaudio'):]:
     subprocess.run(["sudo", "apt-get", "install", "-y", package], check=True)
 
 # Install Python packages listed in requirements.txt using pip

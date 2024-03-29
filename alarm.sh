@@ -100,7 +100,7 @@ fi
 # Display message or play sound
 if [ -n "$message" ]; then
     echo "$message"
-    echo
+    echo '>'
 fi
 
 if [ -n "$sound_file" ]; then
@@ -108,7 +108,7 @@ if [ -n "$sound_file" ]; then
         # Check if the `play` command is available (install sox package if not available)
         command -v play >/dev/null 2>&1 || { echo >&2 "Error: 'play' command not found. Install sox package."; exit 1; }
         (play "$sound_file" >/dev/null 2>&1 &)  # Run play command in a subshell in the background
-        echo
+        echo '>'
     else
         echo "Error: Sound file not found."
         exit 1

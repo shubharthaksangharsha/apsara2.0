@@ -145,7 +145,7 @@ def create_agent():
     #Python tool
     # tools.append(python_tool)
     #Internal Knowledge tool 
-    # tools.append(internal_knowledge_tool) #TODO
+    #tools.append(internal_knowledge_tool) 
     
     #Bluetooth tools 
     tools.append(connect_bluetooth_device), tools.append(disconnect_bluetooth_device)

@@ -98,11 +98,9 @@ def internal_knowledge_tool(input: str = 'final answer', answer: str = 'unknown'
     '''
     Useful tool when already know the answer to the user query
     input: str = 'final answer' - default value. It just serves as a safety purpose so that it won't run into any errors.
-    answer: str = 'unknown' - default value. The answer that you already knows.
-    Use this tool when you already knows the answer to what user is asking and doesn't need to use any other tools.
     Return the final answer if you already knows the answer. Also, while returning it should treat the answer as final answer.
     '''
-    return f'{answer}'
+    return None 
     
 
 
