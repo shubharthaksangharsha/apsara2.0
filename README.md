@@ -36,6 +36,7 @@ Apsara 2.0 seamlessly transitions between the roles of a traditional chatbot and
     - Adjusting volume
     - Connecting and disconnecting Bluetooth devices
     - Sending Whatsapp message to any contact
+    - Set Alarm or Timer
     - Checking battery status
     - Providing information on various topics
     - And much more!
