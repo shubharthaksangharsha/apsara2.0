@@ -7,6 +7,7 @@ from langchain_core.prompts import PromptTemplate
 from langchain_core.callbacks import StreamingStdOutCallbackHandler, StdOutCallbackHandler
 from langchain_community.llms.huggingface_endpoint import HuggingFaceEndpoint
 from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_openai import ChatOpenAI
 from dotenv import load_dotenv
 
 from mytools import *
@@ -41,6 +42,8 @@ parser = argparse.ArgumentParser(description='A chatbot that can use either the 
 # Add the arguments
 parser.add_argument('--agent', action='store_true', help='Use the agent functionality for real-time knowledge. Default is False', default=False)
 parser.add_argument('--local', action='store_true', help='Use local LLM - Ollama(openchat) or Groq. True for local and False for Groq. Default is False', default=False)
+parser.add_argument('--gpt', action='store_true', help='Use OpenAI gpt-3.5. Default is False', default=False)
+parser.add_argument('--gpt4', action='store_true', help='Use OpenAI gpt-4. Default is False', default=False)
 parser.add_argument('--gemini', action='store_true', help='Use gemini pro LLM. It does not work with the agent functionality for now as Gemini does not support System Messages. Default is False', default=False)
 parser.add_argument('--temp', action='store', help='Set the temperature for the LLM. Default is 0.0', default=0.0, type=float)
 parser.add_argument('--hist', action='store_true', help='Set the history for the LLM. Default is 2 messages', default=False)
@@ -76,8 +79,8 @@ if args.gmail == 'on':
 warnings.filterwarnings("ignore")
 
 #Set Langsmith functionality on 
-#os.environ["LANGCHAIN_TRACING_V2"] = "true"
-#os.environ["LANGCHAIN_PROJECT"] = "Apsara 2.0"
+os.environ["LANGCHAIN_TRACING_V2"] = "true"
+os.environ["LANGCHAIN_PROJECT"] = "Apsara 2.0"
 
 
 #Create LLM
@@ -85,13 +88,19 @@ def get_llm(temperature=0.5, local=True, groq_api_key: str = None):
     if local:
         llm = ChatOllama(model='openchat', temperature=args.temp, streaming=True, callbacks=[StreamingStdOutCallbackHandler()])
         return llm
-    # if args.hugging:
-        # llm = HuggingFaceEndpoint(repo_id='mistralai/Mixtral-8x7B-Instruct-v0.1',  max_new_tokens=2048)
-        # return llm                     
+    if args.hugging:
+        llm = HuggingFaceEndpoint(repo_id='mistralai/Mixtral-8x7B-Instruct-v0.1',  max_new_tokens=2048)
+        return llm                     
     if args.gemini:
         llm = ChatGoogleGenerativeAI(model='gemini-pro', api_key=os.environ.get('geminiv2'), temperature=temperature, callbacks=[StdOutCallbackHandler()])
         return llm 
     
+    if args.gpt:
+        llm = ChatOpenAI(model='gpt-3.5-turbo', temperature=args.temp, streaming=True, callbacks=[StreamingStdOutCallbackHandler()])
+        return llm 
+    if args.gpt4:
+        llm = ChatOpenAI(model='gpt-4', temperature=args.temp, streaming=True, callbacks=[StreamingStdOutCallbackHandler()])
+        return llm 
     llm = ChatGroq(api_key=groq_api_key,  streaming=True, temperature=args.temp, 
                        callbacks=[StreamingStdOutCallbackHandler()])
     return llm 
