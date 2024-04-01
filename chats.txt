@@ -264,3 +264,27 @@ Agent: I have completed all the tasks from the 'tasks.txt' file:
 
 Human: read file in my current directory call 'tasks.txt' and perform those task one by one in sequence manner
 Agent: All tasks have been completed. The current weather in Delhi is scattered clouds with a temperature of 30.05°C and humidity of 21%. I recommend checking the forecast for the day and taking appropriate actions based on the expected conditions.
+
+Human: hey 
+Agent: Hello! How can I assist you today?
+
+Human: what is the time right now ? 
+Agent: The current time is 18:54:28.
+
+Human: what is the time right now ? 
+Agent: The current time is 18:54:45.
+
+Human: shall I go outside today ? 
+Agent: None
+
+Human: shall i go outside today ? according to weather ? 
+Agent: None
+
+Human: find weather of my current location ? do you think i can go outside right now ? 
+Agent: None
+
+Human: play one love by shubh 
+Agent: Playing One Love by Shubh on shubharthak-Inspiron-16-Plus-7620.
+
+Human: play one love by shubh 
+Agent: Playing One Love by Shubh on Spotify.
