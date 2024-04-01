@@ -1,0 +1,266 @@
+Human: what is your name ? 
+Agent: Apsara AI
+
+Human: who is your owner and also tlel me your capibilities ? 
+Agent: The owner of this AI model is shubharthak. This AI model can perform a variety of tasks, such as: 
+- Calculations and mathematical operations. 
+- Searches using a search engine. 
+- Providing information from Wikipedia. 
+- Asking a human for guidance. 
+- Sending custom emails. 
+- Searching for specific email threads or messages. 
+- Creating email drafts. 
+- Fetching email messages. 
+- Finding Gmail IDs. 
+- Extracting dates from text. 
+- Creating calendar events. 
+- Checking upcoming events or meetings. 
+- Retrieving stock prices or financial news. 
+- Finding the current location. 
+- Getting weather details. 
+- Reading files. 
+- Writing or saving content in files. 
+- Providing the current date. 
+- Providing the current time. 
+- Playing songs on YouTube or Spotify. 
+- Restarting or shutting down the laptop. 
+- Checking battery percentage and charging status. 
+- Adjusting the volume. 
+- Pausing or resuming Spotify. 
+- Playing albums or artists on Spotify. 
+- Connecting or disconnecting Bluetooth devices. 
+- Finding available Bluetooth devices. 
+- Turning Bluetooth on or off. 
+- Sending WhatsApp messages. 
+- Setting alarms or timers.
+
+Human: tell me what is the date today ? 
+Agent: Today's date is 2024-03-31.
+
+Human: what have we discussed so far ? 
+Agent: So far, we have discussed the capabilities of your AI model, and I have provided the current date, which is 2024-03-31.
+
+Human: have I also asked you about the owner of the model ? 
+Agent: Yes, you asked if 'Your name is Apsara AI. Your owner is shubharthak.'.
+
+Human: what is the time right now ? 
+Agent: The current time is 16:16:44.
+
+Human: tell me the time ?
+Agent: None
+
+Human: tell me the time 
+Agent: The current time is 16:21:33.
+
+Human: can you send mail to myself saying hey this is a test mail 
+Agent: Message sent. Message Id: 18e9423ce0fcf46e
+
+Human: get my gmail id and send a mail to me saying hey i am shubhi 
+Agent: None
+
+Human: hey send a mail to myself saying test message 
+Agent: I have sent a test email to your email address. Please check your inbox.
+
+Human: my id is shubharthaksangharsha@gmail.com 
+Agent: None
+
+Human: my id is shubharthaksangharsha@gmail.com
+Agent: None
+
+Human: send a mail to me please saying this is a test message 
+Agent: None
+
+Human: send a mail to me. get my mail 
+Agent: None
+
+Human: hey 
+Agent: None
+
+Human: hey 
+Agent: Hello! How can I assist you today?
+
+Human: hey 
+Agent: Hello! How can I assist you today?
+
+Human: can you send a mail to me my gmail id shubhrathaksangharsha@gmail.com
+Agent: None
+
+Human: what is 2 + 2 ? 
+Agent: None
+
+Human: send a test mail to shubharthaksangharsha 
+Agent: None
+
+Human: send a test mail to shubharthkasangharsha@gmail.com
+Agent: Email sent successfully to shubharthkasangharsha@gmail.com
+
+Human: create meeting for today at 10PM with pranchal018@gmail.com saying Test meeting 
+Agent: None
+
+Human: hi
+Agent: Hello! Hello, how can I help you today?
+
+Human: tell me your capabilities 
+Agent: I can perform a variety of tasks to assist you. I can answer questions by using a calculator, searching the web, or looking up information on Wikipedia. I can also ask a human for guidance if needed. I can send emails, search for specific email threads, create email drafts, and fetch emails by their ID. I can get the IDs of a user's Gmail accounts, get the date from a user's query, and create calendar events or meetings. I can get upcoming calendar events or meetings, find stock prices or financial news about a public company, and find the current weather of a location. I can read files, write or save tools, and get today's date or the current time. I can play songs on YouTube or Spotify, restart or shut down a laptop, check the battery percentage and charging status, increase or decrease the volume, mute or unmute the volume, open Spotify, and play, pause, or resume songs on Spotify. I can detect and connect to Bluetooth devices, set alarms or timers, and send WhatsApp messages using Selenium web driver.
+
+Human: tell me your capiblities in list format 
+Agent: Sure, here are my capabilities in list format:
+
+* Calculator: Perform mathematical calculations.
+* Search: Search for information on the internet.
+* Wikipedia: Retrieve information from Wikipedia.
+* Human: Ask for guidance or help from a human operator.
+* Send Gmail Message: Send an email message using Gmail.
+* Search Gmail: Search for emails or threads in Gmail.
+* Get Gmail Thread: Retrieve a specific Gmail thread.
+* Create Gmail Draft: Create a draft email in Gmail.
+* Get Gmail Message: Retrieve a specific Gmail message.
+* Get Gmail IDs: Get Gmail IDs for further actions.
+* Get Date: Extract date from a given text.
+* Create Event: Create a calendar event.
+* Get Events: Retrieve upcoming calendar events.
+* Yahoo Finance: Get stock price or financial news about a public company.
+* Mylocation: Get current location.
+* Openweather: Get weather details of a location.
+* Read File: Read a file from disk.
+* Write Save Tool: Write and save content to a file.
+* Get Today Date: Get today's date in the format of YYYY-MM-DD.
+* Get Current Time: Get the current time.
+* Play Youtube: Play a song on Youtube.
+* Restart Laptop: Restart the laptop.
+* Shutdown Laptop: Shutdown the laptop.
+* Check Battery: Check the current battery percentage and charging status.
+* Increase Volume: Increase the volume of the laptop.
+* Decrease Volume: Decrease the volume of the laptop.
+* Mute Volume: Mute the volume of the laptop.
+* Umute Volume: Unmute the volume of the laptop.
+* Open Spotify: Open Spotify on the user's device.
+* Play Spotify: Play a song on Spotify.
+* Detect Spotify Device: Detect the device ID for playing a song on Spotify.
+* Print Current Song Details: Print the details of the current song playing on Spotify.
+* Pause or Resume Spotify: Pause or resume the song on Spotify.
+* Play Album on Spotify: Play an album on Spotify.
+* Play Artist on Spotify: Play an artist on Spotify.
+* Connect Bluetooth Device: Connect to a Bluetooth device.
+* Disconnect Bluetooth Device: Disconnect from a Bluetooth device.
+* Bluetooth Available Devices: List available Bluetooth devices.
+* Turn On Bluetooth: Turn on Bluetooth.
+* Turn Off Bluetooth: Turn off Bluetooth.
+* Send Whatsapp Message: Send a Whatsapp message using Selenium web driver.
+* Set Alarm or Timer: Set an alarm or a timer with specified options.
+
+Human: create a beautiful Readme Markdown of your capibilities in a list format and save it in my_capibilities.md 
+Agent: Sure, I can help you create a beautiful README.md file that showcases the capabilities of your tool in a list format. Here's an example of what the markdown file might look like:
+```bash
+# My Tool Capabilities
+
+A list of capabilities of this tool:
+
+- **Calculator**: Perform mathematical calculations.
+- **Search**: Search for information on the internet.
+- **Wikipedia**: Get information from Wikipedia.
+- **Human**: Ask a human for help.
+- **Send Gmail Message**: Send an email message via Gmail.
+- **Search Gmail**: Search for emails or threads in Gmail.
+- **Get Gmail Thread**: Get a specific Gmail thread.
+- **Create Gmail Draft**: Create a draft email in Gmail.
+- **Get Gmail Message**: Get a specific Gmail message.
+- **Get Gmail IDs**: Get Gmail IDs for use in other Gmail/Calendar-related functions.
+- **Get Date**: Get the date from a user query.
+- **Create Event**: Create a Google Calendar event.
+- **Get Events**: Get upcoming Google Calendar events.
+- **Yahoo Finance**: Get stock prices or financial news about a public company.
+- **My Location**: Get the current location.
+- **OpenWeather**: Get weather details of any location.
+- **Read File**: Read a file from disk.
+- **Write Save Tool**: Write and save content to a file.
+- **Get Today Date**: Get today's date in the format of YYYY-MM-DD.
+- **Get Current Time**: Get the current time.
+- **Play YouTube**: Play songs on YouTube.
+- **Restart Laptop**: Restart the laptop.
+- **Shutdown Laptop**: Shutdown the laptop.
+- **Check Battery**: Check the current battery percentage and whether laptop battery is charging or not.
+- **Increase Volume**: Increase the volume of the laptop.
+- **Decrease Volume**: Decrease the volume of the laptop.
+- **Mute Volume**: Mute the volume of the laptop.
+- **Unmute Volume**: Unmute the volume of the laptop.
+- **Open Spotify**: Open Spotify on user laptop.
+- **Play Spotify**: Play a song on Spotify.
+- **Detect Spotify Device**: Get the device ID to play Spotify song.
+- **Print Current Song Details**: Find out the current song playing on Spotify.
+- **Pause or Resume Spotify**: Pause or resume the song on Spotify.
+- **Play Album on Spotify**: Play an album on Spotify.
+- **Play Artist on Spotify**: Play an artist on Spotify.
+- **Connect Bluetooth Device**: Connect to bluetooth device.
+- **Disconnect Bluetooth Device**: Disconnect from bluetooth device.
+- **Bluetooth Available Devices**: Find the available devices list of bluetooth devices.
+- **Turn On Bluetooth**: Turn on bluetooth.
+- **Turn Off Bluetooth**: Turn off bluetooth.
+- **Send WhatsApp Message**: Send WhatsApp messages using selenium web driver.
+- **Set Alarm or Timer**: Sets an alarm or a timer with specified options.
+```
+I can write this markdown file to a file named `my_capabilities.md` in the current working directory. Let me know if you have any questions or if there's anything else I can help you with!
+
+Human: there is a file present in current folder call tasks.txt. There are couple of tasks provided in the file. kindly perform them one by one meaning one at a time. 
+Agent: It seems there is no current song playing on your laptop. I will now proceed to the next task.
+
+
+
+Human: there is a file present in current folder call tasks.txt. There are couple of tasks provided in the file. kindly perform them one by one meaning one at a time. 
+Agent: Agent stopped due to iteration limit or time limit.
+
+Human: there is a file present in current folder call tasks.txt. There are couple of tasks provided in the file. kindly perform them one by one meaning one at a time. 
+Agent: The current song playing on your laptop is 'Feel It' by Michelle Morone.
+
+Human: there is a file present in current folder call tasks.txt. There are couple of tasks provided in the file. kindly perform them one by one meaning one at a time. 
+Agent: None
+Human: hey 
+AI: Hello! Welcome to our conversation. How can I assist you today? I'm here to help answer any questions you have to the best of my ability. Feel free to ask me about a wide range of topics, from general knowledge and science to literature and philosophy. I can also help you with tasks such as setting reminders or alarms, providing weather updates, and much more. What would you like to know or do?
+Human: there is a file present in current folder call tasks.txt. There are couple of tasks provided in the file. kindly perform them one by one meaning one at a time. 
+Agent: None
+
+Human: there is a file present in current folder call tasks.txt. There are couple of tasks provided in the file. kindly perform them one by one meaning one at a time. 
+Agent: None
+
+Human: tell me which song is playing right now ? 
+Agent: Okay, let me check what song is currently playing.
+
+Action:
+{
+  "action": "print_current_song_details",
+  "action_input": "song"
+}
+
+
+
+Human: check which song is playing right now ? 
+Agent: Action:
+{
+  "action": "print_current_song_details",
+  "action_input": "song"
+}
+
+
+
+Human: check which song is playing ? 
+Agent: The current song playing on your laptop is 'Aisa Main Shaitaan' by Raftaar from the album 'Shaitaan'.
+
+Human: read file in my current directory call 'tasks.txt' and perform those task one by one in sequence manner 
+Agent: None
+
+Human: read file in my current directory call 'tasks.txt' and perform those task one by one in sequence manner 
+Agent: None
+
+Human: read file in my current directory call 'tasks.txt' and perform those task one by one in sequence manner
+Agent: I have completed all the tasks from the 'tasks.txt' file:
+
+1. I checked the currently playing song on your laptop and played 'Bachke Bachke' by Karan Aujla on Spotify.
+
+2. I created a creative Physics poem and saved it in a file named 'physics_poem_by_aspara.txt' in the current directory, with a comment stating 'Created by Apsara2.0'.
+
+3. I sent an email to shubharthaksangharsha@gmail.com with the subject 'Test message from Apsara2.0' and message 'Hey this is a test message from apsara2.0'.
+
+4. I checked the weather for Delhi and based on the scattered clouds, low humidity and lack of rain forecast, you do not need to take an umbrella when going outside.
+
+Human: read file in my current directory call 'tasks.txt' and perform those task one by one in sequence manner
+Agent: All tasks have been completed. The current weather in Delhi is scattered clouds with a temperature of 30.05°C and humidity of 21%. I recommend checking the forecast for the day and taking appropriate actions based on the expected conditions.

@@ -8,6 +8,7 @@ from langchain_core.callbacks import StreamingStdOutCallbackHandler, StdOutCallb
 from langchain_community.llms.huggingface_endpoint import HuggingFaceEndpoint
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_openai import ChatOpenAI
+from langchain_anthropic import ChatAnthropic
 from dotenv import load_dotenv
 
 from mytools import *
@@ -41,12 +42,12 @@ load_dotenv()
 parser = argparse.ArgumentParser(description='A chatbot that can use either the Groq API or a local LLM model using Ollama and openchat to generate responses. The chatbot has two main functionalities: it can use agents that have real-time knowledge using search and other advanced tools, or it can use a normal chatbot.')
 # Add the arguments
 parser.add_argument('--agent', action='store_true', help='Use the agent functionality for real-time knowledge. Default is False', default=False)
-parser.add_argument('--local', action='store_true', help='Use local LLM - Ollama(openchat) or Groq. True for local and False for Groq. Default is False', default=False)
-parser.add_argument('--gpt', action='store_true', help='Use OpenAI gpt-3.5. Default is False', default=False)
-parser.add_argument('--gpt4', action='store_true', help='Use OpenAI gpt-4. Default is False', default=False)
+parser.add_argument('--local', action='store', help='Which LLM model to use(openchat/mistral/mixtral/your-model-name). Make sure you installed ollama and ollama-server is running.', default='', type=str)
+parser.add_argument('--model', action='store', help='Which LLM model to use(groq/gpt4/gpt3.5/claude3-opus/claude3-haiku/claude3-sonnet/). Default is Groq', default='groq', type=str)
 parser.add_argument('--gemini', action='store_true', help='Use gemini pro LLM. It does not work with the agent functionality for now as Gemini does not support System Messages. Default is False', default=False)
-parser.add_argument('--temp', action='store', help='Set the temperature for the LLM. Default is 0.0', default=0.0, type=float)
-parser.add_argument('--hist', action='store_true', help='Set the history for the LLM. Default is 2 messages', default=False)
+parser.add_argument('--hugging', action='store_true', help='Use Hugging Face Mixtral Model. Default is False', default=False)
+parser.add_argument('--temp', action='store', help='Set the temperature for the LLM [0.0-1.0]. Default is 0.0', default=0.0, type=float)
+parser.add_argument('--hist', action='store_true', help='Set the history for the LLM. Default is False', default=False)
 parser.add_argument('--voice', action='store', help='Activate voice input by saying Apsara by passing on/off. Default is off', default='off', type=str)
 parser.add_argument('--gmail', action='store', help='Turn on/off Gmail tools for the LLM. Make sure you have credentials.json file. Default is off', default='off', type=str)
 
@@ -64,9 +65,9 @@ else:
     print("Using chain")
 
 if args.local:
-    print("Using local")
+    print("Using local llm")
 else:
-     print("Using Groq")
+    print('Using LLM:', args.model)
 
 print('Starting...')
 
@@ -85,8 +86,8 @@ os.environ["LANGCHAIN_PROJECT"] = "Apsara 2.0"
 
 #Create LLM
 def get_llm(temperature=0.5, local=True, groq_api_key: str = None):
-    if local:
-        llm = ChatOllama(model='openchat', temperature=args.temp, streaming=True, callbacks=[StreamingStdOutCallbackHandler()])
+    if args.local != '':
+        llm = ChatOllama(model=args.local, temperature=args.temp, streaming=True, callbacks=[StreamingStdOutCallbackHandler()])
         return llm
     if args.hugging:
         llm = HuggingFaceEndpoint(repo_id='mistralai/Mixtral-8x7B-Instruct-v0.1',  max_new_tokens=2048)
@@ -94,14 +95,24 @@ def get_llm(temperature=0.5, local=True, groq_api_key: str = None):
     if args.gemini:
         llm = ChatGoogleGenerativeAI(model='gemini-pro', api_key=os.environ.get('geminiv2'), temperature=temperature, callbacks=[StdOutCallbackHandler()])
         return llm 
-    
-    if args.gpt:
+    #parser.add_argument('--model', action='store', help='Which LLM model to use(groq/gpt4/gpt3.5/claude3-opus/claude3-haiku/claude3-sonnet/). Default is groq', default='groq', type=str)
+    if args.model == 'gpt3.5':
         llm = ChatOpenAI(model='gpt-3.5-turbo', temperature=args.temp, streaming=True, callbacks=[StreamingStdOutCallbackHandler()])
         return llm 
-    if args.gpt4:
+    if args.model == 'gpt4':
         llm = ChatOpenAI(model='gpt-4', temperature=args.temp, streaming=True, callbacks=[StreamingStdOutCallbackHandler()])
         return llm 
-    llm = ChatGroq(api_key=groq_api_key,  streaming=True, temperature=args.temp, 
+    if args.model == 'claude3-haiku':
+       llm = ChatAnthropic(model='claude-3-haiku-20240307', temperature=args.temp, streaming=True, callbacks=[StreamingStdOutCallbackHandler()])
+       return llm 
+    if args.model == 'claude3-sonnet':
+        llm = ChatAnthropic(model='claude-3-sonnet-20240229', temperature=args.temp, streaming=True, callbacks=[StreamingStdOutCallbackHandler()])
+        return llm 
+    if args.model == 'claude3-opus':
+        llm = ChatAnthropic(model='claude-3-opus-20240229', temperature=args.temp, streaming=True, callbacks=[StreamingStdOutCallbackHandler()])
+        return llm    
+    
+    llm = ChatGroq(model = 'mixtral-8x7b-32768',api_key=groq_api_key,  streaming=True, temperature=args.temp, 
                        callbacks=[StreamingStdOutCallbackHandler()])
     return llm 
 
@@ -165,8 +176,8 @@ def create_agent():
     tools.append(send_whatsapp_message)
 
     #Launch app tool 
-    tools.append(get_installed_applications)
-    tools.append(launch_app_tool)
+    #tools.append(get_installed_applications)
+    #tools.append(launch_app_tool)
 
     #Alarm/Timer tool 
     tools.append(set_alarm_or_timer)
@@ -182,7 +193,7 @@ def create_agent():
            "chat-zero-shot-react-description", "chat-conversational-react-description", 
            "structured-chat-zero-shot-react-description"]
         agent = initialize_agent(tools=tools, llm=llm, agent=AgentType(agents[-1]),
-        max_iterations=10,
+        max_iterations=100,
         verbose=True, 
         handle_parsing_errors=True)
         return agent  

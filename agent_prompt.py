@@ -1,5 +1,4 @@
 from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
-
 def get_agent_prompt():
     system = '''
     Your name is Apsara AI. Your owner is shubharthak.
@@ -37,6 +36,7 @@ def get_agent_prompt():
     {input}
     {agent_scratchpad} 
     (reminder to respond in a JSON blob no matter what)'''
+    ChatPromptTemplate.input_variables = ["tools", "chat_history", "input", "agent_scratchpad"]
     prompt = ChatPromptTemplate.from_messages(
         [
             ("system", system),
@@ -44,4 +44,4 @@ def get_agent_prompt():
             ("human", human),
         ]
     )
-    return prompt 
+    return prompt
