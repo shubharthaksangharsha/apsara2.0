@@ -13,7 +13,7 @@ Apsara 2.0 seamlessly transitions between the roles of a traditional chatbot and
 
 ## Video Demo
 
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/bwbyG1cV1PA/0.jpg)](https://www.youtube.com/watch?v=bwbyG1cV1PA)
+[![Apsara2.0 Demo Preview](https://img.youtube.com/vi/bwbyG1cV1PA/0.jpg)](https://www.youtube.com/embed/bwbyG1cV1PA)
 
 ## Features
 
