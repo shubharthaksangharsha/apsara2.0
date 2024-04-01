@@ -41,13 +41,15 @@ import struct
 #Load environment variables 
 load_dotenv()
 
-parser = argparse.ArgumentParser(description='A chatbot that can use either the Groq API or a local LLM model using Ollama and openchat to generate responses. The chatbot has two main functionalities: it can use agents that have real-time knowledge using search and other advanced tools, or it can use a normal chatbot.')
+parser = argparse.ArgumentParser(description='''
+
+Apsara 2.0: Advanced AI assistant project utilizing cloud-sourced LLM models or local options. Seamlessly switch between real-time knowledge access via agents (Enjoy additional functionalities like playing songs and more through agents for an enhanced user experience.) or traditional chatbot interactions. Customize LLM models and enable features such as voice input and Gmail tools integration for enhanced functionality.''')
 # Add the arguments
 parser.add_argument('--agent', action='store_true', help='Use the agent functionality for real-time knowledge. Default is False', default=False)
 parser.add_argument('--local', action='store', help='Which LLM model to use(openchat/mistral/mixtral/your-model-name). Make sure you installed ollama and ollama-server is running.', default='', type=str)
 parser.add_argument('--model', action='store', help='Which LLM model to use(groq/gpt4/gpt3.5/claude3-opus/claude3-haiku/claude3-sonnet/gemini-pro). Note: for gemini-pro use --hist is necessary. Default is Groq', default='groq', type=str)
 parser.add_argument('--hugging', action='store_true', help='Use Hugging Face Mixtral Model. Default is False', default=False)
-parser.add_argument('--temp', action='store', help='Set the temperature for the LLM [0.0-1.0]. Default is 0.0', default=0.0, type=float)
+parser.add_argument('--temp', action='store', help='Set the temperature for the LLM [0.0-1.0]. Default is 0.001(to avoid 1e7 value)', default=0.001, type=float)
 parser.add_argument('--hist', action='store_true', help='Set the history for the LLM. Default is False', default=False)
 parser.add_argument('--voice', action='store', help='Activate voice input by saying Apsara by passing on/off. Default is off', default='off', type=str)
 parser.add_argument('--gmail', action='store', help='Turn on/off Gmail tools for the LLM. Make sure you have credentials.json file. Default is off', default='off', type=str)
@@ -109,7 +111,7 @@ def get_llm(temperature=0.5, local=True, groq_api_key: str = None):
         llm = ChatAnthropic(model='claude-3-opus-20240229', temperature=args.temp, streaming=True, callbacks=[StreamingStdOutCallbackHandler()])
         return llm    
     if args.model == 'gemini-pro':
-        llm = ChatGoogleGenerativeAI(model='gemini-pro', api_key=os.environ.get('geminiv2'), temperature=temperature,convert_system_message_to_human=True, callbacks=[StdOutCallbackHandler()])
+        llm = ChatGoogleGenerativeAI(model='gemini-pro', stream=True,api_key=os.environ.get('geminiv2'), temperature=temperature,convert_system_message_to_human=True, callbacks=[StdOutCallbackHandler()], max_output_tokens=2048)
         return llm 
     llm = ChatGroq(model = 'mixtral-8x7b-32768',api_key=groq_api_key,  streaming=True, temperature=args.temp, 
                        callbacks=[StreamingStdOutCallbackHandler()])
