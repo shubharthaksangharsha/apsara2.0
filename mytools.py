@@ -23,7 +23,7 @@ import subprocess
 from langchain_community.tools.shell import ShellTool
 from langchain_community.agent_toolkits import PlayWrightBrowserToolkit
 from langchain_community.tools.playwright.utils import create_sync_playwright_browser
-from langchain_community.tools.google_cloud import GoogleCloudTextToSpeechTool #TODO
+#from langchain_community.tools.google_cloud import GoogleCloudTextToSpeechTool #TODO
 
 #Load environment variables 
 load_dotenv()
