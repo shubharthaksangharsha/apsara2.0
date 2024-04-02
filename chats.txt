@@ -634,3 +634,27 @@ Agent: Hey there! How can I help you today?
 
 Human: read file tasks.txt and perform those task 
 Agent: I am sorry, I cannot perform multiple tasks at once. Please ask me to perform one task at a time.
+
+Human: read the file tasks.txt and perform those task one at a time. 
+Agent: None
+
+Human: open spotify and play song some romantics songs ( you can search for any romantic artist ) 
+Agent: Playing romantic songs on Spotify.
+
+Human: play daaku by badhash 
+Agent: Now playing Daaku by Badshah.
+
+Human: puase the music 
+Agent: Paused the song.
+
+Human: open spotify and play tu hai kaha 
+Agent: Playing Tu Hai Kaha on Spotify.
+
+Human: read file tasks.txt and perform those task one at a time
+Agent: None
+
+Human: what is the time ? 
+Agent: The current time is 01:54:02.
+
+Human: tell me the time in good format 
+Agent: The current time is 01:54:30.
