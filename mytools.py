@@ -1,10 +1,15 @@
 from langchain.agents import Tool
 import os 
 from typing import List, Optional
+from tempfile import TemporaryDirectory
+from langchain_community.agent_toolkits import FileManagementToolkit
+working_directory = TemporaryDirectory()
+
+
 from langchain_community.tools.file_management.read import ReadFileTool
 from langchain_community.tools.file_management.write import WriteFileTool
 from langchain_community.utilities.python import PythonREPL
-from langchain_experimental.tools import PythonAstREPLTool, PythonREPLTool
+from langchain_experimental.tools import  PythonREPLTool
 from langchain_community.utilities.openweathermap import OpenWeatherMapAPIWrapper
 from langchain.tools import tool
 from langchain_community.tools import DuckDuckGoSearchRun #requires internet
@@ -15,11 +20,25 @@ import requests
 from geopy.geocoders import Nominatim
 from dotenv import load_dotenv
 import subprocess
-
+from langchain_community.tools.shell import ShellTool
+from langchain_community.agent_toolkits import PlayWrightBrowserToolkit
+from langchain_community.tools.playwright.utils import create_sync_playwright_browser
+from langchain_community.tools.google_cloud import GoogleCloudTextToSpeechTool #TODO
 
 #Load environment variables 
 load_dotenv()
 
+#File management tool 
+toolkit = FileManagementToolkit() 
+file_tools = toolkit.get_tools()
+
+#Shell tool 
+shell_tool = ShellTool()
+
+#Playwright tool 
+sync_browser = create_sync_playwright_browser()
+toolkit = PlayWrightBrowserToolkit.from_browser(sync_browser=sync_browser)
+playwright_tools = toolkit.get_tools()
 
 #Get all apps installed
 @tool
@@ -154,10 +173,9 @@ weather_tool = Tool(
 )
 
 # Python Repl Tool
-python_tool = Tool(
-    name='python-repl', 
-    func=PythonREPL().run,
-    description='useful to execute python code.')
+python_tool = PythonREPLTool()
+
+#Playwright Tool 
 
 #search tool 
 #requires internet

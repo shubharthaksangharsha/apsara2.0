@@ -150,7 +150,13 @@ def create_agent():
     #Weather tools
     tools.append(mylocation), tools.append(weather_tool)
     #Read and write tools
-    tools.append(read_tool), tools.append(write_save_tool), 
+    # tools.append(read_tool), tools.append(write_save_tool), 
+    #File tools 
+    tools.extend(file_tools)
+    #Shell tool 
+    tools.append(shell_tool)
+    #Playwright tool 
+    tools.extend(playwright_tools)
     #Get today date and time tool
     tools.append(get_today_date), tools.append(get_current_time)
     #Play on youtube tool
@@ -164,7 +170,7 @@ def create_agent():
     tools.append(print_current_song_details), tools.append(pause_or_resume_spotify)
     tools.append(play_album_on_spotify), tools.append(play_artist_on_spotify)
     #Python tool
-    # tools.append(python_tool)
+    tools.append(python_tool)
     #Internal Knowledge tool 
     #tools.append(internal_knowledge_tool) 
     

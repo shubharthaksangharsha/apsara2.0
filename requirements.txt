@@ -25,3 +25,5 @@ google-search-results
 google-api-python-client
 langchain-anthropic
 langchain_openai
+playwright 
+lxml
