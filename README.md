@@ -32,13 +32,15 @@ Apsara 2.0 seamlessly transitions between the roles of a traditional chatbot and
     - Search any Finance News using Yahoo Finance
     - Creating or Checking upcoming Meetings
     - Checking the weather
-    - Reading and writing files
+    - Perform file management operations like read, write, list, find, delete, copy and move
     - Restarting or shutting down your laptop
     - Adjusting volume
     - Connecting and disconnecting Bluetooth devices
     - Sending Whatsapp message to any contact
     - Set Alarm or Timer
     - Checking battery status
+    - Navigate to websites and extract text, elements, hyperlinks
+    - Can even run shell scripts or python codes using Python-Interpreter and Shell tool respectively. 
     - Providing information on various topics
     - And much more!
 
