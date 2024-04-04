@@ -31,4 +31,4 @@ subprocess.run(["pip", "install", "-r", "requirements.txt"], check=True)
 
 #Playwright 
 subprocess.run(["playwright", "install"], check=True)
-subprocess.run(["playwright", "install-deps"], check=True)     ║
+subprocess.run(["playwright", "install-deps"], check=True)    

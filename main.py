@@ -47,7 +47,7 @@ Apsara 2.0: Advanced AI assistant project utilizing cloud-sourced LLM models or 
 # Add the arguments
 parser.add_argument('--agent', action='store_true', help='Use the agent functionality for real-time knowledge. Default is False', default=False)
 parser.add_argument('--local', action='store', help='Which LLM model to use(openchat/mistral/mixtral/your-model-name). Make sure you installed ollama and ollama-server is running.', default='', type=str)
-parser.add_argument('--model', action='store', help='Which LLM model to use(groq/gpt4/gpt3.5/claude3-opus/claude3-haiku/claude3-sonnet/gemini-pro). Note: for gemini-pro use --hist is necessary. Default is Groq', default='groq', type=str)
+parser.add_argument('--model', action='store', help='Which LLM model to use(groq/gpt4/gpt3.5/claude3-opus/claude3-haiku/claude3-sonnet/gemini-pro). Default is Groq', default='groq', type=str)
 parser.add_argument('--hugging', action='store_true', help='Use Hugging Face Mixtral Model. Default is False', default=False)
 parser.add_argument('--temp', action='store', help='Set the temperature for the LLM [0.0-1.0]. Default is 0.001(to avoid 1e7 value)', default=0.001, type=float)
 parser.add_argument('--hist', action='store_true', help='Set the history for the LLM. Default is False', default=False)

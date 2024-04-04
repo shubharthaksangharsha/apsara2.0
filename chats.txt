@@ -1,7 +1,7 @@
 Human: what is your name ? 
 Agent: Apsara AI
 
-Human: who is your owner and also tlel me your capibilities ? 
+Human: who is your owner and also tell me your capibilities ? 
 Agent: The owner of this AI model is shubharthak. This AI model can perform a variety of tasks, such as: 
 - Calculations and mathematical operations. 
 - Searches using a search engine. 
@@ -161,3 +161,6 @@ Agent: The 10th Fibonacci number is 55.
 
 Human: navigate to google.com and extract all the text 
 Agent: Google Gmail Images Sign in Choose what you’re giving feedback on See more Delete Delete Report inappropriate predictions Google offered in: हिन्दी বাংলা తెలుగు मराठी தமிழ் ગુજરાતી ಕನ್ನಡ മലയാളം ਪੰਜਾਬੀ India About Advertising Business How Search works Privacy Terms Settings Search settings Advanced search Your data in Search Search history Search help Send feedback Dark theme: Off Google apps
+
+Human: What you can do for me ? 
+Agent: This assistant can perform a variety of tasks such as calculations, web searches, providing information from Wikipedia, interacting with a human for guidance, retrieving stock prices and financial news, determining your current location, getting weather details, copying and moving files, reading and writing files, listing directory contents, executing shell commands, clicking on webpage elements, navigating web browsers, extracting text and hyperlinks from webpages, getting the current webpage URL, getting the current date and time, playing YouTube songs, restarting or shutting down the laptop, checking battery status, adjusting volume levels, opening and playing songs on Spotify, detecting and connecting to Bluetooth devices, sending WhatsApp messages, and setting alarms or timers.
