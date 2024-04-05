@@ -11,9 +11,12 @@ Whereas ApsaraAI operated on a beta release, relying solely on rule-based keywor
 Apsara 2.0 seamlessly transitions between the roles of a traditional chatbot and an agent with real-time access to knowledge through advanced search functionalities and other sophisticated tools. Whether you seek casual conversation or require instant access to information, Apsara 2.0 is equipped to meet your needs with unparalleled efficiency and precision.
 
 
-## Video Demo
+## Demo Video
 
-[![Apsara2.0 Demo Preview](https://img.youtube.com/vi/bwbyG1cV1PA/0.jpg)](https://www.youtube.com/embed/bwbyG1cV1PA)
+![](https://github.com/shubharthaksangharsha/apsara2.0/blob/main/apsara-demo.gif)
+**The above video was a showcase of using `GROQ-Mixtral-8x7b` model to complete the `tasks.txt` file by an single-line prompt.**
+
+
 
 ## Apsara created her website
 
