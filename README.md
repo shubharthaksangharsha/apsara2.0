@@ -15,6 +15,21 @@ Apsara 2.0 seamlessly transitions between the roles of a traditional chatbot and
 
 [![Apsara2.0 Demo Preview](https://img.youtube.com/vi/bwbyG1cV1PA/0.jpg)](https://www.youtube.com/embed/bwbyG1cV1PA)
 
+## Apsara created her website
+
+![](https://github.com/shubharthaksangharsha/apsara2.0/blob/main/apsara-created-her-website.gif)
+
+The above website created by Apsara herself, by using `claude3-sonnet` and `GROQ-mixtral`. 
+
+**The prompt was as follows**
+
+Perform the following task in serial manner meaning perform them one at a time. 
+1. Read the file README.md in current directory. 
+2. Understand README.md well and then move to next task 
+3. Now, Create 3 files index.html, style.css, and script.js file using the before task information about Apsara2.0. Make sure to amke it beautiful UI and the content should be filled meaning the index.html file should have a full page content. 
+4. Add an matrix background in the website, you can search if you want for the background or navigate to it. Make sure the background should be matrix code background. 
+5. Sumarize everything you did till now!
+
 ## Features
 
 - **Agents with Real-Time Knowledge**: Apsara 2.0 leverages agents to access and process information in real-time, enabling it to provide more accurate and up-to-date responses.
