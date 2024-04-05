@@ -22,7 +22,7 @@ Apsara 2.0 seamlessly transitions between the roles of a traditional chatbot and
 
 ![](https://github.com/shubharthaksangharsha/apsara2.0/blob/main/apsara-created-her-website.gif)
 
-The above website created by Apsara herself, by using `claude3-sonnet` and `GROQ-mixtral`. 
+**The above website created by Apsara herself, by using `claude3-sonnet` and `GROQ-mixtral`. **
 
 **The prompt was as follows**
 
