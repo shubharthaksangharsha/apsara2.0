@@ -113,8 +113,8 @@ def get_llm(temperature=0.5, local=True, groq_api_key: str = None):
     if args.model == 'gemini-pro':
         llm = ChatGoogleGenerativeAI(model='gemini-pro', stream=True,api_key=os.environ.get('geminiv2'), temperature=temperature,convert_system_message_to_human=True, callbacks=[StdOutCallbackHandler()], max_output_tokens=2048)
         return llm 
-    llm = ChatGroq(model = 'mixtral-8x7b-32768',api_key=groq_api_key,  streaming=True, temperature=args.temp, 
-                       callbacks=[StreamingStdOutCallbackHandler()])
+    llm = ChatGroq(model = 'mixtral-8x7b-32768',api_key=groq_api_key,  streaming=True, temperature=args.temp,
+                    callbacks=[StreamingStdOutCallbackHandler()])
     return llm 
 
 #Create Chain 
@@ -136,7 +136,8 @@ def clear_history():
     history = []
 
 def create_agent():
-    tools = load_tools(["llm-math", 'serpapi', 'wikipedia', 'human'], llm=llm)
+    # tools = load_tools(["llm-math", 'serpapi', 'wikipedia', 'human'], llm=llm)
+    tools = load_tools(["human", "serpapi"], llm=llm)
     #Search tools 
     #tools.append(search_tool), 
     if args.gmail == 'on':
@@ -146,48 +147,48 @@ def create_agent():
       #Calendar tools 
       tools.append(get_date), tools.append(create_event), tools.append(get_events)
     #Yahoo Finance Tool
-    tools.append(yfinance_tool)
+    # tools.append(yfinance_tool)
     #Weather tools
-    tools.append(mylocation), tools.append(weather_tool)
+    # tools.append(mylocation), tools.append(weather_tool)
     #Read and write tools
     # tools.append(read_tool), tools.append(write_save_tool), 
     #File tools 
     tools.extend(file_tools)
     #Shell tool 
-    tools.append(shell_tool)
+    # tools.append(shell_tool)
     #Playwright tool 
-    tools.extend(playwright_tools)
+    # tools.extend(playwright_tools)
     #Get today date and time tool
-    tools.append(get_today_date), tools.append(get_current_time)
+    # tools.append(get_today_date), tools.append(get_current_time)
     #Play on youtube tool
-    tools.append(play_youtube)
+    # tools.append(play_youtube)
     #Utility tools 
     #TODO -> tools.append(find_or_ring_phone)
-    tools.append(restart_laptop), tools.append(shutdown_laptop), tools.append(check_battery)
-    tools.append(increase_volume), tools.append(decrease_volume), tools.append(mute_volume), tools.append(umute_volume)
+    # tools.append(restart_laptop), tools.append(shutdown_laptop), tools.append(check_battery)
+    # tools.append(increase_volume), tools.append(decrease_volume), tools.append(mute_volume), tools.append(umute_volume)
     #Spotify tools 
-    tools.append(open_spotify), tools.append(play_spotify), tools.append(detect_spotify_device), 
-    tools.append(print_current_song_details), tools.append(pause_or_resume_spotify)
-    tools.append(play_album_on_spotify), tools.append(play_artist_on_spotify)
+    # tools.append(open_spotify), tools.append(play_spotify), tools.append(detect_spotify_device), 
+    # tools.append(print_current_song_details), tools.append(pause_or_resume_spotify)
+    # tools.append(play_album_on_spotify), tools.append(play_artist_on_spotify)
     #Python tool
-    tools.append(python_tool)
+    # tools.append(python_tool)
     #Internal Knowledge tool 
     #tools.append(internal_knowledge_tool) 
     
     #Bluetooth tools 
-    tools.append(connect_bluetooth_device), tools.append(disconnect_bluetooth_device)
-    tools.append(bluetooth_available_devices)
-    tools.append(turn_on_bluetooth), tools.append(turn_off_bluetooth)
+    # tools.append(connect_bluetooth_device), tools.append(disconnect_bluetooth_device)
+    # tools.append(bluetooth_available_devices)
+    # tools.append(turn_on_bluetooth), tools.append(turn_off_bluetooth)
 
     #Whatsapp tool 
-    tools.append(send_whatsapp_message)
+    # tools.append(send_whatsapp_message)
 
     #Launch app tool 
     #tools.append(get_installed_applications)
     #tools.append(launch_app_tool)
 
     #Alarm/Timer tool 
-    tools.append(set_alarm_or_timer)
+    # tools.append(set_alarm_or_timer)
     
     if args.hist:    
         if args.model == 'gemini-pro':

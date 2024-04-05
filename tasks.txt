@@ -1,6 +1,8 @@
-Perform the following tasks one by one meaning in serial manner:-
+Perform the following tasks one by one meaning in serial manner make sure to append the task you do to this file:-
 1. Check which song is playing on my laptop and play 'Bachke Bachke'.
 2. Create an creative Physics poem and save it on my current folder with a name 'physics_poem_by_aspara.txt'. Make sure to Write a comment in starting that states: "Created by Apsara2.0" 
 3. Send a mail to myself saying 'Hey this is an test message from apsara2.0'. My email id shubharthaksangharsha@gmail.com
 4. Search about current prime minister of India and his age.
-5. Sumarise everything you did till now. 
+5. Create a calendar meeting for today at 10AM with attendee only as shubharthaksangharsha@gmail.com 
+6. Tell me the weather of my current location at should I wear winter clothes or summer clothes ? 
+7. Sumarise everything you did till now. 

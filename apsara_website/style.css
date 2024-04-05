@@ -1,0 +1,124 @@
+/* Reset styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body styles */
+body {
+    background: black; /* Set the background color to black */
+    color: white; /* Set the default text color to white */
+}
+
+/* Canvas styles */
+canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1; /* Ensure the canvas appears behind other elements */
+}
+
+/* Header styles */
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1.5rem;
+}
+
+/* Heading styles */
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    text-align: center; /* Center align header text */
+}
+
+/* Main content styles */
+main {
+    max-width: 960px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+/* Section styles */
+section {
+    margin-bottom: 2rem;
+}
+
+h6 {
+    
+    text-align: center;
+}
+/* Heading styles */
+h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+/* List styles */
+ul, ol {
+    margin-left: 1.5rem;
+}
+
+/* List item styles */
+li {
+    margin-bottom: 0.5rem;
+}
+
+/* Code styles */
+code {
+    background-color: green;
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+}
+
+/* Call-to-action button styles */
+.cta-button {
+    display: inline-block;
+    background-color: black;
+    color: green;
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    margin-top: 1rem;
+}
+
+.cta-button:hover {
+    background-color: darkgreen;
+}
+
+/* Footer styles */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem;
+}
+
+/* Footer link styles */
+footer a {
+    color: #fff;
+    text-decoration: none;
+    padding: 1rem;
+}
+
+
+
+/* GitHub icon link styles */
+.github {
+    background-image: url('https://cdn-icons-png.flaticon.com/512/25/25231.png');
+}
+
+/* Footer content container styles */
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/* Footer link styles */
+a[href*="shubharthak"] {
+    color: green; /* Set the footer link color to green for links containing "shubharthak" */
+}
+
+
