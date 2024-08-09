@@ -27,3 +27,4 @@ langchain-anthropic
 langchain_openai
 playwright 
 lxml
+yfinance

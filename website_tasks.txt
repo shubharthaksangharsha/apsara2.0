@@ -1,6 +1,6 @@
 Perform the following task in serial manner meaning perform them one at a time. 
 1. Read the file README.md in current directory. 
 2. Understand README.md well and then move to next task 
-3. Now, Create 3 files index.html, style.css, and script.js file using the before task information about Apsara2.0. Make sure to amke it beautiful UI and the content should be filled meaning the index.html file should have a full page content. 
+3. Now, Create 3 files index.html, style.css, and script.js file using the before task information about Apsara2.0. Make sure to make it beautiful UI and the content should be filled meaning the index.html file should have a full page content. 
 4. Add an matrix background in the website, you can search if you want for the background or navigate to it. Make sure the background should be matrix code background. 
 5. Sumarize everything you did till now!

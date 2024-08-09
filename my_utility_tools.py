@@ -8,6 +8,7 @@ import subprocess
 
 
 
+
 #function to get bluetooth devices list 
 def bluetooth_list() -> list:
     '''

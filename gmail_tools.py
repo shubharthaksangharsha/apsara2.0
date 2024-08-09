@@ -44,10 +44,10 @@ get_thread = GmailGetThread(api_resource=get_gmail_credential())
 def get_gmail_ids(check: bool=True) -> dict: 
     '''
     #ALWAYS USE THIS TOOL FIRST TO BEFORE USING ANY GMAIL/CALENDAR TOOL.
+    use this tool when you want to find gmail id of a user if not mentioned. 
     Use this tool as begining of ANY TOOL RELATED TO MAIL/ CALENDAR-RELATED FUNCTIONS. 
     It is recommended to use this function before utilizing any Google/Gmail/Calendar-related functions to ensure that the required Gmail IDs are available.
     useful to get gmail ids.
-    use this tool when you want to find gmail id of a user if not mentioned. 
     check: bool = True. Uses just for safety purposes so that it won't run into errors 
     Returns: dict of gmail ids 
     '''
@@ -62,6 +62,7 @@ def get_gmail_ids(check: bool=True) -> dict:
 def get_date(text: str ) -> datetime.date:
     '''
     Useful to to get date for setting calendar meeting/events. 
+    USE THIS TOOL FIRST WHEN CREATING MEETINGS/EVENTS
     text: str: query of the user from which date will be extracted. 
     Use this tool first to get the calendar meeting then use the output of the tool as an input parameter of `date` to create_event tool. 
     returns datetime.date 

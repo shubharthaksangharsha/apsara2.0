@@ -6,7 +6,7 @@ import psutil as ps
 import pandas as pd 
 import spotipy as sp 
 from spotipy import SpotifyOAuth
-#import pywhatkit #require net and GUI too 
+import pywhatkit #require net and GUI too 
 import time 
 
 
@@ -158,8 +158,8 @@ def play_youtube(song_name: str):
     song_name:str - Song name of user wants to play 
     Play song_name for user. Use when user wants to play any song on Youtube. 
     '''
-    #pywhatkit.playonyt(song_name)
-    return f"Playing {song_name} on Youtube"
+    pywhatkit.playonyt(song_name)
+    return f"Played {song_name} on Youtube"
 
 ##Get Spotify Song playing 
 def print_current_song_func() -> str:

@@ -8,7 +8,8 @@ working_directory = TemporaryDirectory()
 
 from langchain_community.tools.file_management.read import ReadFileTool
 from langchain_community.tools.file_management.write import WriteFileTool
-from langchain_community.utilities.python import PythonREPL
+# from langchain_community.utilities.python import PythonREPL
+from langchain_experimental.utilities.python import PythonREPL
 from langchain_experimental.tools import  PythonREPLTool
 from langchain_community.utilities.openweathermap import OpenWeatherMapAPIWrapper
 from langchain.tools import tool
@@ -36,9 +37,9 @@ file_tools = toolkit.get_tools()
 shell_tool = ShellTool()
 
 #Playwright tool 
-sync_browser = create_sync_playwright_browser()
-toolkit = PlayWrightBrowserToolkit.from_browser(sync_browser=sync_browser)
-playwright_tools = toolkit.get_tools()
+#sync_browser = create_sync_playwright_browser()
+#toolkit = PlayWrightBrowserToolkit.from_browser(sync_browser=sync_browser)
+#playwright_tools = toolkit.get_tools()
 
 #Get all apps installed
 @tool
@@ -113,19 +114,25 @@ def mylocation() -> str:
 
 #Internal Knowledge tool 
 @tool
-def internal_knowledge_tool(input: str = 'final answer', answer: str = 'unknown') -> str:
+def internal_knowledge_tool(input: str = 'final answer', answer: str = 'This is the answer') -> str:
     '''
-    Useful tool when already know the answer to the user query
-    input: str = 'final answer' - default value. It just serves as a safety purpose so that it won't run into any errors.
-    Return the final answer if you already knows the answer. Also, while returning it should treat the answer as final answer.
+    A tool to return a predefined answer when the response is already known.
+
+    Parameters:
+    input (str): A default parameter to ensure the function has an input. It can be used to pass context if needed.
+    answer (str): The answer to return when the tool is called. Defaults to a general placeholder answer.
+
+    Returns:
+    str: The predefined answer provided as input to the function.
     '''
-    return None 
+    return answer
+
     
 
 
 #Find Phone 
 @tool  
-def find_or_ring_phone(find: str = 'find'):
+def find_or_ring_phone(find: str = 'find') -> str:
     #requires internet
     #TODO
     '''
@@ -140,29 +147,27 @@ def find_or_ring_phone(find: str = 'find'):
     
 
 #Get Today Date 
-@tool
-def get_today_date():
+@tool 
+def get_today_date(check_date: bool =True) -> str:
     '''
     Useful when you want to find today's date in the format of YYYY-MM-DD.
+    check_date -> bool = True: for safety purpose so that it won't run into any errors.
+    return: str - today's date in the format of YYYY-MM-DD.
     Useful to get date for openweather api and other tools such as creating an meeting or event.
     '''
     date = datetime.datetime.today()
     return date.strftime("Date: %Y-%m-%d")
 
 @tool
-def get_current_time():
+def get_current_time(check_time: bool = True):
     """
     Function to get the current time.
-
+    check_time -> bool = True: 
+    return: str - Current time in the format 'HH:MM:SS'.
     Returns:
         str: Current time in the format 'HH:MM:SS'.
     """
     return datetime.datetime.now().strftime('%H:%M:%S')
-
-# Example usage:
-# current_time = get_current_time()
-# print("Current time:", current_time)
-
 
 #Weather Tool 
 #requires internet
@@ -216,7 +221,7 @@ def write_save_tool(file_path: str, content: str) -> str:
         return "Error: " + str(e)
 
 if __name__ == '__main__':
-    print(get_installed_applications())
+    pass 
     
 
     
