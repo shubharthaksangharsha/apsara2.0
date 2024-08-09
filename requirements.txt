@@ -28,3 +28,4 @@ langchain_openai
 playwright 
 lxml
 yfinance
+streamlit
