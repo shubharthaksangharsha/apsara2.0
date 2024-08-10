@@ -87,9 +87,10 @@ def launch_app_tool(app_name: str) -> str:
 
 #Get my location tool 
 @tool
-def mylocation() -> str:
+def mylocation(location: str=True) -> str:
     '''
     useful when you want to find your current location.
+    location:str = True. Use this parameter only for safe execution of the tool.
     return current location name.
     '''
     try:
@@ -101,7 +102,7 @@ def mylocation() -> str:
             latitude, longitude = location.split(',')
         else:
             print("Location not found.")
-            return None
+            return 'Location not found'
 
         # Reverse geocoding to get location name
         geoLoc = Nominatim(user_agent="GetLoc")
@@ -110,7 +111,7 @@ def mylocation() -> str:
 
     except Exception as e:
         print("Error occurred:", e)
-        return None
+        return f'Error occurred:, {e}'
 
 #Internal Knowledge tool 
 @tool

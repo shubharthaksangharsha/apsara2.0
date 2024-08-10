@@ -27,7 +27,7 @@ for package in apt_packages:
 for package in apt_packages[apt_packages.index('pulseaudio'):]:
     subprocess.run(["sudo", "apt-get", "install", "-y", package], check=True)
 # Install Python packages listed in requirements.txt using pip
-subprocess.run(["pip", "install", "-U", "-r", "requirements.txt"], check=True)
+subprocess.run(["pip", "install", "-r", "requirements.txt"], check=True)
 
 #Playwright 
 subprocess.run(["playwright", "install"], check=True)

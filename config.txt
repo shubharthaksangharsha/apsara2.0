@@ -1,0 +1,30 @@
+{
+  "provider": "Groq",
+  "model": "llama-3.1-70b-versatile",
+  "local_model": "",
+  "temperature": 0.0,
+  "history": false,
+  "tools": [
+    "Search",
+    "Gmail",
+    "Finance",
+    "Location",
+    "Weather",
+    "File Operations",
+    "Shell",
+    "Date and Time",
+    "Media",
+    "System",
+    "Volume Control",
+    "Python",
+    "Knowledge",
+    "Bluetooth",
+    "WhatsApp",
+    "Alarm",
+    "Screenshare",
+    "Note Taking",
+    "To-Do List"
+  ],
+  "agent": false,
+  "voice": false
+}

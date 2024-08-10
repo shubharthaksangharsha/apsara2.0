@@ -5,7 +5,7 @@ import warnings
 import json
 
 # Langchain imports
-from langchain.chains import ConversationChain
+from langchain.chains import ConversationChain, LLMChain
 from langchain_community.chat_models import ChatOllama
 from langchain_groq import ChatGroq
 from langchain.memory import ConversationBufferWindowMemory
@@ -78,7 +78,12 @@ def get_chain(llm=None, memory=None):
                                              
     Human: {question}
     AI:""")
-    return ConversationChain(llm=llm, memory=memory, prompt=prompt, input_key='question', verbose=False)
+    if memory:
+        print('memory', memory)
+        return ConversationChain(llm=llm, memory=memory, prompt=prompt, input_key='question', verbose=False)
+    else:
+        print('no memory')
+        return ConversationChain(llm=llm, memory=memory, prompt=prompt, input_key='question', verbose=False)
 
 def create_agent(llm, memory, selected_tools):
     tools = []
@@ -201,36 +206,35 @@ def voice_assistant(agent, memory, chain, porcupine, audio_stream, use_agent):
 
 def main():
     parser = argparse.ArgumentParser(description="Apsara 2.0 - Advanced AI Assistant")
-    parser.add_argument("--agent", action="store_true", help="Use Agent functionality")
-    parser.add_argument("--voice", action="store_true", help="Use Voice Assistant")
-    parser.add_argument("--provider", choices=["Google", "OpenAI", "Local(Ollama)", "Claude", "HuggingFace", "Groq"], default="Google", help="LLM Provider")
-    parser.add_argument("--model", help="LLM Model", default='gemini-1.5-flash')
-    parser.add_argument("--temperature", type=float, default=0.001, help="Temperature for LLM")
-    parser.add_argument("--history", action="store_true", help="Use conversation history")
-    parser.add_argument("--history_size", type=int, default=5, help="Size of conversation history")
-    parser.add_argument("--tools", nargs="+", default=[], help="Tools to use with the agent")
-
+    parser.add_argument("--config", action="store_true", help="Create or modify configuration")
     args = parser.parse_args()
 
+    if args.config or not os.path.exists('config.txt'):
+        from config import create_config
+        create_config()
+    
+    from config import load_config
+    config = load_config()
+
     # Set up memory
-    memory = ConversationBufferWindowMemory(k=args.history_size, return_messages=True, memory_key='chat_history')
+    memory = ConversationBufferWindowMemory(k=config.get('history_size', 5), return_messages=True, memory_key='chat_history') if config.get('history', False) else ConversationBufferWindowMemory(k=1, return_messages=True, memory_key='chat_history')
 
     # Set up LLM
-    llm = get_llm(temperature=args.temperature, provider=args.provider, model=args.model)
+    llm = get_llm(temperature=config['temperature'], provider=config['provider'], model=config['model'])
 
     # Set up chain or agent
-    if args.agent:
-        agent = create_agent(llm, memory, args.tools)
+    if config.get('agent', False):
+        agent = create_agent(llm, memory, config['tools'])
     else:
         chain = get_chain(llm=llm, memory=memory)
 
     # Voice assistant setup
-    if args.voice:
+    if config.get('voice', False):
         pico_key = os.environ.get('pico_key')
         porcupine = pvporcupine.create(access_key=pico_key, keyword_paths=['./apsara_keyword/ap-sara_en_linux_v2_2_0.ppn', './apsara_keyword/app-sara_en_linux_v2_2_0.ppn'])
         paudio = pyaudio.PyAudio()
         audio_stream = paudio.open(rate=porcupine.sample_rate, channels=1, format=pyaudio.paInt16, input=True, frames_per_buffer=porcupine.frame_length)
-        voice_assistant(agent if args.agent else None, memory, chain if not args.agent else None, porcupine, audio_stream, args.agent)
+        voice_assistant(agent if config.get('agent', False) else None, memory, chain if not config.get('agent', False) else None, porcupine, audio_stream, config.get('agent', False))
     else:
         # Text-based chat loop
         while True:
@@ -239,7 +243,7 @@ def main():
                 print("Goodbye!")
                 break
             try:
-                if args.agent:
+                if config.get('agent', False):
                     response = agent.invoke({'input': user_input})
                     answer = response['output']
                 else:
