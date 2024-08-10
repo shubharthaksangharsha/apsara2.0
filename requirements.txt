@@ -28,3 +28,5 @@ playwright
 lxml
 yfinance
 streamlit
+fpdf
+
