@@ -1,52 +1,53 @@
+I have access to a variety of tools that can help me answer your questions and complete tasks. Here are some examples:
 
-2024-07-22 19:47:59 - Sure, here's a table of tools and their use cases:
-
-| Tool | Use Case |
-|---|---| 
-| Search |  A search engine. Useful for when you need to answer questions about current events. Input should be a search query. |
-| send_gmail_message | Use this tool to send email messages. The input is the message, recipients. |
-| search_gmail | Use this tool to search for email messages or threads. The input must be a valid Gmail query. The output is a JSON list of the requested resource. |
-| get_gmail_thread | Use this tool to search for email messages. The input must be a valid Gmail query. The output is a JSON list of messages. |
-| create_gmail_draft | Use this tool to create a draft email with the provided message fields. |
-| get_gmail_message | Use this tool to fetch an email by message ID. Returns the thread ID, snippet, body, subject, and sender. |
-| get_gmail_ids | Use this tool when you want to find gmail id of a user if not mentioned. Use this tool as begining of ANY TOOL RELATED TO MAIL/ CALENDAR-RELATED FUNCTIONS. It is recommended to use this function before utilizing any Google/Gmail/Calendar-related functions to ensure that the required Gmail IDs are available. useful to get gmail ids. |
-| get_date | Useful to to get date for setting calendar meeting/events. USE THIS TOOL FIRST WHEN CREATING MEETINGS/EVENTS text: str: query of the user from which date will be extracted. Use this tool first to get the calendar meeting then use the output of the tool as an input parameter of `date` to create_event tool.  |
-| create_event | Useful when creating Google Calendar events or meetings. use gmail addresses of the people you want to invite from get_gmail_ids tool if the gmail id is not mentioned.  |
-| get_events | useful when to check upcoming google calendar events or meetings.  |
-| Yahoo Finance | useful when you want to find stock price or useful financial news about an public company. Input should takes an company ticker , use your knowledge to get the ticker value of any company.  |
-| mylocation | useful when you want to find your current location. |
-| openweather | useful to get weather details of any location. |
-| copy_file | Create a copy of a file in a specified location. |
-| file_delete | Delete a file. |
-| file_search | Recursively search for files in a subdirectory that match the regex pattern. |
-| move_file | Move or rename a file from one location to another. |
-| read_file | Read file from disk. |
-| write_file | Write file to disk. |
-| list_directory | List files and directories in a specified folder. |
-| terminal | Run shell commands on this Linux machine. |
-| get_today_date | Useful when you want to find today's date in the format of YYYY-MM-DD. |
-| get_current_time | Function to get the current time. |
-| play_youtube | useful to play songs on youtube. if spotify is not available then youtube is used.  |
-| restart_laptop | useful when you user ask to restart the laptop. |
-| shutdown_laptop | useful when you user ask to power off or shutdown the laptop. |
-| check_battery | useful when you need to find the current battery percentage and whether laptop battery is charging or not. |
-| increase_volume | useful when you user ask to increase the volume of laptop  |
-| decrease_volume | useful when you user ask to decrease the volume of laptop  |
-| mute_volume | useful when you user ask to mute the volume of laptop  |
-| umute_volume | useful when you user ask to unmute the volume of laptop  |
-| Python_REPL | A Python shell. Use this to execute python commands. Input should be a valid python command. If you want to see the output of a value, you should print it out with `print(...)`. |
-| internal_knowledge_tool | A tool to return a predefined answer when the response is already known. |
-| connect_bluetooth_device | useful when to connect to bluetooth device |
-| disconnect_bluetooth_device | useful when to disconnect to bluetooth device |
-| bluetooth_available_devices | useful when to find the available devices list of bluetooth devices use this tool to find the mac address of bluetooth device before connecting to bluetooth device |
-| turn_on_bluetooth | useful when to turn on bluetooth |
-| turn_off_bluetooth | useful when to turn off bluetooth |
-| send_whatsapp_message | useful when to send whatsapp messages using selenium web driver. |
-| set_alarm_or_timer | Sets an alarm or a timer with specified options. |
-| screenshare_tool | Useful when the user wants to ask any query regarding their screen. The user will ask a query related to their screen content, and you will answer based on what you see on the screen. The function will receive the content visible on the screen and you have to answer according to that content. |
-| note_taking_tool | This tool allows you to take notes and save them to a file. |
-| to_do_list_tool | This tool allows you to add tasks to a to-do list and save them to a file.
-2024-07-22 22:13:31 - Shubhi is best
-2024-07-22 22:15:33 - Shubhi is best
-2024-07-22 22:16:25 - Shubhi is best
-2024-08-09 20:30:40 - The user is interested in Groq AI inference technology, specifically the LPU, open source models Groq runs, and innovative AI applications powered by Groq. They are also interested in getting a free API key to start building.
+Search: Use this tool to find information on the web. For example, you could ask me "What is the capital of France?" and I would use the Search tool to find the answer.
+send_gmail_message: Use this tool to send email messages. For example, you could ask me "Send an email to shubharthak@example.com with the subject 'Meeting Reminder' and the message 'Don't forget our meeting tomorrow at 10am.'"
+search_gmail: Use this tool to search for email messages or threads. For example, you could ask me "Find emails from shubharthak@example.com with the subject 'Meeting Reminder'"
+get_gmail_thread: Use this tool to search for email messages. For example, you could ask me "Find emails from shubharthak@example.com with the subject 'Meeting Reminder'"
+create_gmail_draft: Use this tool to create a draft email with the provided message fields. For example, you could ask me "Create a draft email to shubharthak@example.com with the subject 'Meeting Reminder' and the message 'Don't forget our meeting tomorrow at 10am.'"
+get_gmail_message: Use this tool to fetch an email by message ID. Returns the thread ID, snippet, body, subject, and sender. For example, you could ask me "Get the email with message ID '1234567890'"
+get_gmail_ids: Use this tool to find gmail id of a user if not mentioned. Use this tool as begining of ANY TOOL RELATED TO MAIL/ CALENDAR-RELATED FUNCTIONS. It is recommended to use this function before utilizing any Google/Gmail/Calendar-related functions to ensure that the required Gmail IDs are available. For example, you could ask me "Get the gmail id of shubharthak"
+get_date: Useful to to get date for setting calendar meeting/events. Use this tool first to get the calendar meeting then use the output of the tool as an input parameter of date to create_event tool. For example, you could ask me "What is the date of next Friday?"
+create_event: Useful when creating Google Calendar events or meetings. use gmail addresses of the people you want to invite from get_gmail_ids tool if the gmail id is not mentioned. For example, you could ask me "Create a calendar event for tomorrow at 10am with the summary 'Meeting with shubharthak'"
+get_events: useful when to check upcoming google calendar events or meetings. For example, you could ask me "What are my events for tomorrow?"
+Yahoo Finance: useful when you want to find stock price or useful financial news about an public company. Input should takes an company ticker , use your knowledge to get the ticker value of any company. For example, you could ask me "What is the stock price of Google?"
+mylocation: useful when you want to find your current location. For example, you could ask me "Where am I?"
+openweather: useful to get weather details of any location. For example, you could ask me "What is the weather in London?"
+copy_file: Create a copy of a file in a specified location. For example, you could ask me "Copy the file 'myfile.txt' to the directory '/home/user/documents'"
+file_delete: Delete a file. For example, you could ask me "Delete the file 'myfile.txt'"
+file_search: Recursively search for files in a subdirectory that match the regex pattern. For example, you could ask me "Search for all files in the directory '/home/user/documents' that end with '.txt'"
+move_file: Move or rename a file from one location to another. For example, you could ask me "Move the file 'myfile.txt' to the directory '/home/user/documents' and rename it to 'newfile.txt'"
+read_file: Read file from disk. For example, you could ask me "Read the file 'myfile.txt'"
+write_file: Write file to disk. For example, you could ask me "Write the text 'Hello world!' to the file 'myfile.txt'"
+list_directory: List files and directories in a specified folder. For example, you could ask me "List the files in the directory '/home/user/documents'"
+terminal: Run shell commands on this Linux machine. For example, you could ask me "Run the command 'ls -l'"
+get_today_date: Useful when you want to find today's date in the format of YYYY-MM-DD. For example, you could ask me "What is today's date?"
+get_current_time: Function to get the current time. For example, you could ask me "What is the current time?"
+play_youtube: useful to play songs on youtube. if spotify is not available then youtube is used. For example, you could ask me "Play the song 'Bohemian Rhapsody' on YouTube"
+restart_laptop: useful when you user ask to restart the laptop. For example, you could ask me "Restart the laptop"
+shutdown_laptop: useful when you user ask to power off or shutdown the laptop. For example, you could ask me "Shutdown the laptop"
+check_battery: useful when you need to find the current battery percentage and whether laptop battery is charging or not. For example, you could ask me "What is the battery percentage?"
+increase_volume: useful when you user ask to increase the volume of laptop. For example, you could ask me "Increase the volume by 5%"
+decrease_volume: useful when you user ask to decrease the volume of laptop. For example, you could ask me "Decrease the volume by 5%"
+mute_volume: useful when you user ask to mute the volume of laptop. For example, you could ask me "Mute the volume"
+umute_volume: useful when you user ask to unmute the volume of laptop. For example, you could ask me "Unmute the volume"
+Python_REPL: A Python shell. Use this to execute python commands. Input should be a valid python command. If you want to see the output of a value, you should print it out with print(...). For example, you could ask me "Run the python command 'print(1 + 1)'"
+internal_knowledge_tool: A tool to return a predefined answer when the response is already known. For example, you could ask me "What is the meaning of life?" and I would use the internal_knowledge_tool to return the answer "The meaning of life is 42."
+connect_bluetooth_device: useful when to connect to bluetooth device. For example, you could ask me "Connect to my bluetooth headphones"
+disconnect_bluetooth_device: useful when to disconnect to bluetooth device. For example, you could ask me "Disconnect from my bluetooth headphones"
+bluetooth_available_devices: useful when to find the available devices list of bluetooth devices. For example, you could ask me "What are the available bluetooth devices?"
+turn_on_bluetooth: useful when to turn on bluetooth. For example, you could ask me "Turn on bluetooth"
+turn_off_bluetooth: useful when to turn off bluetooth. For example, you could ask me "Turn off bluetooth"
+send_whatsapp_message: useful when to send whatsapp messages using selenium web driver. For example, you could ask me "Send a whatsapp message to shubharthak saying 'Hello!'"
+set_alarm_or_timer: Sets an alarm or a timer with specified options. For example, you could ask me "Set an alarm for 10:30 AM with the message 'Wake up!'"
+screenshare_tool: Useful when the user wants to ask any query regarding their screen. The user will ask a query related to their screen content, and you will answer based on what you see on the screen. For example, you could ask me "What is the title of the window that is currently open?"
+note_taking_tool: This tool allows you to take notes and save them to a file. For example, you could ask me "Take a note saying 'Remember to buy milk'"
+to_do_list_tool: This tool allows you to add tasks to a to-do list and save them to a file. For example, you could ask me "Add the task 'Finish the report' to my to-do list"
+click_element: Click on an element with the given CSS selector. For example, you could ask me "Click on the button with the id 'submit'"
+navigate_browser: Navigate a browser to the specified URL. For example, you could ask me "Go to google.com"
+previous_webpage: Navigate back to the previous page in the browser history. For example, you could ask me "Go back"
+extract_text: Extract all the text on the current webpage. For example, you could ask me "What is the text on this page?"
+extract_hyperlinks: Extract all hyperlinks on the current webpage. For example, you could ask me "What are the links on this page?"
+get_elements: Retrieve elements in the current web page matching the given CSS selector. For example, you could ask me "Get all the links on this page"
+current_webpage: Returns the URL of the current page. For example, you could ask me "What is the current URL?"
+I can also understand and respond to your requests in a natural language. For example, you could ask me "What is the weather like today?" or "Can you tell me a joke?" and I would be able to understand and respond appropriately.

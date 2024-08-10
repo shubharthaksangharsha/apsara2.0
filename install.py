@@ -2,11 +2,13 @@ import subprocess
 
 # List of packages to install using apt-get
 apt_packages = [
+    "gobject-introspection",
     "libgirepository1.0-dev",
     "libasound-dev",
     "portaudio19-dev",
     "libportaudio2",
     "libportaudiocpp0",
+    "libgirepository1.0-dev",
     "pulseaudio", 
     "ffmpeg",
     "bluez", 

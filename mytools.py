@@ -37,9 +37,9 @@ file_tools = toolkit.get_tools()
 shell_tool = ShellTool()
 
 #Playwright tool 
-#sync_browser = create_sync_playwright_browser()
-#toolkit = PlayWrightBrowserToolkit.from_browser(sync_browser=sync_browser)
-#playwright_tools = toolkit.get_tools()
+sync_browser = create_sync_playwright_browser()
+toolkit = PlayWrightBrowserToolkit.from_browser(sync_browser=sync_browser)
+playwright_tools = toolkit.get_tools()
 
 #Get all apps installed
 @tool

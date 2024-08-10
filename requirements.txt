@@ -1,3 +1,4 @@
+pyaudio
 langchain 
 pandas 
 langchain_groq
@@ -11,10 +12,8 @@ pydub
 SpeechRecognition
 pvporcupine==2.2.0
 python-dotenv
-pyaudio
 bluedo
 langchain_google_genai
-pyaudio 
 psutil
 geopy 
 langchain_experimental 

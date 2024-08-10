@@ -1,9 +1,10 @@
 {
-  "provider": "Groq",
-  "model": "llama-3.1-70b-versatile",
+  "provider": "Google",
+  "model": "gemini-1.5-flash",
   "local_model": "",
   "temperature": 0.0,
-  "history": false,
+  "history": true,
+  "history_size": 3,
   "tools": [
     "Search",
     "Gmail",
@@ -23,8 +24,9 @@
     "Alarm",
     "Screenshare",
     "Note Taking",
-    "To-Do List"
+    "To-Do List",
+    "Playwright"
   ],
-  "agent": false,
+  "agent": true,
   "voice": false
 }

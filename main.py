@@ -39,6 +39,7 @@ from gtts import gTTS
 import tempfile
 from groq import Groq 
 
+
 client = Groq()
 
 # Load environment variables
@@ -111,6 +112,7 @@ def create_agent(llm, memory, selected_tools):
         "Screenshare": screenshare_tool,
         "Note Taking": note_taking_tool,
         "To-Do List": to_do_list_tool,
+        "Playwright": playwright_tools,
     }
     
     for tool, tool_func in custom_tools.items():

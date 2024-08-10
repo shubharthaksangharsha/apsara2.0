@@ -52,7 +52,7 @@ def create_config():
     
     # Tools
     print("\nAvailable tools:")
-    tools = ["Search", "Gmail", "Finance", "Location", "Weather", "File Operations", "Shell", "Date and Time", "Media", "System", "Volume Control", "Python", "Knowledge", "Bluetooth", "WhatsApp", "Alarm", "Screenshare", "Note Taking", "To-Do List"]
+    tools = ["Search", "Gmail", "Finance", "Location", "Weather", "File Operations", "Shell", "Date and Time", "Media", "System", "Volume Control", "Python", "Knowledge", "Bluetooth", "WhatsApp", "Alarm", "Screenshare", "Note Taking", "To-Do List", "Playwright"]
     for i, tool in enumerate(tools, 1):
         print(f"{i}. {tool}")
     print("Enter tool numbers separated by spaces, or 'all' for all tools.")
