@@ -1,5 +1,7 @@
 # Apsara 2.0: Your Intelligent AI Assistant
+![image](https://github.com/user-attachments/assets/9e9088f6-d87b-409e-8768-47004273ae77)
 
+# 
 Created by [shubharthak](https://shubharthaksangharsha.github.io/)
 
 Apsara 2.0 stands out as a robust and adaptable AI assistant crafted using Langchain and a host of other cutting-edge libraries like Spotipy and Selenium. What sets Apsara 2.0 apart from its predecessor, ApsaraAI, is its remarkable ability to comprehend user demands and select the most suitable tool to fulfill them.
