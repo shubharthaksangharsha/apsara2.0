@@ -1,0 +1,45 @@
+| Tool | Usage |
+|---|---| 
+| Search |  Find information on the web. | 
+| send_gmail_message | Send an email message. | 
+| search_gmail | Search for emails in your Gmail account. | 
+| get_gmail_thread | Get a specific email thread from your Gmail account. | 
+| create_gmail_draft | Create a draft email in your Gmail account. | 
+| get_gmail_message | Get a specific email message from your Gmail account. | 
+| get_gmail_ids | Get the Gmail IDs of users. | 
+| get_date | Extract a date from a text string. | 
+| create_event | Create a Google Calendar event or meeting. | 
+| get_events | Check upcoming Google Calendar events or meetings. | 
+| Yahoo Finance | Get stock prices or financial news about a public company. | 
+| mylocation | Find your current location. | 
+| openweather | Get weather details for a location. | 
+| copy_file | Create a copy of a file. | 
+| file_delete | Delete a file. | 
+| file_search | Search for files in a directory. | 
+| move_file | Move or rename a file. | 
+| read_file | Read a file from disk. | 
+| write_file | Write text to a file. | 
+| list_directory | List files and directories in a folder. | 
+| terminal | Run shell commands on the Linux machine. | 
+| get_today_date | Get today's date in YYYY-MM-DD format. | 
+| get_current_time | Get the current time in HH:MM:SS format. | 
+| play_youtube | Play a song on YouTube. | 
+| restart_laptop | Restart the laptop. | 
+| shutdown_laptop | Power off or shutdown the laptop. | 
+| check_battery | Find the current battery percentage and charging status. | 
+| increase_volume | Increase the laptop volume. | 
+| decrease_volume | Decrease the laptop volume. | 
+| mute_volume | Mute the laptop volume. | 
+| umute_volume | Unmute the laptop volume. | 
+| Python_REPL | Execute Python commands. | 
+| internal_knowledge_tool | Return a predefined answer. | 
+| connect_bluetooth_device | Connect to a Bluetooth device. | 
+| disconnect_bluetooth_device | Disconnect from a Bluetooth device. | 
+| bluetooth_available_devices | Find available Bluetooth devices. | 
+| turn_on_bluetooth | Turn on Bluetooth. | 
+| turn_off_bluetooth | Turn off Bluetooth. | 
+| send_whatsapp_message | Send a WhatsApp message. | 
+| set_alarm_or_timer | Set an alarm or timer. | 
+| screenshare_tool | Share your screen and answer questions based on its content. | 
+| note_taking_tool | Take notes and save them to a file. | 
+| to_do_list_tool | Add tasks to a to-do list and save them to a file. |

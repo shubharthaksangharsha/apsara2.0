@@ -66,7 +66,7 @@ def transcribe_audio(audio_file):
     with open(audio_file, "rb") as file:
         transcription = client.audio.transcriptions.create(
             file=file,
-            model="whisper-large-v3",
+            model="distil-whisper-large-v3-en",
             response_format="json",
             language='en'
         )
@@ -269,9 +269,11 @@ def main():
         models = ["claude-3-5-sonnet-20240620", "claude-3-opus-20240229", "claude-3-sonnet-20240229", "claude-3-haiku-20240307"]
     elif st.session_state.llm_provider == "Groq":
         models = [
-            "llama-3.1-405b-reasoning", "llama-3.1-70b-versatile", "llama-3.1-8b-instant",
+            "llama-3.2-90b-vision-preview", "llama-3.2-11b-vision-preview", "llama-3.1-405b-reasoning", "llama-3.1-70b-versatile", "llama-3.1-8b-instant",
+            "llama-3.2-1b-preview", "llama-3.2-3b-preview", 
             "llama3-groq-70b-8192-tool-use-preview", "llama3-groq-8b-8192-tool-use-preview",
-            "llama3-70b-8192", "llama3-8b-8192", "mixtral-8x7b-32768", "gemma-7b-it", "gemma2-9b-it"
+            "llama3-70b-8192", "llama3-8b-8192", "mixtral-8x7b-32768", "gemma-7b-it", "gemma2-9b-it", 
+            "llava-v1.5-7b-4096-preview", 
         ]
     elif st.session_state.llm_provider == "OpenAI":
         models = ["gpt-4", "gpt-3.5-turbo", "gpt-4o", "gpt-4o-mini"]
