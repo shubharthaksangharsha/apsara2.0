@@ -121,15 +121,21 @@ def main():
 
     # Process input only if there's new input and no stop signal
     if (user_input or (audio_bytes and audio_bytes != st.session_state.get('last_audio_bytes'))) and not st.session_state.stop_signal:
+        # Check if we just cleared history
+        if getattr(st.session_state, 'just_cleared', False):
+            st.session_state.just_cleared = False
+            return
+        
         st_callback = StreamlitCallbackHandler(st.container())
         
         # Prioritize text input over audio input
         if user_input:
             processed_input = user_input
+            # Clear any pending audio input
+            st.session_state.last_audio_bytes = audio_bytes  # Mark current audio as processed
         elif audio_bytes:
             with st.spinner("Transcribing audio..."):
                 processed_input = process_audio_input(audio_bytes)
-                # Store the current audio_bytes to prevent reprocessing
                 st.session_state.last_audio_bytes = audio_bytes
         
         # Immediately display user input
@@ -172,12 +178,18 @@ def main():
             st.session_state.memory.clear()
             st.session_state.messages = []
             st.session_state.last_audio_bytes = None
-            st.session_state.stop_signal = False
-            # Force clear the audio recorder state
+            
+            # Force clear all audio-related states
             if 'audio_recorder_state' in st.session_state:
-              del st.session_state.audio_recorder_state
+                del st.session_state.audio_recorder_state
+            if 'audio_bytes' in st.session_state:
+                del st.session_state.audio_bytes
+            if 'voice_assistant_active' in st.session_state:
+                st.session_state.voice_assistant_active = False
+                
+            st.session_state.just_cleared = True                
             st.success("Chat history cleared!")
-            st.rerun()
+            st.experimental_rerun()  
 
     # Voice Assistant
     if st.session_state.use_voice:
