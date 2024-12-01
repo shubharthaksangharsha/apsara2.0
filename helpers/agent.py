@@ -75,3 +75,5 @@ def initialize_session_state():
         st.session_state.uuid = str(uuid.uuid4())
     if 'last_audio_bytes' not in st.session_state:
         st.session_state.last_audio_bytes = None
+    if 'show_history_state' not in st.session_state:
+        st.session_state.show_history_state = False

@@ -31,6 +31,21 @@ def log_chat(user_input, answer):
     except Exception as e:
         st.error(f"Error logging chat: {str(e)}")
 
+def show_chat_history():
+    """Display chat history from the chats.txt file"""
+    try:
+        if os.path.exists('chats.txt'):
+            with open('chats.txt', 'r') as f:
+                history = f.read()
+            if history.strip():
+                st.text_area("Chat History", value=history, height=300, disabled=True)
+            else:
+                st.info("No chat history available.")
+        else:
+            st.info("No chat history file found.")
+    except Exception as e:
+        st.error(f"Error reading chat history: {str(e)}")
+
 def main():
     st.set_page_config(page_title='Apsara 2.0 - Advanced AI Assistant', layout='wide', initial_sidebar_state='auto')
     st.title("Apsara 2.0 - Advanced AI Assistant")
@@ -166,13 +181,25 @@ def main():
     # Add other buttons after the chat
     st.markdown("---")
     
-    col1, col2 = st.columns(2)
+    col1, col2, col3 = st.columns(3)
     
     with col1:
         if st.button("Export Chat"):
             add_export_button()
     
     with col2:
+        # Toggle button label based on current state
+        button_label = "Hide History" if st.session_state.show_history_state else "Show History"
+        
+        if st.button(button_label):
+            st.session_state.show_history_state = not st.session_state.show_history_state
+            st.rerun()  # Force a rerun to update the UI immediately
+        
+        # Only show history if state is True
+        if st.session_state.show_history_state:
+            show_chat_history()
+    
+    with col3:
         if st.button("Clear History"):
             # Clear everything related to chat and audio
             st.session_state.memory.clear()
@@ -186,10 +213,14 @@ def main():
                 del st.session_state.audio_bytes
             if 'voice_assistant_active' in st.session_state:
                 st.session_state.voice_assistant_active = False
+            
+            # Also clear the chats.txt file
+            if os.path.exists('chats.txt'):
+                open('chats.txt', 'w').close()
                 
             st.session_state.just_cleared = True                
             st.success("Chat history cleared!")
-            st.experimental_rerun()  
+            st.experimental_rerun()
 
     # Voice Assistant
     if st.session_state.use_voice:

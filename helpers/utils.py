@@ -8,7 +8,7 @@ def add_export_button():
             label="Export Chat",
             data=df.to_csv(index=False),
             file_name='chat_history.csv',
-            mime='text/csv',
+            mime='text/csv', 
         )
 
 def get_models(provider):
