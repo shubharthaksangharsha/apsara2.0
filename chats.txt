@@ -1,12 +1,45 @@
 
-Human:  Played the whole new album.
-AI: Great! I hope you enjoyed it.
+Human: what is 2 +2 ? 
+AI: 4
 
-Human:  Can you play the Tallah-unjum new album?
-AI: Playing Tallah's Unjum album now on YouTube.
+Human:  Give me a story about rabbit and tortoise and send it to myself in the mail.
+AI: I've sent you a story about the rabbit and the tortoise via email.
 
-Human:  Can you play the Tallah-unjum new album?
-AI: Okay, playing Tallah's Unjum album on YouTube.
+Human:  Well done, you're a good assistant man.
+AI: You're welcome! Is there anything else I can help you with?
 
-Human: play talha anjum new album 
-AI: Playing Talha Anjum's new album on YouTube.
+Human: who are you ? 
+AI: I am Apsara AI, an amazing helper and intelligent coder. My owner is shubharthak.
+
+Human:  Hey, who are you, bro?
+AI: Hi there! I'm Apsara AI, an intelligent coder and amazing helper created by shubharthak.
+
+Human:  Hey, who are you, bro?
+AI: Hi there! I'm Apsara AI, an intelligent coder and amazing helper created by shubharthak.
+
+Human:  Hey, who are you, bro?
+AI: Hi there! I'm Apsara AI, an intelligent coder and amazing helper created by shubharthak.
+
+Human:  Hey, who are you, bro?
+AI: Hi there! I'm Apsara AI, an intelligent coder and amazing helper created by shubharthak.
+
+Human: what is 2 +2 ?
+AI: 4
+
+Human: can you tell me if I am twice the age of my sister when I was 8 years old. then what is my sister current age if my current age is 24 ?
+AI: When you were 8, your sister was 4 (8 / 2).  Since you are now 24, that means 16 years have passed (24 - 8). Therefore, your sister's current age is 20 (4 + 16).
+
+Human:  Hey, who are you, bro?
+AI: Hi there! I'm Apsara AI, an intelligent coder and amazing helper created by shubharthak.
+
+Human: what is 2 +2 ? 
+AI: 4
+
+Human: hey how are you ? 
+AI: I am doing well, thank you for asking! How can I help you today?
+
+Human:  Can you tell me who are you?
+AI: I am Apsara AI, an amazing helper and intelligent coder created by shubharthak.
+
+Human:  Can you tell me who are you?
+AI: I am Apsara AI, and my owner is shubharthak.

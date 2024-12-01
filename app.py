@@ -5,6 +5,7 @@ import warnings
 import json
 from langchain_community.callbacks.streamlit.streamlit_callback_handler import StreamlitCallbackHandler
 from dotenv import load_dotenv
+import time
 
 # Import configurations
 from config import initialize_env
@@ -90,15 +91,19 @@ def main():
     if 'llm' not in st.session_state or 'chain' not in st.session_state:
         update_llm_and_chain()
 
-    # Chat interface
-    st.subheader("Chat with Apsara 2.0")
+    # Always show Stop Execution button at the top
+    if st.button("⏹️ Stop Execution", key="stop_top", type="primary"):
+        st.session_state.stop_signal = True
+        st.success("Stop signal sent. Please wait for the current operation to halt.")
+        st.rerun()
 
-    # Display current settings
-    with st.sidebar:
-        st.write("Current Settings:")
-        st.write(f"LLM: {st.session_state.model}")
-        st.write(f"Agent: {'On' if st.session_state.use_agent else 'Off'}")
-        st.write(f"Voice Assistant: {'On' if st.session_state.use_voice else 'Off'}")
+    # Display chat history
+    for message in st.session_state.messages:
+        with st.chat_message(message["role"]):
+            st.markdown(message["content"])
+
+    # Chat input
+    user_input = st.chat_input("You:")
 
     # Voice Input
     try:
@@ -114,58 +119,65 @@ def main():
         st.error(f"Error recording audio: {str(e)}")
         audio_bytes = None
 
-    # Display chat messages
-    for message in st.session_state.messages:
-        with st.chat_message(message["role"]):
-            st.markdown(message["content"])
-
-    # Chat input
-    user_input = st.chat_input("You:")
-
-    if user_input or audio_bytes:
+    # Process input only if there's new input and no stop signal
+    if (user_input or (audio_bytes and audio_bytes != st.session_state.get('last_audio_bytes'))) and not st.session_state.stop_signal:
         st_callback = StreamlitCallbackHandler(st.container())
-        if audio_bytes:
-            user_input = process_audio_input(audio_bytes)
         
-        st.session_state.messages.append({"role": "user", "content": user_input})
+        # Prioritize text input over audio input
+        if user_input:
+            processed_input = user_input
+        elif audio_bytes:
+            with st.spinner("Transcribing audio..."):
+                processed_input = process_audio_input(audio_bytes)
+                # Store the current audio_bytes to prevent reprocessing
+                st.session_state.last_audio_bytes = audio_bytes
+        
+        # Immediately display user input
+        st.session_state.messages.append({"role": "user", "content": processed_input})
         with st.chat_message("user"):
-            st.markdown(user_input)
-
+            st.markdown(processed_input)
+        
         # Generate AI response
         with st.chat_message("assistant"):
             response_container = st.empty()
             response_container.markdown("Thinking...")
 
             try:
-                answer = generate_response(user_input, st.session_state)
+                answer = generate_response(processed_input, st.session_state)
                 response_container.markdown(answer)
                 st.session_state.messages.append({"role": "assistant", "content": answer})
-                log_chat(user_input, answer)
+                log_chat(processed_input, answer)
             except json.JSONDecodeError as e:
                 st.error(f"Error parsing LLM output: {str(e)}")
                 st.error("The LLM output was not in the expected format. Please try again or rephrase your query.")
             except Exception as e:
                 st.error(f"An error occurred: {str(e)}")
 
-    # Display chat history
-    if st.session_state.use_history:
-        with st.expander("Chat History", expanded=False):
-            st.text_area("History:", value=st.session_state.memory.buffer_as_str, height=300, disabled=True)
+        # Reset stop signal after processing
+        st.session_state.stop_signal = False
+        st.rerun()
 
+    # Add other buttons after the chat
     st.markdown("---")
-    add_export_button()
-
-    # Clear history button
-    if st.button("Clear History"):
-        st.session_state.memory.clear()
-        st.session_state.messages = []
-        st.success("Chat history cleared!")
-        audio_bytes = None
-
-    # Stop button
-    if st.button("Stop Execution"):
-        st.session_state.stop_signal = True
-        st.success("Stop signal sent. Please wait for the current operation to halt.")
+    
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        if st.button("Export Chat"):
+            add_export_button()
+    
+    with col2:
+        if st.button("Clear History"):
+            # Clear everything related to chat and audio
+            st.session_state.memory.clear()
+            st.session_state.messages = []
+            st.session_state.last_audio_bytes = None
+            st.session_state.stop_signal = False
+            # Force clear the audio recorder state
+            if 'audio_recorder_state' in st.session_state:
+              del st.session_state.audio_recorder_state
+            st.success("Chat history cleared!")
+            st.rerun()
 
     # Voice Assistant
     if st.session_state.use_voice:

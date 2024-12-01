@@ -73,3 +73,5 @@ def initialize_session_state():
         st.session_state.stop_signal = False
     if 'uuid' not in st.session_state:
         st.session_state.uuid = str(uuid.uuid4())
+    if 'last_audio_bytes' not in st.session_state:
+        st.session_state.last_audio_bytes = None
