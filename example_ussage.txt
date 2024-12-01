@@ -1,0 +1,140 @@
+I am a helpful and intelligent AI assistant. I can help you with various tasks, including searching the web, sending emails, managing your calendar, getting weather information, playing music, and more. 
+
+To use my capabilities, simply ask me in a natural language. For example, you can say:
+
+* "What is the weather like in London?"
+* "Send an email to shubharthak@example.com with the subject "Meeting tomorrow" and the message "Let's meet tomorrow at 10 AM."
+* "Create a calendar event for tomorrow at 2 PM called "Team Meeting"
+* "Play the song "Bohemian Rhapsody" on YouTube"
+
+I will understand your request and use the appropriate tools to complete the task. 
+
+I can also access and use various tools to help me complete your requests. Here are some examples of how you can use each tool:
+
+**Search:**
+* "What is the capital of France?"
+* "What is the latest news about the war in Ukraine?"
+
+**send_gmail_message:**
+* "Send an email to shubharthak@example.com with the subject "Meeting tomorrow" and the message "Let's meet tomorrow at 10 AM."
+
+**search_gmail:**
+* "Find emails from shubharthak@example.com sent in the last week"
+
+**get_gmail_thread:**
+* "Get the thread for the email with ID 1234567890"
+
+**create_gmail_draft:**
+* "Create a draft email to shubharthak@example.com with the subject "Meeting tomorrow" and the message "Let's meet tomorrow at 10 AM."
+
+**get_gmail_message:**
+* "Get the email with ID 1234567890"
+
+**get_gmail_ids:**
+* "Get the Gmail IDs for shubharthak and myself"
+
+**get_date:**
+* "Create a calendar event for tomorrow at 2 PM"
+
+**create_event:**
+* "Create a calendar event for tomorrow at 2 PM called "Team Meeting"
+
+**get_events:**
+* "What are my events for tomorrow?"
+
+**Yahoo Finance:**
+* "What is the stock price of Google?"
+* "What is the latest news about Apple?"
+
+**mylocation:**
+* "Where am I?"
+
+**openweather:**
+* "What is the weather like in London?"
+
+**copy_file:**
+* "Copy the file "document.txt" to the folder "Documents"
+
+**file_delete:**
+* "Delete the file "document.txt"
+
+**file_search:**
+* "Search for all files in the folder "Documents" that contain the word "report"
+
+**move_file:**
+* "Move the file "document.txt" to the folder "Documents"
+
+**read_file:**
+* "Read the contents of the file "document.txt"
+
+**write_file:**
+* "Write the text "Hello world!" to the file "document.txt"
+
+**list_directory:**
+* "List the files and directories in the folder "Documents"
+
+**terminal:**
+* "Run the command "ls -l"
+
+**get_today_date:**
+* "What is today's date?"
+
+**get_current_time:**
+* "What is the current time?"
+
+**play_youtube:**
+* "Play the song "Bohemian Rhapsody" on YouTube"
+
+**restart_laptop:**
+* "Restart the laptop"
+
+**shutdown_laptop:**
+* "Shutdown the laptop"
+
+**check_battery:**
+* "What is the battery percentage?"
+
+**increase_volume:**
+* "Increase the volume by 5%"
+
+**decrease_volume:**
+* "Decrease the volume by 5%"
+
+**mute_volume:**
+* "Mute the volume"
+
+**umute_volume:**
+* "Unmute the volume"
+
+**Python_REPL:**
+* "Print("Hello world!")"
+
+**internal_knowledge_tool:**
+* "What is the capital of France?"
+
+**connect_bluetooth_device:**
+* "Connect to my Bluetooth headphones"
+
+**disconnect_bluetooth_device:**
+* "Disconnect from my Bluetooth headphones"
+
+**bluetooth_available_devices:**
+* "What are the available Bluetooth devices?"
+
+**turn_on_bluetooth:**
+* "Turn on Bluetooth"
+
+**turn_off_bluetooth:**
+* "Turn off Bluetooth"
+
+**send_whatsapp_message:**
+* "Send a WhatsApp message to John Doe saying "Hello! How are you?"
+
+**set_alarm_or_timer:**
+* "Set an alarm for 8:00 AM"
+* "Set a timer for 5 minutes"
+
+**screenshare_tool:**
+* "Check my screen"
+
+I am still under development, but I am learning new things every day. If you have any questions or feedback, please let me know.
