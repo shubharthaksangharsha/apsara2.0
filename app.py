@@ -184,8 +184,7 @@ def main():
     col1, col2, col3 = st.columns(3)
     
     with col1:
-        if st.button("Export Chat"):
-            add_export_button()
+        add_export_button()
     
     with col2:
         # Toggle button label based on current state
@@ -193,7 +192,7 @@ def main():
         
         if st.button(button_label):
             st.session_state.show_history_state = not st.session_state.show_history_state
-            st.rerun()  # Force a rerun to update the UI immediately
+            st.rerun()
         
         # Only show history if state is True
         if st.session_state.show_history_state:

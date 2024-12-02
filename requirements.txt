@@ -16,12 +16,15 @@ bluedo
 langchain-google-genai
 psutil
 geopy 
+python-docx
 langchain_experimental 
 google-auth-oauthlib
 selenium
 webdriver_manager
 google-search-results
 google-api-python-client
+Pillow
+markdown
 langchain-anthropic
 langchain_openai
 playwright 

@@ -1,15 +1,119 @@
 import streamlit as st
 
 def add_export_button():
+    """Add export buttons for different file formats"""
     import pandas as pd
-    if 'messages' in st.session_state:
+    from fpdf import FPDF
+    from PIL import Image
+    import markdown
+    import io
+    import docx
+    
+    # Initialize session state for export buttons if not exists
+    if 'show_export_buttons' not in st.session_state:
+        st.session_state.show_export_buttons = False
+    
+    # Toggle button for showing/hiding export options
+    if st.button("Export Chat" if not st.session_state.show_export_buttons else "Hide Export Options", key="export_toggle"):
+        st.session_state.show_export_buttons = not st.session_state.show_export_buttons
+        st.rerun()
+    
+    # Only show export options if state is True
+    if st.session_state.show_export_buttons and 'messages' in st.session_state:
+        # Convert messages to DataFrame
         df = pd.DataFrame(st.session_state.messages)
-        st.download_button(
-            label="Export Chat",
-            data=df.to_csv(index=False),
-            file_name='chat_history.csv',
-            mime='text/csv', 
-        )
+        
+        # Create columns for export buttons
+        col1, col2, col3 = st.columns(3)
+        
+        # CSV Export
+        with col1:
+            st.download_button(
+                label="Export as CSV",
+                data=df.to_csv(index=False),
+                file_name='chat_history.csv',
+                mime='text/csv',
+                key="csv_export"
+            )
+        
+        # Markdown Export
+        with col2:
+            md_content = ""
+            for msg in st.session_state.messages:
+                md_content += f"**{msg['role'].title()}**: {msg['content']}\n\n"
+            
+            st.download_button(
+                label="Export as Markdown",
+                data=md_content,
+                file_name='chat_history.md',
+                mime='text/markdown',
+                key="md_export"
+            )
+        
+        # PDF Export
+        with col3:
+            pdf = FPDF()
+            pdf.add_page()
+            pdf.set_font("Arial", size=12)
+            
+            for msg in st.session_state.messages:
+                pdf.cell(200, 10, txt=f"{msg['role'].title()}: {msg['content']}", ln=True)
+            
+            st.download_button(
+                label="Export as PDF",
+                data=pdf.output(dest='S').encode('latin-1'),
+                file_name='chat_history.pdf',
+                mime='application/pdf',
+                key="pdf_export"
+            )
+        
+        # Create another row of columns
+        col4, col5, col6 = st.columns(3)
+        
+        # DOCX Export
+        with col4:
+            doc = docx.Document()
+            for msg in st.session_state.messages:
+                doc.add_paragraph(f"{msg['role'].title()}: {msg['content']}")
+            
+            # Save to bytes
+            docx_bytes = io.BytesIO()
+            doc.save(docx_bytes)
+            docx_bytes.seek(0)
+            
+            st.download_button(
+                label="Export as DOCX",
+                data=docx_bytes.getvalue(),
+                file_name='chat_history.docx',
+                mime='application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+                key="docx_export"
+            )
+        
+        # PNG Export
+        with col5:
+            # Create an image with the chat history
+            img = Image.new('RGB', (800, 600), color='white')
+            from PIL import ImageDraw
+            d = ImageDraw.Draw(img)
+            y_position = 10
+            
+            for msg in st.session_state.messages:
+                text = f"{msg['role'].title()}: {msg['content']}"
+                d.text((10, y_position), text, fill='black')
+                y_position += 30
+            
+            # Convert to bytes
+            img_bytes = io.BytesIO()
+            img.save(img_bytes, format='PNG')
+            img_bytes.seek(0)
+            
+            st.download_button(
+                label="Export as PNG",
+                data=img_bytes.getvalue(),
+                file_name='chat_history.png',
+                mime='image/png',
+                key="png_export"
+            )
 
 def get_models(provider):
     if provider == "Google":
