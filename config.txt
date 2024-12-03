@@ -1,0 +1,32 @@
+{
+  "provider": "Google",
+  "model": "gemini-1.5-flash",
+  "local_model": "",
+  "temperature": 0.0,
+  "agent": true,
+  "tools": [
+    "Search",
+    "Gmail",
+    "Finance",
+    "Location",
+    "Weather",
+    "File Operations",
+    "Shell",
+    "Date and Time",
+    "Media",
+    "System",
+    "Volume Control",
+    "Python",
+    "Knowledge",
+    "Bluetooth",
+    "WhatsApp",
+    "Alarm",
+    "Screenshare",
+    "Note Taking",
+    "To-Do List",
+    "Playwright"
+  ],
+  "history": true,
+  "history_size": 10,
+  "voice": false
+}

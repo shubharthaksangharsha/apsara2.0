@@ -141,17 +141,32 @@ def get_available_tools():
     return ["Search", "Gmail", "Finance", "Location", "Weather", "File Operations", "Shell", "Date and Time", "Media", "System", "Volume Control", "Python", "Knowledge", "Bluetooth", "WhatsApp", "Alarm", "Screenshare", "Note Taking", "To-Do List"]
 
 def generate_response(user_input, session_state):
+    """Generate response with stop signal check"""
     import streamlit as st
     from langchain_community.callbacks.streamlit.streamlit_callback_handler import StreamlitCallbackHandler
     st_callback = StreamlitCallbackHandler(st.container())
 
-    if session_state.use_agent and session_state.agent:
-        response = session_state.agent.invoke({"input": user_input}, {"callbacks": [st_callback]})
-        answer = response['output']
-    else:
-        response = session_state.chain.invoke(user_input)
-        answer = response['response']
-    return answer
+    try:
+        # Check if stop signal is set
+        if st.session_state.stop_signal:
+            return "Operation was stopped by user."
+
+        if session_state.use_agent and session_state.agent:
+            response = session_state.agent.invoke({"input": user_input}, {"callbacks": [st_callback]})
+            answer = response['output']
+        else:
+            response = session_state.chain.invoke(user_input)
+            answer = response['response']
+            
+        # Check stop signal after response
+        if st.session_state.stop_signal:
+            return "Operation was stopped by user."
+            
+        return answer
+        
+    except Exception as e:
+        st.error(f"Error processing query: {str(e)}")
+        return "I encountered an error processing your request. Please try again."
 
 def log_chat(user_input, answer):
     with open('chats.txt', 'a') as f:

@@ -10,32 +10,41 @@ import os
 def screenshare_helper() -> str:
     """
     Capture the entire screen and return it as a base64 encoded string.
-    
     Returns:
     str: Base64 encoded string of the screenshot in PNG format.
     """
     # Delete the existing screenshot if it exists
     if os.path.exists('hey.png'):
         os.remove('hey.png')
-    print('hey.png deleted')
+        print('hey.png deleted')
     # Capture screenshot of the entire screen
     screenshot = pyautogui.screenshot('hey.png')
     print(f'screenshot = {screenshot}')
 
 def callback_llm(user_query_msg: str): 
     llm =  ChatGoogleGenerativeAI(model='gemini-1.5-flash-latest', stream=True, api_key=os.environ.get('gemini'), temperature=0.0,  convert_system_message_to_human=True,  max_output_tokens=4096)
-    image_path = os.path.abspath('hey.png')
-    message = HumanMessage(
-    content=[
+    print(f'user_query_msg = {user_query_msg}')
+    if os.path.exists('hey.png'):
+        print(f'hey.png exists')
+        image_path = os.path.abspath('hey.png')
+        print(f'image_path = {image_path}')
+        try:
+            message = HumanMessage(
+                content=[
         {
             "type": "text",
             "text": f"{user_query_msg}",
         }, 
         {"type": "image_url", "image_url": image_path},
-    ]
-    )
-    os.remove('hey.png')
-    return llm.invoke([message]).content
+                ]
+            )
+            os.remove('hey.png')
+            return llm.invoke([message]).content
+        except Exception as e:
+            print(f'Error: {e}')
+            return "I encountered an error processing your request. Please try again."
+    else:
+        return "No screenshot found. Please capture a screenshot first."
 
     
 

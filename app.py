@@ -108,8 +108,20 @@ def main():
 
     # Always show Stop Execution button at the top
     if st.button("⏹️ Stop Execution", key="stop_top", type="primary"):
+        # Set stop signal
         st.session_state.stop_signal = True
-        st.success("Stop signal sent. Please wait for the current operation to halt.")
+        # Cancel any ongoing operations
+        if 'current_operation' in st.session_state:
+            st.session_state.current_operation = None
+        # Reset voice-related states
+        if 'voice_assistant_active' in st.session_state:
+            st.session_state.voice_assistant_active = False
+        if 'audio_recorder_state' in st.session_state:
+            del st.session_state.audio_recorder_state
+        # Clear any pending audio
+        st.session_state.last_audio_bytes = None
+        st.success("✋ Execution stopped. All operations have been halted.")
+        time.sleep(1)  # Brief pause to show the message
         st.rerun()
 
     # Display chat history
@@ -164,7 +176,16 @@ def main():
             response_container.markdown("Thinking...")
 
             try:
+                # Set current operation
+                st.session_state.current_operation = "processing_input"
+                
+                # Process input with stop check
                 answer = generate_response(processed_input, st.session_state)
+                
+                # Clear operation on success
+                st.session_state.current_operation = None
+                st.session_state.stop_signal = False
+                
                 response_container.markdown(answer)
                 st.session_state.messages.append({"role": "assistant", "content": answer})
                 log_chat(processed_input, answer)
@@ -173,6 +194,8 @@ def main():
                 st.error("The LLM output was not in the expected format. Please try again or rephrase your query.")
             except Exception as e:
                 st.error(f"An error occurred: {str(e)}")
+                st.session_state.current_operation = None
+                st.session_state.stop_signal = False
 
         # Reset stop signal after processing
         st.session_state.stop_signal = False

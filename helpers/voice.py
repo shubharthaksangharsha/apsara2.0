@@ -152,3 +152,66 @@ def process_audio_input(audio_bytes):
     finally:
         os.unlink(tmp_file_path)            
     return user_input
+
+def cli_voice_assistant(use_agent=False):
+    """Voice assistant for CLI that activates on 'apsara' wake word"""
+    import pvporcupine
+    import pyaudio
+    import os
+    
+    try:
+        # Initialize Porcupine wake word detection
+        pico_key = os.environ.get('pico_key')
+        porcupine = pvporcupine.create(
+            access_key=pico_key,
+            keyword_paths=['./apsara_keyword/ap-sara_en_linux_v2_2_0.ppn', 
+                         './apsara_keyword/app-sara_en_linux_v2_2_0.ppn']
+        )
+        
+        # Initialize audio stream
+        paudio = pyaudio.PyAudio()
+        audio_stream = paudio.open(
+            rate=porcupine.sample_rate,
+            channels=1,
+            format=pyaudio.paInt16,
+            input=True,
+            frames_per_buffer=porcupine.frame_length
+        )
+        
+        print("\nVoice Assistant activated. Say 'Apsara' to wake me up...")
+        
+        while True:
+            # Read audio frame
+            keyword = audio_stream.read(porcupine.frame_length)
+            keyword = struct.unpack_from("h" * porcupine.frame_length, keyword)
+            
+            # Process audio frame
+            keyword_index = porcupine.process(keyword)
+            
+            # Wake word detected
+            if keyword_index >= 0:
+                os.system('mpg123 ./apsara_keyword/wake_word.mp3')
+                print("\nListening...")
+                query = takeCommand()
+                
+                if query == "None":
+                    continue
+                    
+                if 'exit' in query.lower() or 'bye' in query.lower():
+                    speak("Goodbye!")
+                    break
+                    
+                return query
+                
+    except Exception as e:
+        print(f"Error in CLI voice assistant: {str(e)}")
+        return None
+        
+    finally:
+        if 'audio_stream' in locals():
+            audio_stream.stop_stream()
+            audio_stream.close()
+        if 'porcupine' in locals():
+            porcupine.delete()
+        if 'paudio' in locals():
+            paudio.terminate()

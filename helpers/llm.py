@@ -27,7 +27,7 @@ def get_llm(temperature=0.5, provider=None, model=None):
     return ChatGroq(model='llama3-70b-8192', api_key=os.environ.get('groq'), streaming=True, temperature=temperature)
 
 def get_chain(llm=None, memory=None):
-    prompt = PromptTemplate(input_variables=["question"], template="""
+    prompt = PromptTemplate(input_variables=['question'], template="""
     The following is a friendly conversation between a human and an AI. 
     The AI is talkative and provides lots of specific details from its context. 
     If the AI does not know the answer to a question, it truthfully says it does not know.
@@ -36,4 +36,11 @@ def get_chain(llm=None, memory=None):
                                              
     Human: {question}
     AI:""")
-    return ConversationChain(llm=llm, memory=memory, prompt=prompt, input_key='question', verbose=False)
+    chain = ConversationChain(
+        llm=llm, 
+        memory=memory, 
+        prompt=prompt, 
+        input_key='question',
+        verbose=False,
+    )
+    return chain
