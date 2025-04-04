@@ -117,11 +117,15 @@ def add_export_button():
 
 def get_models(provider):
     if provider == "Google":
-        return ["gemini-1.5-flash", "gemini-1.5-flash-8b","gemini-1.5-flash-002","gemini-1.5-pro-002", "gemini-exp-1121","gemini-exp-1114","gemini-1.5-pro-exp-0801", "gemini-1.5-pro",  "gemini-1.0-pro"]
+        return ["gemini-2.0-flash","gemini-2.0-flash-exp-image-generation", "gemini-2.5-pro-03-25", "gemini-2.0-flash-thinking-exp-01-21", 
+            "gemini-2.0-flash", 
+            "gemini-exp-1206", 
+            "gemini-1.5-flash", "gemini-1.5-flash-8b","gemini-1.5-flash-002","gemini-1.5-pro-002", "gemini-exp-1121","gemini-exp-1114","gemini-1.5-pro-exp-0801", "gemini-1.5-pro",  "gemini-1.0-pro"]
     elif provider == "Claude":
         return ["claude-3-5-sonnet-20240620", "claude-3-opus-20240229", "claude-3-sonnet-20240229", "claude-3-haiku-20240307"]
     elif provider == "Groq":
         return [
+            "llama-3.3-70b-versatile", "llama-3.3-70b-specdec", 
             "llama-3.2-90b-vision-preview", "llama-3.2-11b-vision-preview", "llama-3.1-405b-reasoning", "llama-3.1-70b-versatile", "llama-3.1-8b-instant",
             "llama-3.2-1b-preview", "llama-3.2-3b-preview", 
             "llama3-groq-70b-8192-tool-use-preview", "llama3-groq-8b-8192-tool-use-preview",

@@ -32,6 +32,7 @@ def create_agent(llm, memory, selected_tools):
         "Screenshare": screenshare_tool,
         "Note Taking": note_taking_tool,
         "To-Do List": to_do_list_tool,
+        "Browser": playwright_tools,
     }
     
     for tool, tool_func in custom_tools.items():

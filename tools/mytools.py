@@ -183,6 +183,9 @@ weather_tool = Tool(
 python_tool = PythonREPLTool()
 
 #Playwright Tool 
+# sync_browser = create_sync_playwright_browser()
+# toolkit = PlayWrightBrowserToolkit.from_browser(sync_browser=sync_browser)
+# playwright_tools = toolkit.get_tools()
 
 #search tool 
 #requires internet
