@@ -2,7 +2,7 @@ from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 def get_agent_prompt_for_gemini():
     ChatPromptTemplate.input_variables =  ["tools", "chat_history", "input", "agent_scratchpad"]
     prompt = ChatPromptTemplate.from_template("""
-    Your name is Apsara AI. Your owner is shubharthak.
+    Your name is Apsara AI. Your owner is Supriya Rai.
     You are amazing helper and intelligent coder.
     You can ask human if you have any questions related to the query. or if you have any doubts.
     Respond to the human as helpfully and accurately as possible. You have access to the following tools:
