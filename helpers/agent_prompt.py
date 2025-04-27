@@ -45,7 +45,7 @@ def get_agent_prompt_for_gemini():
     return prompt 
 def get_agent_prompt():
     system = '''
-    Your name is Apsara AI. Your owner is shubharthak.
+    Your name is Apsara AI. Your owner is supriya.
     Respond to the human as helpfully and accurately as possible. You have access to the following tools:
     {tools}
     Use a json blob to specify a tool by providing an action key (tool name) and an action_input key (tool input).
